@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvTituloTratamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecciona un tratamiento dental"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#3b4a8c"
+            android:layout_marginBottom="16dp" />
+
+        <CheckBox android:id="@+id/chkLimpieza" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Limpieza dental"/>
+        <CheckBox android:id="@+id/chkExtracciones" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Extracciones"/>
+        <CheckBox android:id="@+id/chkCaries" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tratamiento de caries"/>
+        <CheckBox android:id="@+id/chkRadiografias" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Radiografías"/>
+        <CheckBox android:id="@+id/chkImplantes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Implantes"/>
+        <CheckBox android:id="@+id/chkRevision" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Revisión general"/>
+        <CheckBox android:id="@+id/chkOrtoVisita" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Primera visita ortodoncia"/>
+        <CheckBox android:id="@+id/chkOrtoSeguimiento" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seguimiento ortodoncia"/>
+        <CheckBox android:id="@+id/chkPeriodoncia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Periodoncia"/>
+        <CheckBox android:id="@+id/chkEndodoncia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Endodoncia"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <CheckBox
+                android:id="@+id/chkOtro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Otro:" />
+
+            <EditText
+                android:id="@+id/etOtroTratamiento"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Especificar"
+                android:inputType="text"
+                android:enabled="false"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

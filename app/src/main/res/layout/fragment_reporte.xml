@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <!-- Header azul -->
-        <!-- Progress Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,12 +25,22 @@
                 android:id="@+id/tvBienvenida"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="6dp"
                 android:text="@string/lblAgendaCita"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-       </LinearLayout>
+            <ImageButton
+                android:id="@+id/btnRegresarCita"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/leftarrow"
+                android:contentDescription="Volver"
+                android:layout_marginRight="150dp"/>
+        </LinearLayout>
+        <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -41,21 +50,20 @@
             android:backgroundTint="#CCCCCC"
             android:progress="30"
             android:progressTint="#3b4a8c" />
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/contenedorInterno"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"/>
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <!-- IDEA DE FRAGMENTO -->
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-
+            android:text="Siguiente"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            />
     </LinearLayout>
 
 </ScrollView>
