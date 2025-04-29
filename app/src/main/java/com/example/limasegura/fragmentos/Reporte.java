@@ -6,17 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import android.animation.ObjectAnimator;
 
 import com.example.limasegura.R;
 
 public class Reporte extends Fragment {
 
     private int pasoActual = 0; // 0: Calendario, 1: Horario, 2: Tratamiento...
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -28,7 +31,10 @@ public class Reporte extends Fragment {
 
         Button btnSiguiente = view.findViewById(R.id.btnSiguiente);
         ImageButton btnRegresarCita = view.findViewById(R.id.btnRegresarCita);
+        progressBar = view.findViewById(R.id.progressBar);
 
+
+        actualizarProgreso();
         // Mostrar primer fragmento
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.contenedorInterno, new CalendarioFragment())
@@ -51,6 +57,7 @@ public class Reporte extends Fragment {
                 // Reiniciar si se desea repetir el flujo
                 pasoActual = 2; // o 0 si deseas volver al inicio
             }
+            actualizarProgreso();
         });
 
         btnRegresarCita.setOnClickListener(v -> {
@@ -68,9 +75,36 @@ public class Reporte extends Fragment {
                             .commit();
                     btnSiguiente.setText("Siguiente");
                 }
+                actualizarProgreso();
             }
         });
 
         return view;
+    }
+    // Actualiza el progreso de progreesBar
+    private void actualizarProgreso() {
+        int progreso;
+
+        switch (pasoActual) {
+            case 0:
+                progreso = 0;
+                break;
+            case 1:
+                progreso = 33;
+                break;
+            case 2:
+                progreso = 66; //pantalla tratamiento
+                break;
+            default:
+                progreso = 0;
+                break;
+        }
+        if (progressBar != null) {
+            ObjectAnimator anim = ObjectAnimator.ofInt(progressBar, "progress", progressBar.getProgress(), progreso);
+            anim.setDuration(500); // duración de la animación en milisegundos
+            anim.start();
+
+        }
+
     }
 }

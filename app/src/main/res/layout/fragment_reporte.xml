@@ -46,16 +46,18 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="0dp"
             android:backgroundTint="#CCCCCC"
-            android:progress="30"
+            android:max="100"
+            android:progress="0"
             android:progressTint="#3b4a8c" />
+
         <FrameLayout
             android:id="@+id/contenedorInterno"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="16dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"/> <!--android:background="@android:color/darker_gray"-->
         <Button
             android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
