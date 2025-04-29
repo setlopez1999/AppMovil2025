@@ -13,6 +13,7 @@
     <string name="frgCfgBtnRestaurar">Restaurar</string>
     <string name="sesRBtnSalir">Salir</string>
     <string name="lblBienvenida">!Bienvenido @usuario!</string>
+    <string name="lblAgendaCita">Agenda tu Cita</string>
 
     <string-array name="options_array">
         <item>Español</item>

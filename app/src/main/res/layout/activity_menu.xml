@@ -32,12 +32,12 @@
         <!-- Botones -->
 
         <ImageButton
-            android:id="@+id/btn4"
+            android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:background="@color/trasparente"
-            android:src="@drawable/dientereporte" />
+            android:src="@drawable/home" />
 
         <ImageButton
             android:id="@+id/btn5"
@@ -48,12 +48,12 @@
             android:src="@drawable/dientereporte" />
 
         <ImageButton
-            android:id="@+id/btn2"
+            android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:background="@color/trasparente"
-            android:src="@drawable/home" />
+            android:src="@drawable/tooth" />
 
         <ImageButton
             android:id="@+id/btn3"
