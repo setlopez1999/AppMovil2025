@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">LimaSegura</string>
+    <string name="carLblMensaje">Cargando...</string>
+    <string name="sesHintCorreo">Correo</string>
+    <string name="sesHintClave">Clave</string>
+    <string name="sesChkRecordar">Recordar Sesión</string>
+    <string name="sesLblRegistro">¡Regístrate!</string>
+    <string name="sesBtnIngresar">Ingresar</string>
+    <string name="sesBtnSalir">Salir</string>
+    <string name="sesLblCopy">Copyright ® 2025</string>
+
+    <string name="frgCfgBtnAplicar">Aplicar</string>
+    <string name="frgCfgBtnRestaurar">Restaurar</string>
+    <string name="sesRBtnSalir">Salir</string>
+    <string name="lblBienvenida">!Bienvenido @usuario!</string>
+
+    <string-array name="options_array">
+        <item>Español</item>
+        <item>Ingles</item>
+        <item>Turco</item>
+        <item>Ruso</item>
+    </string-array>
+
+    <string name="frgCfgBarSonido">Sonido</string>
+    <string name="frgCfgCblSonido">combo</string>
+    <string name="froCfgchkNotificacines">Notificaciones</string>
+    <string name="frgCfgcboIdioma">Idiomas</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

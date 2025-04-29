@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo del ProgressBar -->
+    <solid android:color="#FFFFFF" />
+
+    <!-- Esquinas redondeadas -->
+    <corners android:radius="10dp" /> <!-- Ajusta el valor según tu preferencia -->
+
+    <!-- Opcional: agregar un borde alrededor -->
+    <stroke android:color="@color/subsecundario" android:width="2dp" /> <!-- Establece el color y grosor del borde -->
+</shape>

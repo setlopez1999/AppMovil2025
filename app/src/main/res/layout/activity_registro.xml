@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="40dp"
+        android:layout_marginHorizontal="20dp">
+
+
+        <EditText
+
+            android:layout_width="319dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginHorizontal="20dp"
+            android:background="@null"
+            android:hint="DNI"
+
+            android:inputType="number"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:textColor="#212121"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+        <!-- Nombres -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginBottom="2dp"
+            android:background="@null"
+            android:hint="Nombres"
+            android:inputType="textCapWords" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+
+        <!-- Apellidos -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellidos"
+            android:inputType="textCapWords"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+        <!-- Fecha de Nacimiento -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha de nacimiento"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+
+        <!-- Sexo -->
+        <Spinner
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="215dp"
+            android:layout_marginBottom="30dp" />
+
+        <!-- Correo -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+
+        <!-- Clave -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+
+        <!-- Distrito -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Distrito"
+            android:inputType="textCapWords"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="100dp"
+            android:background="#BDBDBD" />
+
+        <!-- CheckBox Términos -->
+        <CheckBox
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acepto los términos y condiciones"
+            android:layout_marginBottom="20dp" />
+
+
+        <!-- Botones (Crear y Salir en fila) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <Button
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Crear"
+                android:textAllCaps="false"
+                android:layout_marginEnd="30dp" />
+
+            <Button
+                android:id="@+id/sesRBtnSalir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:text="Salir"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
