@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LimaSegura</string>
+    <string name="app_name">SonrisaSaludable</string>
     <string name="carLblMensaje">Cargando...</string>
     <string name="sesHintCorreo">Correo</string>
     <string name="sesHintClave">Clave</string>

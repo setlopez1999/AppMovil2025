@@ -6,72 +6,198 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragmentos.ConfiguracionFragment">
 
-    <!-- CardView para mejorar el diseño visual -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <!-- Card view perfil-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perfil"
+            android:textColor="#3b4a8c"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="159dp"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
             app:cardUseCompatPadding="true"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="15dp">
+            android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Imagen circular -->
+                <ImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginEnd="16dp"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user" />
+
+                <!-- Info del usuario -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- cambiar TEXT POR ID STRING -->
+                    <TextView
+                        android:id="@+id/tvNombreUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Omar Cárdenas"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- cambiar TEXT POR ID STRING -->
+                    <TextView
+                        android:id="@+id/tvCorreoUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="omar@example.com"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <!-- cambiar TEXT POR ID STRING -->
+                    <TextView
+                        android:id="@+id/tvTelefonoUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="+51 987 654 321"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Imagen circular -->
+                <ImageView
+                    android:id="@+id/imgTerminos"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/terminos" />
+
+                <!-- Info del usuario -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- cambiar TEXT POR ID STRING -->
+                    <TextView
+                        android:id="@+id/lblTerminosCondiciones"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Términos y Condiciones"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card view preferencias-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true">
             <!-- LinearLayout para organizar los elementos verticalmente -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
                     android:layout_marginVertical="20dp"
+                    android:gravity="center_horizontal"
                     android:text="Preferencias"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
                 <!-- Spinner (ComboBox) -->
                 <Spinner
                     android:id="@+id/frgCfgcboIdioma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/options_array"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:entries="@array/options_array" />
+
                 <CheckBox
                     android:id="@+id/froCfgchkNotificacines"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Recordar Notificaciones"
-                    />
+                    android:text="Recordar Notificaciones" />
 
                 <!-- Barra de Volumen (SeekBar) -->
                 <TextView
                     android:id="@+id/frgCfgCblSonido"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ajusta el volumen"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center_horizontal"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
+                    android:text="Ajusta el volumen"
+                    android:textSize="16sp" />
 
+                <!-- Botones -->
                 <SeekBar
                     android:id="@+id/frgCfgBarSonido"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:max="100"
-                    android:progress="50"
-                    android:layout_marginBottom="16dp"/>
+                    android:progress="50" />
 
-                <!-- Botones -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp">
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/frgCfg8tnAplicar"
@@ -89,11 +215,22 @@
                         android:text="Restaurar"
                         android:textAllCaps="false" />
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="90dp">
+
+            <Button
+                android:layout_width="239dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Cerrar Sesión"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
     </LinearLayout>
-
-
 </androidx.core.widget.NestedScrollView>

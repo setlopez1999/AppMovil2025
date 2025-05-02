@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logoxd"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LimaSegura"
+        android:theme="@style/Theme.SonrisaSaludable"
         tools:targetApi="31">
         <activity
             android:name=".actividades.MenuActivity"

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.limasegura.R;
 import com.example.limasegura.fragmentos.ConfiguracionFragment;
+import com.example.limasegura.fragmentos.HistorialFragment;
 import com.example.limasegura.fragmentos.MenuFragment;
 import com.example.limasegura.fragmentos.Reporte;
 
@@ -37,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
 
         // Cargar el primer fragmento al inicio
         if (savedInstanceState == null) {
-            loadFragment(new ConfiguracionFragment());
+            loadFragment(new MenuFragment());
         }
 
         // Listener para el botón 1
@@ -47,7 +48,7 @@ public class MenuActivity extends AppCompatActivity {
         btn2.setOnClickListener(v -> loadFragment(new MenuFragment()));
 
         // Listener para el botón 3
-        btn3.setOnClickListener(v -> loadFragment(new Reporte()));
+        btn3.setOnClickListener(v -> loadFragment(new HistorialFragment()));
 
         // Listener para el botón 4
         btn4.setOnClickListener(v -> loadFragment(new Reporte()));
