@@ -1,5 +1,6 @@
 package com.example.limasegura.fragmentos;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,18 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.animation.ObjectAnimator;
 
 import com.example.limasegura.R;
 
 public class Reporte extends Fragment {
 
-    private int pasoActual = 0; // 0: Calendario, 1: Horario, 2: Tratamiento...
+    private int pasoActual = 0; // 0: Calendario, 1: Horario, 2: Tratamiento, 3: Confirmar, 4: Exitosa
     private ProgressBar progressBar;
 
     @Nullable
@@ -33,9 +32,9 @@ public class Reporte extends Fragment {
         ImageButton btnRegresarCita = view.findViewById(R.id.btnRegresarCita);
         progressBar = view.findViewById(R.id.progressBar);
 
-
         actualizarProgreso();
-        // Mostrar primer fragmento
+
+        // Mostrar primer fragmento (Calendario)
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.contenedorInterno, new CalendarioFragment())
                 .commit();
@@ -43,20 +42,41 @@ public class Reporte extends Fragment {
         btnSiguiente.setOnClickListener(v -> {
             pasoActual++;
 
-            if (pasoActual == 1) {
-                getChildFragmentManager().beginTransaction()
-                        .replace(R.id.contenedorInterno, new FechaFragment())
-                        .commit();
-            } else if (pasoActual == 2) {
-                getChildFragmentManager().beginTransaction()
-                        .replace(R.id.contenedorInterno, new TratamientoFragment())
-                        .commit();
-                btnSiguiente.setText("Finalizar");
-            } else if (pasoActual == 3) {
-                Toast.makeText(getContext(), "Cita agendada con éxito", Toast.LENGTH_SHORT).show();
-                // Reiniciar si se desea repetir el flujo
-                pasoActual = 2; // o 0 si deseas volver al inicio
+            switch (pasoActual) {
+                case 1:
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.contenedorInterno, new FechaFragment())
+                            .commit();
+                    btnSiguiente.setText("Siguiente");
+                    break;
+
+                case 2:
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.contenedorInterno, new TratamientoFragment())
+                            .commit();
+                    btnSiguiente.setText("Siguiente");
+                    break;
+
+                case 3:
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.contenedorInterno, new ConfirmacionCitaFragment())
+                            .commit();
+                    btnSiguiente.setText("Confirmar");
+                    break;
+
+                case 4:
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.contenedorInterno, new CitaExitosaFragment())
+                            .commit();
+                    btnSiguiente.setText("Finalizar");
+                    break;
+
+                default:
+                    // Aquí finaliza → podrías cerrar o volver al inicio
+                    getActivity().onBackPressed(); // O navegar a inicio directamente
+                    break;
             }
+
             actualizarProgreso();
         });
 
@@ -64,24 +84,43 @@ public class Reporte extends Fragment {
             if (pasoActual > 0) {
                 pasoActual--;
 
-                if (pasoActual == 0) {
-                    getChildFragmentManager().beginTransaction()
-                            .replace(R.id.contenedorInterno, new CalendarioFragment())
-                            .commit();
-                    btnSiguiente.setText("Siguiente");
-                } else if (pasoActual == 1) {
-                    getChildFragmentManager().beginTransaction()
-                            .replace(R.id.contenedorInterno, new FechaFragment())
-                            .commit();
-                    btnSiguiente.setText("Siguiente");
+                switch (pasoActual) {
+                    case 0:
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.contenedorInterno, new CalendarioFragment())
+                                .commit();
+                        btnSiguiente.setText("Siguiente");
+                        break;
+
+                    case 1:
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.contenedorInterno, new FechaFragment())
+                                .commit();
+                        btnSiguiente.setText("Siguiente");
+                        break;
+
+                    case 2:
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.contenedorInterno, new TratamientoFragment())
+                                .commit();
+                        btnSiguiente.setText("Siguiente");
+                        break;
+
+                    case 3:
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.contenedorInterno, new ConfirmacionCitaFragment())
+                                .commit();
+                        btnSiguiente.setText("Confirmar");
+                        break;
                 }
+
                 actualizarProgreso();
             }
         });
 
         return view;
     }
-    // Actualiza el progreso de progreesBar
+
     private void actualizarProgreso() {
         int progreso;
 
@@ -90,21 +129,26 @@ public class Reporte extends Fragment {
                 progreso = 0;
                 break;
             case 1:
-                progreso = 33;
+                progreso = 25;
                 break;
             case 2:
-                progreso = 66; //pantalla tratamiento
+                progreso = 50;
+                break;
+            case 3:
+                progreso = 75;
+                break;
+            case 4:
+                progreso = 100;
                 break;
             default:
                 progreso = 0;
                 break;
         }
+
         if (progressBar != null) {
             ObjectAnimator anim = ObjectAnimator.ofInt(progressBar, "progress", progressBar.getProgress(), progreso);
-            anim.setDuration(500); // duración de la animación en milisegundos
+            anim.setDuration(500);
             anim.start();
-
         }
-
     }
 }

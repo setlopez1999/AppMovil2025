@@ -15,6 +15,11 @@
     <string name="lblBienvenida">!Bienvenido @usuario!</string>
     <string name="lblAgendaCita">Agenda tu Cita</string>
     <string name="SelecCalendario">Selecciona la fecha de tu cita </string>
+    <string name="lblHorario">Horario</string>
+
+    <string name="crdlblFechas">21/05/21 16:00 hrs</string>
+    <string name="crdlblDoctores">Limpieza dental - Dra. Karime Ortiz</string>
+    <string name="crdlblSalones">Salón 1</string>
 
     <string-array name="options_array">
         <item>Español</item>

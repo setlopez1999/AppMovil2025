@@ -1,23 +1,19 @@
 package com.example.limasegura.fragmentos;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
 import com.example.limasegura.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HistorialFragment#newInstance} factory method to
+ * Use the {@link CitaExitosaFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
  */
-public class HistorialFragment extends Fragment {
+public class CitaExitosaFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,26 +24,26 @@ public class HistorialFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HistorialFragment() {
-        // Required empty public constructor
-    }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HistorialFragment.
+     * @return A new instance of fragment CitaExitosaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HistorialFragment newInstance(String param1, String param2) {
-        HistorialFragment fragment = new HistorialFragment();
+    public static CitaExitosaFragment newInstance(String param1, String param2) {
+        CitaExitosaFragment fragment = new CitaExitosaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public CitaExitosaFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -63,17 +59,12 @@ public class HistorialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View vista = inflater.inflate(R.layout.fragment_historial, container, false);
+        // Inflar la vista
+        View vista = inflater.inflate(R.layout.fragment_cita_exitosa, container, false);
 
-        ImageButton btnDeleteCita = vista.findViewById(R.id.deletecita);
+        // Puedes inicializar el TextView o ImageView si quieres personalizar algo, pero en este caso no es necesario
 
-        btnDeleteCita.setOnClickListener(v -> {
-
-            //implementar logica para eliminar cita junto con el cardview
-            Toast.makeText(getContext(), "Cita borrada en bd, actualizar fragmento", Toast.LENGTH_SHORT).show();
-
-        });
         return vista;
-
     }
+
 }

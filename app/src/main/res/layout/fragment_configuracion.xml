@@ -225,6 +225,7 @@
             android:paddingLeft="90dp">
 
             <Button
+                android:id="@+id/btnCerrarSesion"
                 android:layout_width="239dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

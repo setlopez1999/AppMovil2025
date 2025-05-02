@@ -70,28 +70,32 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/lblFecha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="21/05/21 16:00 hrs"
+                            android:text="@string/crdlblFechas"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"/>
 
                         <TextView
+                            android:id="@+id/lblDoctores"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Limpieza dental - Dra. Karime Ortiz"
+                            android:text="@string/crdlblDoctores"
                             android:textColor="#555"
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/lblSalones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sede: Bicon Los Cabos"
+                            android:text="@string/crdlblSalones"
                             android:textColor="#555"
                             android:textSize="14sp" />
                     </LinearLayout>
 
                     <ImageButton
+                        android:id="@+id/deletecita"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:src="@drawable/delete"

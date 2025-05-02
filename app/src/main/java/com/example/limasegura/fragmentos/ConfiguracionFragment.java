@@ -1,6 +1,7 @@
 package com.example.limasegura.fragmentos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.limasegura.R;
+import com.example.limasegura.actividades.SesionActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +41,8 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     CheckBox chkNotificaciones; // Para el CheckBox
     TextView lblSonido; // Para la etiqueta de Sonido
     SeekBar barSonido; // Para la barra de sonido
-    Button btnAplicar,btnRestaurar; // Para el botón aplicar y Restaurar
+    Button btnAplicar,btnRestaurar, btnCerrarSesion; // Para el botón aplicar y Restaurar
+
 
 
     public ConfiguracionFragment() {
@@ -92,9 +95,22 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         btnAplicar.setOnClickListener(this);
         btnRestaurar.setOnClickListener(this);
         barSonido.setOnSeekBarChangeListener(this);
+
+        //Botón cerrar sesión
+        Button btnCerrarSesion = vista.findViewById(R.id.btnCerrarSesion);
+
+        btnCerrarSesion.setOnClickListener(v -> {
+            // Crear Intent para ir a SesionActivity
+            Intent intent = new Intent(getActivity(), SesionActivity.class);
+            startActivity(intent);
+
+            // Finalizar la actividad actual (opcional)
+            getActivity().finish();
+        });
         cargarPreferencias();
         return vista;
     }
+
 
     private void cargarPreferencias() {
         SharedPreferences preferences = getActivity().getSharedPreferences("preferencias",Context.MODE_PRIVATE);

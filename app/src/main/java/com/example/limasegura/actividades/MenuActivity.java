@@ -17,13 +17,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.limasegura.R;
 import com.example.limasegura.fragmentos.ConfiguracionFragment;
+import com.example.limasegura.fragmentos.DentistasFragment;
 import com.example.limasegura.fragmentos.HistorialFragment;
 import com.example.limasegura.fragmentos.MenuFragment;
 import com.example.limasegura.fragmentos.Reporte;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private ImageButton btn1, btn2, btn3, btn4;
+    private ImageButton btn1, btn2, btn3, btn4, btn5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MenuActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
+        btn5 = findViewById(R.id.btn5);
 
         // Cargar el primer fragmento al inicio
         if (savedInstanceState == null) {
@@ -52,6 +54,9 @@ public class MenuActivity extends AppCompatActivity {
 
         // Listener para el botón 4
         btn4.setOnClickListener(v -> loadFragment(new Reporte()));
+
+        // Listener para el botón 5
+        btn5.setOnClickListener(v -> loadFragment(new DentistasFragment()));
     }
 
     // Método para cargar un fragmento
