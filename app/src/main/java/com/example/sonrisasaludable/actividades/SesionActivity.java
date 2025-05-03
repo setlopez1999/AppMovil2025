@@ -1,8 +1,7 @@
-package com.example.limasegura.actividades;
+package com.example.sonrisasaludable.actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -15,7 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 public class SesionActivity extends AppCompatActivity {
 

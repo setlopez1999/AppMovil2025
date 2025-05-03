@@ -1,19 +1,21 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.limasegura.R;
+
+import com.example.sonrisasaludable.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CitaExitosaFragment#newInstance} factory method to
+ * Use the {@link ConfirmacionCitaFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class CitaExitosaFragment extends Fragment {
+public class ConfirmacionCitaFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,11 +32,11 @@ public class CitaExitosaFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CitaExitosaFragment.
+     * @return A new instance of fragment ConfirmacionCitaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CitaExitosaFragment newInstance(String param1, String param2) {
-        CitaExitosaFragment fragment = new CitaExitosaFragment();
+    public static ConfirmacionCitaFragment newInstance(String param1, String param2) {
+        ConfirmacionCitaFragment fragment = new ConfirmacionCitaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -42,7 +44,7 @@ public class CitaExitosaFragment extends Fragment {
         return fragment;
     }
 
-    public CitaExitosaFragment() {
+    public ConfirmacionCitaFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +62,15 @@ public class CitaExitosaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflar la vista
-        View vista = inflater.inflate(R.layout.fragment_cita_exitosa, container, false);
+        View vista = inflater.inflate(R.layout.fragment_confirmacion_cita, container, false);
 
-        // Puedes inicializar el TextView o ImageView si quieres personalizar algo, pero en este caso no es necesario
+        // Aquí podrías inicializar los TextView si quieres mostrar dinámicamente:
+        // TextView txtTratamiento = vista.findViewById(R.id.txtTratamiento);
+        // txtTratamiento.setText("Limpieza dental"); -> Ejemplo
 
         return vista;
     }
+
+
 
 }

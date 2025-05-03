@@ -1,23 +1,23 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ConfirmacionCitaFragment#newInstance} factory method to
+ * Use the {@link HistorialFragment#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
-public class ConfirmacionCitaFragment extends Fragment {
+public class HistorialFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,26 +28,26 @@ public class ConfirmacionCitaFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public HistorialFragment() {
+        // Required empty public constructor
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ConfirmacionCitaFragment.
+     * @return A new instance of fragment HistorialFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ConfirmacionCitaFragment newInstance(String param1, String param2) {
-        ConfirmacionCitaFragment fragment = new ConfirmacionCitaFragment();
+    public static HistorialFragment newInstance(String param1, String param2) {
+        HistorialFragment fragment = new HistorialFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public ConfirmacionCitaFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -63,16 +63,17 @@ public class ConfirmacionCitaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflar la vista
-        View vista = inflater.inflate(R.layout.fragment_confirmacion_cita, container, false);
+        View vista = inflater.inflate(R.layout.fragment_historial, container, false);
 
-        // Aquí podrías inicializar los TextView si quieres mostrar dinámicamente:
-        // TextView txtTratamiento = vista.findViewById(R.id.txtTratamiento);
-        // txtTratamiento.setText("Limpieza dental"); -> Ejemplo
+        ImageButton btnDeleteCita = vista.findViewById(R.id.deletecita);
 
+        btnDeleteCita.setOnClickListener(v -> {
+
+            //implementar logica para eliminar cita junto con el cardview
+            Toast.makeText(getContext(), "Cita borrada en bd, actualizar fragmento", Toast.LENGTH_SHORT).show();
+
+        });
         return vista;
+
     }
-
-
-
 }

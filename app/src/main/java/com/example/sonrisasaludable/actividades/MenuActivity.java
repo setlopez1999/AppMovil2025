@@ -1,26 +1,18 @@
-package com.example.limasegura.actividades;
+package com.example.sonrisasaludable.actividades;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.limasegura.R;
-import com.example.limasegura.fragmentos.ConfiguracionFragment;
-import com.example.limasegura.fragmentos.DentistasFragment;
-import com.example.limasegura.fragmentos.HistorialFragment;
-import com.example.limasegura.fragmentos.MenuFragment;
-import com.example.limasegura.fragmentos.Reporte;
+import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.fragmentos.ConfiguracionFragment;
+import com.example.sonrisasaludable.fragmentos.DentistasFragment;
+import com.example.sonrisasaludable.fragmentos.HistorialFragment;
+import com.example.sonrisasaludable.fragmentos.MenuFragment;
+import com.example.sonrisasaludable.fragmentos.Reporte;
 
 public class MenuActivity extends AppCompatActivity {
 

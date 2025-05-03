@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 /**
  * A simple {@link Fragment} subclass.

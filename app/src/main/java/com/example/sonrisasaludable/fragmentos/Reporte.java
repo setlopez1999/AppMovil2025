@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 public class Reporte extends Fragment {
 

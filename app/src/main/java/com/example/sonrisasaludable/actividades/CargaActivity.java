@@ -1,4 +1,4 @@
-package com.example.limasegura.actividades;
+package com.example.sonrisasaludable.actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 public class CargaActivity extends AppCompatActivity {
     ProgressBar barCarga;

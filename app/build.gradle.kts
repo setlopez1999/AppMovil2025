@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.limasegura"
+    namespace = "com.example.sonrisasaludable"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.limasegura"
+        applicationId = "com.example.sonrisasaludable"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

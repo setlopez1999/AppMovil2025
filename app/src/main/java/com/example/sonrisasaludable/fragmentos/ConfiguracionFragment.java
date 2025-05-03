@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.limasegura.R;
-import com.example.limasegura.actividades.SesionActivity;
+import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.actividades.SesionActivity;
 
 /**
  * A simple {@link Fragment} subclass.

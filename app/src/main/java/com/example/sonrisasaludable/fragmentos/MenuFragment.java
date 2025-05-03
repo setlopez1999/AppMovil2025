@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos ;// Cambia esto por tu paquete real
+package com.example.sonrisasaludable.fragmentos ;// Cambia esto por tu paquete real
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 public class MenuFragment extends Fragment {
 

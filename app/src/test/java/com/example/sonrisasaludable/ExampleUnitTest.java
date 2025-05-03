@@ -1,4 +1,4 @@
-package com.example.limasegura;
+package com.example.sonrisasaludable;
 
 import org.junit.Test;
 

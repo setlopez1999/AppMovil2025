@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LimaSegura"
+rootProject.name = "SonrisaSaludable"
 include(":app")

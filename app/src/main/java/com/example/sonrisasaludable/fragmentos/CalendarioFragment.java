@@ -1,4 +1,4 @@
-package com.example.limasegura.fragmentos;
+package com.example.sonrisasaludable.fragmentos;
 
 import android.os.Bundle;
 
@@ -7,17 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.example.limasegura.R;
+import com.example.sonrisasaludable.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HistorialFragment#newInstance} factory method to
+ * Use the {@link CalendarioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HistorialFragment extends Fragment {
+public class CalendarioFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +26,7 @@ public class HistorialFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HistorialFragment() {
+    public CalendarioFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +36,11 @@ public class HistorialFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HistorialFragment.
+     * @return A new instance of fragment CalendarioFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HistorialFragment newInstance(String param1, String param2) {
-        HistorialFragment fragment = new HistorialFragment();
+    public static CalendarioFragment newInstance(String param1, String param2) {
+        CalendarioFragment fragment = new CalendarioFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,18 +60,7 @@ public class HistorialFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View vista = inflater.inflate(R.layout.fragment_historial, container, false);
-
-        ImageButton btnDeleteCita = vista.findViewById(R.id.deletecita);
-
-        btnDeleteCita.setOnClickListener(v -> {
-
-            //implementar logica para eliminar cita junto con el cardview
-            Toast.makeText(getContext(), "Cita borrada en bd, actualizar fragmento", Toast.LENGTH_SHORT).show();
-
-        });
-        return vista;
-
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_calendario, container, false);
     }
 }
