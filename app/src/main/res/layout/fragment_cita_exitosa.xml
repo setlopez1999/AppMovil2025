@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nos vemos en la fecha seleccionada."
+        android:text="Se esperará la confirmación de tu doctor para aceptar la cita."
         android:textSize="16sp"
         android:textColor="#666"
         android:gravity="center"

@@ -28,7 +28,7 @@
                 android:layout_height="100dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/logo_horizontal_2"
-                android:tint="@color/white"/>
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/tvBienvenida"
@@ -66,14 +66,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:drawable/edit_text"
-                android:hint="Buscar..."
+                android:hint="@string/placeholderBuscar"
                 android:padding="10dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Especialidades"
+            android:text="@string/titulo_general_especialidades"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginLeft="16dp"
@@ -93,19 +93,19 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Implantología"
+                    android:text="@string/titulo_implantologia"
                     android:layout_marginRight="8dp"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Endodoncia"
+                    android:text="@string/titulo_endodoncia"
                     android:layout_marginRight="8dp"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Periodoncia"/>
+                    android:text="@string/titulo_periodoncia"/>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -113,7 +113,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nuestros Doctores"
+            android:text="@string/titulo_doctores_main"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginLeft="16dp"
@@ -157,7 +157,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Implantología"/>
+                        android:text="@string/titulo_implantologia"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -193,7 +193,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Endodoncia"/>
+                        android:text="@string/titulo_endodoncia"/>
                 </LinearLayout>
             </LinearLayout>
 

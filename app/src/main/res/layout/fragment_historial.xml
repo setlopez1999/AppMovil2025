@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Historial de versiones"
+            android:text="@string/historial_citas"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Próximas citas"
+                android:text="@string/proximas_citas"
                 android:textColor="#333"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -68,6 +68,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/lblEstado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/estado_pendiente"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/holo_orange_dark"/>
 
                         <TextView
                             android:id="@+id/lblFecha"
@@ -110,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
-                android:text="Citas pasadas"
+                android:text="@string/citas_pasadas"
                 android:textColor="#333"
                 android:textSize="20sp"
                 android:textStyle="bold" />

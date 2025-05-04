@@ -10,7 +10,7 @@
     <string name="sesLblCopy">Copyright ® 2025</string>
 
 
-    <string name="placeholderBuscar" translatable="false">Buscar...</string>
+    <string name="placeholderBuscar">Buscar...</string>
 
 
     <string name="frgCfgBtnAplicar">Aplicar</string>
@@ -39,17 +39,40 @@
 
     <!-- Fragmento Menu -->
 
-    <string name="titulo_general_especialidades" translatable="false">Especialidades</string>
-    <string name="titulo_implantologia" translatable="false">IMPLANTOLOGIA</string>
-    <string name="titulo_endodoncia" translatable="false">ENDODONCIA</string>
-    <string name="titulo_periodoncia" translatable="false">PERIODONCIA</string>
-    <string name="click_aqui" translatable="false">HAZ CLICK AQUI</string>
+    <string name="titulo_general_especialidades" >Especialidades</string>
+    <string name="titulo_implantologia" >IMPLANTOLOGIA</string>
+    <string name="titulo_endodoncia" >ENDODONCIA</string>
+    <string name="titulo_periodoncia" >PERIODONCIA</string>
+    <string name="titulo_doctores_main" >Nuestros doctores</string>
+    <string name="click_aqui" >HAZ CLICK AQUI</string>
 
     <!-- Fragmento Doctores -->
-    <string name="cargo_pediatra" translatable="false">HAZ CLICK AQUI</string>
-    <string name="cargo_cardiologo" translatable="false">HAZ CLICK AQUI</string>
+    <string name="cargo_titulo" >Doctores disponibles</string>
+    <string name="cargo_pediatra" >Pediatra</string>
+    <string name="cargo_cardiologo" >Cardiologia</string>
 
+    <!-- Fragmento botones -->
+    <string name="btn_siguiente" >SIGUIENTE</string>
 
+    <!-- Fragmento estado -->
+    <string name="estado_pendiente" >PENDIENTE</string>
+    <string name="estado_confirmado" >CONFIRMADO</string>
+    <string name="estado_cancelado" >CANCELADO</string>
+
+    <string name="cita_reg_exitosa">¡Cita agendada exitosamente!</string>
+    <string name="subcita_reg_exitosa">Se esperará la confirmación de tu doctor para aceptar la cita.</string>
+
+    <string name="perfil">Perfil</string>
+    <string name="terminos_condiciones">Términos y Condiciones</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="recordar_notificaciones">Recordar Notificaciones</string>
+
+    <string name="volumen_titulo">Ajusta el volumen</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    <string name="historial_citas">Historial de citas</string>
+    <string name="proximas_citas">Próximas citas</string>
+    <string name="citas_pasadas">Citas pasadas</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

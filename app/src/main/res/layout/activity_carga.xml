@@ -25,7 +25,8 @@
             android:textSize="20dp"
             android:layout_marginVertical="10dp"
             android:gravity="center_horizontal"
-            android:text="Sonrisas Saludables"/>
+            android:text="Sonrisas Saludables"
+            android:textColor="@color/primario"/>
         <ProgressBar
             android:id="@+id/carBarCarga"
 
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp"
             android:gravity="center_horizontal"
-            android:text="@string/carLblMensaje"/>
+            android:text="@string/carLblMensaje"
+            android:textColor="@color/primario"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
