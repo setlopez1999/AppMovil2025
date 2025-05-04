@@ -91,6 +91,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,13 +164,13 @@
                 <Spinner
                     android:id="@+id/frgCfgcboIdioma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginBottom="16dp"
                     android:entries="@array/options_array" />
 
                 <CheckBox
                     android:id="@+id/froCfgchkNotificacines"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Recordar Notificaciones" />
 

@@ -9,6 +9,10 @@
     <string name="sesBtnSalir">Salir</string>
     <string name="sesLblCopy">Copyright ® 2025</string>
 
+
+    <string name="placeholderBuscar" translatable="false">Buscar...</string>
+
+
     <string name="frgCfgBtnAplicar">Aplicar</string>
     <string name="frgCfgBtnRestaurar">Restaurar</string>
     <string name="sesRBtnSalir">Salir</string>
@@ -24,14 +28,28 @@
     <string-array name="options_array">
         <item>Español</item>
         <item>Ingles</item>
-        <item>Turco</item>
         <item>Ruso</item>
+        <item>Chino</item>
     </string-array>
 
     <string name="frgCfgBarSonido">Sonido</string>
     <string name="frgCfgCblSonido">combo</string>
     <string name="froCfgchkNotificacines">Notificaciones</string>
     <string name="frgCfgcboIdioma">Idiomas</string>
+
+    <!-- Fragmento Menu -->
+
+    <string name="titulo_general_especialidades" translatable="false">Especialidades</string>
+    <string name="titulo_implantologia" translatable="false">IMPLANTOLOGIA</string>
+    <string name="titulo_endodoncia" translatable="false">ENDODONCIA</string>
+    <string name="titulo_periodoncia" translatable="false">PERIODONCIA</string>
+    <string name="click_aqui" translatable="false">HAZ CLICK AQUI</string>
+
+    <!-- Fragmento Doctores -->
+    <string name="cargo_pediatra" translatable="false">HAZ CLICK AQUI</string>
+    <string name="cargo_cardiologo" translatable="false">HAZ CLICK AQUI</string>
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

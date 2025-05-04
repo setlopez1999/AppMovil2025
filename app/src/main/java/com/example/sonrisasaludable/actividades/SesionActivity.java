@@ -29,7 +29,7 @@ public class SesionActivity extends AppCompatActivity {
         EditText edtClave = findViewById(R.id.sesTxtClave);
         Button btnIngresar = findViewById(R.id.sesBtnIngresar);
         CheckBox chkRecordar = findViewById(R.id.sesChkRecordar);
-        TextView lblRegistro = findViewById(R.id.sesLblRegistro);
+        TextView lblRegistro =  findViewById(R.id.sesLblRegistro);
 
         // Configuración de padding para el contenido
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

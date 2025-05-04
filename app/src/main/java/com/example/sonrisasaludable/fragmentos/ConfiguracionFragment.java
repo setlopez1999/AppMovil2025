@@ -41,7 +41,7 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     CheckBox chkNotificaciones; // Para el CheckBox
     TextView lblSonido; // Para la etiqueta de Sonido
     SeekBar barSonido; // Para la barra de sonido
-    Button btnAplicar,btnRestaurar, btnCerrarSesion; // Para el botón aplicar y Restaurar
+    Button btnAplicar, btnRestaurar, btnCerrarSesion; // Para el botón aplicar y Restaurar
 
 
 
@@ -130,16 +130,39 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == R.id.frgCfg8tnAplicar)
             aplicar();
-        else if (v.getId() == R.id.frgCfgBtnRestaurar) {
+        else if (v.getId() == R.id.frgCfgBtnRestaurar)
             restaurar();
-        }
     }
+
+    private void cambiaridioma(int index_idioma) {
+        int posicion = index_idioma;
+        String codigoIdioma = "es";
+
+        if (posicion == 1) {
+            codigoIdioma = "en";
+        } else if (posicion == 2) {
+            codigoIdioma = "ru";
+        } else if (posicion == 3) {
+            codigoIdioma = "zh";
+        }
+
+        // Cambiamos el idioma
+        com.example.sonrisasaludable.utilidades.LocaleHelper.cambiarIdioma(getActivity(), codigoIdioma);
+
+        // Recargamos_Todo XD
+        getActivity().recreate();
+    }
+
     private void aplicar() {
         SharedPreferences preferences = getActivity().getSharedPreferences("preferencias", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("idioma", cboIdiomas.getSelectedItemPosition());
+        int index_idioma = cboIdiomas.getSelectedItemPosition();
+        editor.putInt("idioma", index_idioma);
         editor.putBoolean("notificaciones", chkNotificaciones.isChecked());
         editor.putInt("sonido", barSonido.getProgress());
+
+        cambiaridioma(index_idioma);
+
         editor.apply();
         Toast.makeText(getContext(), "Preferencias quardadas", Toast.LENGTH_SHORT).show();
     }
@@ -149,6 +172,7 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         cboIdiomas.setSelection(0);
         chkNotificaciones.setChecked(true);
         barSonido.setProgress(100);
+        Toast.makeText(getContext(), "Preferencias restablecidas", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -179,9 +203,6 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
-
-
-
 }
 
 

@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">HealthySmile</string>
+    <string name="carLblMensaje">Loading...</string>
+    <string name="sesHintCorreo">Email</string>
+    <string name="sesHintClave">Password</string>
+    <string name="sesChkRecordar">Remember Session</string>
+    <string name="sesLblRegistro">Sign Up!</string>
+    <string name="sesBtnIngresar">Log In</string>
+    <string name="sesBtnSalir">Log Out</string>
+    <string name="sesLblCopy">Copyright ® 2025</string>
+
+    <string name="frgCfgBtnAplicar">Apply</string>
+    <string name="frgCfgBtnRestaurar">Restore</string>
+    <string name="sesRBtnSalir">Log Out</string>
+    <string name="lblBienvenida">Welcome @user!</string>
+    <string name="lblAgendaCita">Schedule your Appointment</string>
+    <string name="SelecCalendario">Select the date of your appointment</string>
+    <string name="lblHorario">Schedule</string>
+
+    <string name="crdlblFechas">21/05/21 16:00 hrs</string>
+    <string name="crdlblDoctores">Dental Cleaning - Dr. Karime Ortiz</string>
+    <string name="crdlblSalones">Room 1</string>
+
+    <string-array name="options_array">
+        <item>Spanish</item>
+        <item>English</item>
+        <item>Russian</item>
+        <item>Chinese</item>
+    </string-array>
+
+    <string name="frgCfgBarSonido">Sound</string>
+    <string name="frgCfgCblSonido">combo</string>
+    <string name="froCfgchkNotificacines">Notifications</string>
+    <string name="frgCfgcboIdioma">Languages</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

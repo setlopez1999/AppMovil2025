@@ -11,9 +11,9 @@
     <color name="trasparente">#00000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primario">#1a1f3d</color>
+    <color name="primario">#3b4a8c</color>
     <color name="secundario">#87b8e8</color>
     <color name="primario_negativo">#c6e9f1</color>
     <color name="subprimario">#587ebb</color>
-    <color name="subsecundario">#3b4a8c</color>
+    <color name="subsecundario">#1a1f3d</color>
 </resources>
