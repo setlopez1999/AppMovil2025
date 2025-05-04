@@ -25,7 +25,7 @@
             android:textSize="20dp"
             android:layout_marginVertical="10dp"
             android:gravity="center_horizontal"
-            android:text="Sonrisas Saludables"
+            android:text="Sonrisa Saludable"
             android:textColor="@color/primario"/>
         <ProgressBar
             android:id="@+id/carBarCarga"

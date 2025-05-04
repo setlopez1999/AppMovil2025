@@ -39,25 +39,25 @@
 
     <!-- Fragmento Menu -->
 
-    <string name="titulo_general_especialidades" >Especialidades</string>
-    <string name="titulo_implantologia" >IMPLANTOLOGIA</string>
-    <string name="titulo_endodoncia" >ENDODONCIA</string>
-    <string name="titulo_periodoncia" >PERIODONCIA</string>
-    <string name="titulo_doctores_main" >Nuestros doctores</string>
-    <string name="click_aqui" >HAZ CLICK AQUI</string>
+    <string name="titulo_general_especialidades">Especialidades</string>
+    <string name="titulo_implantologia">IMPLANTOLOGIA</string>
+    <string name="titulo_endodoncia">ENDODONCIA</string>
+    <string name="titulo_periodoncia">PERIODONCIA</string>
+    <string name="titulo_doctores_main">Nuestros doctores</string>
+    <string name="click_aqui">HAZ CLICK AQUI</string>
 
     <!-- Fragmento Doctores -->
-    <string name="cargo_titulo" >Doctores disponibles</string>
-    <string name="cargo_pediatra" >Pediatra</string>
-    <string name="cargo_cardiologo" >Cardiologia</string>
+    <string name="cargo_titulo">Doctores disponibles</string>
+    <string name="cargo_pediatra">Pediatra</string>
+    <string name="cargo_cardiologo">Cardiologia</string>
 
     <!-- Fragmento botones -->
-    <string name="btn_siguiente" >SIGUIENTE</string>
+    <string name="btn_siguiente">SIGUIENTE</string>
 
     <!-- Fragmento estado -->
-    <string name="estado_pendiente" >PENDIENTE</string>
-    <string name="estado_confirmado" >CONFIRMADO</string>
-    <string name="estado_cancelado" >CANCELADO</string>
+    <string name="estado_pendiente">PENDIENTE</string>
+    <string name="estado_confirmado">CONFIRMADO</string>
+    <string name="estado_cancelado">CANCELADO</string>
 
     <string name="cita_reg_exitosa">¡Cita agendada exitosamente!</string>
     <string name="subcita_reg_exitosa">Se esperará la confirmación de tu doctor para aceptar la cita.</string>

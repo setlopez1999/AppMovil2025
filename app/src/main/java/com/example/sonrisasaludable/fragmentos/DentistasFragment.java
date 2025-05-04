@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.actividades.DetalleDentistaActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +63,18 @@ public class DentistasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dentistas, container, false);
+
+        View vista = inflater.inflate(R.layout.fragment_dentistas, container, false);
+
+        ImageButton btnVerDetalleDoctor = vista.findViewById(R.id.btndetalleDent);
+
+        btnVerDetalleDoctor.setOnClickListener(v -> {
+            // Ir a DetalleDoctorActivity
+            Intent intent = new Intent(getActivity(), DetalleDentistaActivity.class);
+            startActivity(intent);
+        });
+
+        return vista;
     }
+
 }

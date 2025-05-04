@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Imagen del Doctor -->
+        <ImageView
+            android:id="@+id/imgDoctor"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/doctor1"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp" />
+
+        <!-- Nombre del Doctor -->
+        <TextView
+            android:id="@+id/tvNombreDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dra. Ana Pérez"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#34495E"
+            android:gravity="center" />
+
+        <!-- Especialidad -->
+        <TextView
+            android:id="@+id/tvEspecialidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pediatra"
+            android:textSize="18sp"
+            android:textColor="#7F8C8D"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <!-- Dirección / Sede -->
+        <TextView
+            android:id="@+id/tvDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sede: Clínica Central"
+            android:textSize="16sp"
+            android:textColor="#555"
+            android:layout_marginTop="24dp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono: +51 987 654 321"
+            android:textSize="16sp"
+            android:textColor="#555"
+            android:layout_marginTop="8dp" />
+
+        <!-- RESEÑA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tu reseña"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#3b4a8c"
+            android:layout_marginTop="32dp" />
+
+        <!-- Estrellas -->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="4"
+            android:layout_marginTop="8dp" />
+
+        <!-- Caja de texto para comentarios -->
+        <EditText
+            android:id="@+id/etComentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escribe un comentario..."
+            android:layout_marginTop="16dp"
+            android:minLines="3"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp" />
+
+        <!-- Botón Enviar reseña -->
+        <Button
+            android:id="@+id/btnEnviarResena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar reseña"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#3b4a8c"
+            android:textColor="@android:color/white" />
+
+        <!-- Botón Cerrar -->
+        <Button
+            android:id="@+id/btnCerrarDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar"
+            android:textAllCaps="false"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#3b4a8c"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>

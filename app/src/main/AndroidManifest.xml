@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SonrisaSaludable"
         tools:targetApi="31">
         <activity
+            android:name=".actividades.DetalleDentistaActivity"
+            android:exported="false" />
+        <activity
             android:name=".actividades.ReciboActivity"
             android:exported="false"
             android:label="@string/title_activity_recibo"
