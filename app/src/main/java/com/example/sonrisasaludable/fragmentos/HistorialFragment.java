@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.actividades.ReciboActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,17 +65,28 @@ public class HistorialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // Inflar la vista del fragmento
         View vista = inflater.inflate(R.layout.fragment_historial, container, false);
 
+        // Botón eliminar cita (próximas citas)
         ImageButton btnDeleteCita = vista.findViewById(R.id.deletecita);
 
+        // Botón detalle cita (citas pasadas)
+        ImageButton btnDetalleCita = vista.findViewById(R.id.detallecita);
+
+        // Listener para eliminar cita
         btnDeleteCita.setOnClickListener(v -> {
-
-            //implementar logica para eliminar cita junto con el cardview
-            Toast.makeText(getContext(), "Cita borrada en bd, actualizar fragmento", Toast.LENGTH_SHORT).show();
-
+            // Lógica para eliminar cita
+            Toast.makeText(getContext(), "Cita borrada en BD, actualizar fragmento", Toast.LENGTH_SHORT).show();
         });
-        return vista;
 
+        // Listener para ver detalle de cita (llevar a ReciboActivity)
+        btnDetalleCita.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ReciboActivity.class);
+            startActivity(intent);
+        });
+
+        return vista;
     }
+
 }

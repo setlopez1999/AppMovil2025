@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sonrisasaludable.R;
 
-public class Reporte extends Fragment {
+public class Cita extends Fragment {
 
     private int pasoActual = 0; // 0: Calendario, 1: Horario, 2: Tratamiento, 3: Confirmar, 4: Exitosa
     private ProgressBar progressBar;
@@ -26,7 +26,7 @@ public class Reporte extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_reporte, container, false);
+        View view = inflater.inflate(R.layout.fragment_cita, container, false);
 
         Button btnSiguiente = view.findViewById(R.id.btnSiguiente);
         ImageButton btnRegresarCita = view.findViewById(R.id.btnRegresarCita);

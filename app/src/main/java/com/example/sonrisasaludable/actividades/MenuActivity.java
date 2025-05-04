@@ -12,7 +12,7 @@ import com.example.sonrisasaludable.fragmentos.ConfiguracionFragment;
 import com.example.sonrisasaludable.fragmentos.DentistasFragment;
 import com.example.sonrisasaludable.fragmentos.HistorialFragment;
 import com.example.sonrisasaludable.fragmentos.MenuFragment;
-import com.example.sonrisasaludable.fragmentos.Reporte;
+import com.example.sonrisasaludable.fragmentos.Cita;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -45,7 +45,7 @@ public class MenuActivity extends AppCompatActivity {
         btn3.setOnClickListener(v -> loadFragment(new HistorialFragment()));
 
         // Listener para el botón 4
-        btn4.setOnClickListener(v -> loadFragment(new Reporte()));
+        btn4.setOnClickListener(v -> loadFragment(new Cita()));
 
         // Listener para el botón 5
         btn5.setOnClickListener(v -> loadFragment(new DentistasFragment()));
