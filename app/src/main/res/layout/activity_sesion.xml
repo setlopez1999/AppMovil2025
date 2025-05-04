@@ -61,9 +61,9 @@
         <TextView
             android:id="@+id/sesLblRegistro"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:gravity="center"
-            android:textColor="@color/subsecundario"
+            android:textColor="@color/primario"
             android:text="@string/sesLblRegistro"
             android:clickable="true"
             android:focusable="true"/>
@@ -82,13 +82,13 @@
                 android:layout_marginRight="15dp"
                 android:text="@string/sesBtnIngresar"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/subsecundario"/>
+                android:backgroundTint="@color/primario"/>
             <Button
                 android:id="@+id/sesBtnSalir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/subsecundario"
+                android:backgroundTint="@color/primario"
                 android:layout_marginLeft="15dp"
                 android:text="@string/sesBtnSalir"
                 android:textAllCaps="false"/>

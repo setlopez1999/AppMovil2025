@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">HealthySmile</string>
+    <string name="carLblMensaje">Loading...</string>
+    <string name="sesHintCorreo">Email</string>
+    <string name="sesHintClave">Password</string>
+    <string name="sesChkRecordar">Remember Me</string>
+    <string name="sesLblRegistro">Register now!</string>
+    <string name="sesBtnIngresar">Login</string>
+    <string name="sesBtnSalir">Logout</string>
+    <string name="sesLblCopy">Copyright ® 2025</string>
+
+    <string name="placeholderBuscar">Search...</string>
+
+    <string name="frgCfgBtnAplicar">Apply</string>
+    <string name="frgCfgBtnRestaurar">Restore</string>
+    <string name="sesRBtnSalir">Logout</string>
+    <string name="lblBienvenida">Welcome @usuario!</string>
+    <string name="lblAgendaCita">Schedule your Appointment</string>
+    <string name="SelecCalendario">Select the date for your appointment</string>
+    <string name="lblHorario">Schedule</string>
+
+    <string name="crdlblFechas">05/21/21 4:00 PM</string>
+    <string name="crdlblDoctores">Dental cleaning - Dr. Karime Ortiz</string>
+    <string name="crdlblSalones">Room 1</string>
+
+    <string-array name="options_array">
+        <item>Spanish</item>
+        <item>English</item>
+        <item>Russian</item>
+        <item>Chinese</item>
+    </string-array>
+
+    <string name="frgCfgBarSonido">Sound</string>
+    <string name="frgCfgCblSonido">Combo</string>
+    <string name="froCfgchkNotificacines">Notifications</string>
+    <string name="frgCfgcboIdioma">Languages</string>
+
+    <!-- Fragment Menu -->
+    <string name="titulo_general_especialidades">Specialties</string>
+    <string name="titulo_implantologia">IMPLANTOLOGY</string>
+    <string name="titulo_endodoncia">ENDODONTICS</string>
+    <string name="titulo_periodoncia">PERIODONTICS</string>
+    <string name="titulo_doctores_main">Our Doctors</string>
+    <string name="click_aqui">CLICK HERE</string>
+
+    <!-- Fragment Doctors -->
+    <string name="cargo_titulo">Available Doctors</string>
+    <string name="cargo_pediatra">Pediatrician</string>
+    <string name="cargo_cardiologo">Cardiology</string>
+
+    <!-- Fragment botones -->
+    <string name="btn_siguiente">NEXT</string>
+
+    <!-- Fragmento estado -->
+    <string name="estado_pendiente">PENDING</string>
+    <string name="estado_confirmado">CONFIRMED</string>
+    <string name="estado_cancelado">CANCELLED</string>
+
+    <string name="cita_reg_exitosa">Appointment successfully scheduled!</string>
+    <string name="subcita_reg_exitosa">You will wait for your doctor confirmation to accept the appointment.</string>
+
+    <string name="perfil">Profile</string>
+    <string name="terminos_condiciones">Terms and Conditions</string>
+    <string name="preferencias">Preferences</string>
+    <string name="recordar_notificaciones">Remember Notifications</string>
+
+    <string name="volumen_titulo">Adjust the volume</string>
+    <string name="cerrar_sesion">Log out</string>
+
+    <string name="historial_citas">Appointment history</string>
+    <string name="proximas_citas">Upcoming appointments</string>
+    <string name="citas_pasadas">Past appointments</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
