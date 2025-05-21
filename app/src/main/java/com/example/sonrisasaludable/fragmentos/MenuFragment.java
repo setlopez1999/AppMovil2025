@@ -21,7 +21,7 @@ public class MenuFragment extends Fragment {
     private String mParam2;
 
     public MenuFragment() {
-        // Required empty public constructor
+        // Contructorcito vaciito
     }
 
     public static MenuFragment newInstance(String param1, String param2) {
@@ -51,21 +51,6 @@ public class MenuFragment extends Fragment {
         // Referencia al contenedor donde irán los botones
         LinearLayout buttonContainer = view.findViewById(R.id.button_container);
 
-        // Crear un botón
-        Button myButton = new Button(getContext());
-        myButton.setText("Haz clic aquí");
-        myButton.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-
-        // Acción del botón
-        myButton.setOnClickListener(v ->
-                Toast.makeText(getContext(), "¡Botón presionado!", Toast.LENGTH_SHORT).show()
-        );
-
-        // Agregar el botón al layout
-        buttonContainer.addView(myButton);
 
         return view;
     }

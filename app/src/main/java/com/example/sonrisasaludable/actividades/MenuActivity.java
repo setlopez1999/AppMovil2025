@@ -4,60 +4,44 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.sonrisasaludable.R;
-import com.example.sonrisasaludable.fragmentos.ConfiguracionFragment;
-import com.example.sonrisasaludable.fragmentos.DentistasFragment;
-import com.example.sonrisasaludable.fragmentos.HistorialFragment;
-import com.example.sonrisasaludable.fragmentos.MenuFragment;
-import com.example.sonrisasaludable.fragmentos.Cita;
+import com.example.sonrisasaludable.utilidades.FragmentAdapter;
 
 public class MenuActivity extends AppCompatActivity {
 
     private ImageButton btn1, btn2, btn3, btn4, btn5;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        // Obtener los botones
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         btn5 = findViewById(R.id.btn5);
 
-        // Cargar el primer fragmento al inicio
-        if (savedInstanceState == null) {
-            loadFragment(new MenuFragment());
-        }
+        viewPager = findViewById(R.id.fragment_container);
+        FragmentAdapter adapter = new FragmentAdapter(this);
+        viewPager.setAdapter(adapter);
 
-        // Listener para el botón 1
-        btn1.setOnClickListener(v -> loadFragment(new ConfiguracionFragment()));
+        // Clicks de los botones cambian el ViewPager
+        btn1.setOnClickListener(v -> viewPager.setCurrentItem(0, true));
+        btn2.setOnClickListener(v -> viewPager.setCurrentItem(1, true));
+        btn3.setOnClickListener(v -> viewPager.setCurrentItem(2, true));
+        btn4.setOnClickListener(v -> viewPager.setCurrentItem(3, true));
+        btn5.setOnClickListener(v -> viewPager.setCurrentItem(4, true));
 
-        // Listener para el botón 2
-        btn2.setOnClickListener(v -> loadFragment(new MenuFragment()));
-
-        // Listener para el botón 3
-        btn3.setOnClickListener(v -> loadFragment(new HistorialFragment()));
-
-        // Listener para el botón 4
-        btn4.setOnClickListener(v -> loadFragment(new Cita()));
-
-        // Listener para el botón 5
-        btn5.setOnClickListener(v -> loadFragment(new DentistasFragment()));
+        // Opcional: puedes escuchar el cambio de página para cambiar estilos de botones si quieres
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                // Aquí puedes cambiar el estilo del botón activo si quieres
+            }
+        });
     }
-
-    // Método para cargar un fragmento
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment); // 'fragment_container' es el contenedor donde se reemplazarán los fragmentos
-        transaction.addToBackStack(null); // Agrega la transacción al back stack para poder usar el botón de atrás
-        transaction.commit();
-    }
-
-
 }
