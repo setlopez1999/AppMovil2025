@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.MenuActivity">
+    tools:context=".actividades.MenuUserActivity">
 
     <!-- Contenedor de Fragmentos ocupa la parte superior -->
     <androidx.viewpager2.widget.ViewPager2
@@ -23,8 +23,8 @@
         android:id="@+id/intermedio"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="@drawable/header_curvado2"
         android:orientation="horizontal"
-        android:background="@drawable/header_curvado"
         app:layout_constraintBottom_toTopOf="@+id/btnBarra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,13 +36,13 @@
         android:id="@+id/btnBarra"
         android:layout_width="match_parent"
         android:layout_height="130sp"
-        android:background="@color/primario"
+        android:background="@color/subsecundario"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/intermedio"
+        android:paddingBottom="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp"
-        android:paddingBottom="60sp">
+        app:layout_constraintTop_toBottomOf="@id/intermedio"
+        tools:layout_editor_absoluteX="16dp">
 
         <!-- Botones -->
 
@@ -52,9 +52,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:background="@color/trasparente"
-            android:scaleX="1"
-            android:scaleY="1"
-            android:src="@drawable/home" />
+
+            android:backgroundTintMode="add"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:src="@drawable/iconhome"
+            app:tint="@color/white" />
 
         <ImageButton
             android:id="@+id/btn2"

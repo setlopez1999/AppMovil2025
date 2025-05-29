@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.MenuUserActivity">
+
+    <!-- Contenedor de Fragmentos ocupa la parte superior -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBarra"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <!-- Barra de botones en la parte inferior -->
+    <LinearLayout
+        android:id="@+id/intermedio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/header_curvado"
+        app:layout_constraintBottom_toTopOf="@+id/btnBarra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnBarra"
+        android:layout_width="match_parent"
+        android:layout_height="130sp"
+        android:background="@color/primario"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/intermedio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        android:paddingBottom="60sp">
+
+        <!-- Botones -->
+
+        <ImageButton
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/trasparente"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:src="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/trasparente"
+            android:src="@drawable/dentist"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/trasparente"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            android:src="@drawable/tooth"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/trasparente"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:src="@drawable/dientereporte"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/trasparente"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:src="@drawable/dienteajustes"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.SonrisaSaludable"
         tools:targetApi="31">
         <activity
+            android:name=".actividades.MenuDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.MenuAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".actividades.DetalleDentistaActivity"
             android:exported="false" />
         <activity
@@ -21,10 +27,7 @@
             android:label="@string/title_activity_recibo"
             android:theme="@style/Theme.SonrisaSaludable" />
         <activity
-            android:name=".actividades.MenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.BienvenidaActivity"
+            android:name=".actividades.MenuUserActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.RegistroActivity"

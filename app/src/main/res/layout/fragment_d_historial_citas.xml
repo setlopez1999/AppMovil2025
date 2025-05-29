@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <!-- Header azul consistente con el home -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b4a8c"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
+
+        <!-- Botón de regreso -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/terminos"
+                android:contentDescription="Regresar"
+                app:tint="@color/white"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Historial de Citas"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <!-- Espacio para balancear el botón de regreso -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Wave decorativa -->
+    <ImageView
+        android:id="@+id/imgWaveHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="-20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/wavee" />
+
+    <!-- Filtros y búsqueda -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#f8f9fa">
+
+        <!-- Barra de búsqueda -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/check"
+                    app:tint="#666"
+                    android:layout_marginRight="8dp"/>
+
+                <EditText
+                    android:id="@+id/etBuscarPaciente"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Buscar por nombre del paciente..."
+                    android:background="@null"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Filtros horizontales -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <Button
+                android:id="@+id/btnFiltroTodas"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Todas"
+                android:textSize="12sp"
+                android:background="@drawable/status_confirmed_bg"
+
+                android:layout_marginRight="4dp"/>
+
+            <Button
+                android:id="@+id/btnFiltroHoy"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Hoy"
+                android:textSize="12sp"
+
+
+                android:layout_marginHorizontal="2dp"/>
+
+            <Button
+                android:id="@+id/btnFiltroSemana"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Semana"
+                android:textSize="12sp"
+
+                android:layout_marginHorizontal="2dp"/>
+
+            <Button
+                android:id="@+id/btnFiltroMes"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Mes"
+                android:textSize="12sp"
+                android:layout_marginLeft="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Estadísticas rápidas del historial -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#f8f9fa"
+            android:padding="12dp"
+            android:layout_marginRight="8dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/tvTotalCitasHistorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#3b4a8c"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Citas"
+                android:textSize="11sp"
+                android:textColor="#666"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#f8f9fa"
+            android:padding="12dp"
+            android:layout_marginHorizontal="4dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/tvCitasCompletadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#28a745"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completadas"
+                android:textSize="11sp"
+                android:textColor="#666"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#f8f9fa"
+            android:padding="12dp"
+            android:layout_marginLeft="8dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/tvCitasCanceladas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#dc3545"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Canceladas"
+                android:textSize="11sp"
+                android:textColor="#666"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- RecyclerView para el historial -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistorialCitas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"/>
+
+
+
+
+</LinearLayout>

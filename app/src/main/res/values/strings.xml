@@ -83,4 +83,26 @@
     <string name="previous">Previous</string>
 
 
+    <!-- Ajustes -->
+    <string name="ajustes">Ajustes</string>
+    <string name="ajustes_generales">Ajustes Generales</string>
+    <string name="tema_aplicacion">Tema de la aplicación</string>
+    <string name="idioma">Idioma</string>
+
+    <!-- Notificaciones -->
+    <string name="notificaciones">Notificaciones</string>
+    <string name="activar_notificaciones">Activar notificaciones</string>
+    <string name="desc_notificaciones">Recibir alertas de citas y recordatorios</string>
+    <string name="volumen_notificaciones">Volumen de notificaciones</string>
+
+    <!-- Seguridad -->
+    <string name="seguridad">Seguridad</string>
+    <string name="huella_dactilar">Huella dactilar</string>
+    <string name="desc_huella_dactilar">Usar huella para acceder a la aplicación</string>
+
+    <!-- Botones -->
+    <string name="guardar_ajustes">Guardar</string>
+    <string name="restaurar_defecto">Restaurar</string>
+
+
 </resources>

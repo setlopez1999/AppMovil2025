@@ -20,6 +20,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+
         switch (position) {
             case 0: return new MenuFragment();
             case 1: return new DentistasFragment();
