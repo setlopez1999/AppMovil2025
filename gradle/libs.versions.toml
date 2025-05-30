@@ -37,6 +37,31 @@ material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 
+# ROOM
+room-runtime = "androidx.room:room-runtime:2.6.1"
+room-compiler = "androidx.room:room-compiler:2.6.1"
+room-ktx = "androidx.room:room-ktx:2.6.1"
+
+# RETROFIT
+retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+retrofit-gson = "com.squareup.retrofit2:converter-gson:2.9.0"
+
+# OKHTTP Logging Para el login
+okhttp-logging = "com.squareup.okhttp3:logging-interceptor:4.12.0"
+
+# WORKMANAGER
+work-runtime = "androidx.work:work-runtime:2.10.1"
+
+# LIFECYCLE
+lifecycle-viewmodel = "androidx.lifecycle:lifecycle-viewmodel:2.9.0"
+lifecycle-livedata = "androidx.lifecycle:lifecycle-livedata:2.9.0"
+
+# GSON
+gson = "com.google.code.gson:gson:2.10.1"
+
+
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
