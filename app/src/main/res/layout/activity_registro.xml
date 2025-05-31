@@ -10,24 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginVertical="30dp"
         android:layout_marginHorizontal="20dp">
 
         <ImageView
+            android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="138dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:src="@drawable/logo_horizontal_2" />
 
+        <!-- Imagen de perfil agregada -->
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/doctor1"
+            android:layout_marginBottom="30dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background" />
+
+        <!-- DNI -->
         <EditText
-
-            android:layout_width="319dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/etDNI"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_gravity="right"
-            android:layout_marginHorizontal="20dp"
             android:background="@null"
-            android:hint="DNI"
-
+            android:hint="@string/hint_dni"
             android:inputType="number"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -40,14 +52,15 @@
             android:layout_height="1dp"
             android:layout_marginBottom="30dp"
             android:background="#BDBDBD" />
+
         <!-- Nombres -->
         <EditText
-
+            android:id="@+id/etNombres"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="2dp"
             android:background="@null"
-            android:hint="Nombres"
+            android:hint="@string/hint_nombres"
             android:inputType="textCapWords" />
 
         <View
@@ -58,10 +71,10 @@
 
         <!-- Apellidos -->
         <EditText
-
+            android:id="@+id/etApellidos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Apellidos"
+            android:layout_height="48dp"
+            android:hint="@string/hint_apellidos"
             android:inputType="textCapWords"
             android:background="@null"
             android:layout_marginBottom="2dp" />
@@ -70,37 +83,37 @@
             android:layout_height="1dp"
             android:layout_marginBottom="30dp"
             android:background="#BDBDBD" />
-        <!-- Fecha de Nacimiento -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10sp"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/spinnerSexo"
+                android:layout_width="150sp"
+                android:layout_height="48dp"
+                android:entries="@array/options_sexo"/>
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:id="@+id/etFecha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="@string/hint_fecha"
+                android:focusable="false"
+                android:inputType="none" />
+        </LinearLayout>
+
         <EditText
-
+            android:id="@+id/etCorreo"
+            android:layout_marginTop="48dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fecha de nacimiento"
-            android:focusable="false"
-            android:clickable="true"
-            android:inputType="none"
-            android:background="@null"
-            android:layout_marginBottom="2dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="30dp"
-            android:background="#BDBDBD" />
-
-        <!-- Sexo -->
-        <Spinner
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="215dp"
-            android:layout_marginBottom="30dp" />
-
-        <!-- Correo -->
-        <EditText
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
+            android:layout_height="48dp"
+            android:hint="@string/hint_correo"
             android:inputType="textEmailAddress"
             android:background="@null"
             android:layout_marginBottom="2dp" />
@@ -110,12 +123,12 @@
             android:layout_marginBottom="30dp"
             android:background="#BDBDBD" />
 
-        <!-- Clave -->
-        <EditText
 
+        <EditText
+            android:id="@+id/etClave"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:layout_height="48dp"
+            android:hint="@string/hint_contrasena"
             android:inputType="textPassword"
             android:background="@null"
             android:layout_marginBottom="2dp" />
@@ -124,13 +137,39 @@
             android:layout_height="1dp"
             android:layout_marginBottom="30dp"
             android:background="#BDBDBD" />
-
-        <!-- Distrito -->
         <EditText
-
+            android:id="@+id/etConfirmarClave"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Distrito"
+            android:layout_height="48dp"
+            android:hint="@string/hint_confirmar_contrasena"
+            android:inputType="textPassword"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/hint_telefono"
+            android:inputType="phone"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="30dp"
+            android:background="#BDBDBD" />
+
+
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/hint_direccion"
             android:inputType="textCapWords"
             android:background="@null"
             android:layout_marginBottom="2dp" />
@@ -140,31 +179,42 @@
             android:layout_marginBottom="100dp"
             android:background="#BDBDBD" />
 
-        <!-- CheckBox Términos -->
-        <CheckBox
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acepto los términos y condiciones"
-            android:layout_marginBottom="20dp" />
-
-
-        <!-- Botones (Crear y Salir en fila) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvTerminos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/texto_acepto_terminos"
+                android:textColor="@color/black"
+                android:autoLink="none" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:weightSum="2">
 
             <Button
-
+                android:id="@+id/sesRBtnCrear"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:text="Crear"
+                android:text="@string/texto_crear"
                 android:textAllCaps="false"
-                android:layout_marginEnd="30dp" />
+                android:layout_marginEnd="40dp" />
 
             <Button
                 android:id="@+id/sesRBtnSalir"
@@ -172,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAllCaps="false"
-                android:text="Salir"
+                android:text="@string/texto_salir"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 

@@ -23,7 +23,7 @@ import androidx.room.PrimaryKey;
 )
 public class UsuarioEntity {
 
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = false)  // Si quieres que se genere automático pon true
     @ColumnInfo(name = "id")
     private int id;
 
@@ -36,8 +36,8 @@ public class UsuarioEntity {
     @ColumnInfo(name = "correo")
     private String correo;
 
-    @ColumnInfo(name = "contraseña")
-    private String contraseña;
+    @ColumnInfo(name = "contrasena")  // mejor sin ñ para evitar problemas de codificación
+    private String contrasena;
 
     @ColumnInfo(name = "telefono")
     private String telefono;
@@ -46,23 +46,23 @@ public class UsuarioEntity {
     private String fotoPerfil;
 
     @ColumnInfo(name = "creado_en")
-    private String creadoEn;  // Se puede usar String o Date/LocalDateTime según prefieras
+    private String creadoEn;  // Puedes usar String, Date o LocalDateTime, pero con TypeConverters si no es String
 
     @ColumnInfo(name = "rol_id")
     private int rolId;
 
-    // Constructor vacío
+    // Constructor vacío obligatorio para Room
     public UsuarioEntity() {}
 
     // Constructor completo
     public UsuarioEntity(int id, String nombre, String apellido, String correo,
-                         String contraseña, String telefono, String fotoPerfil,
+                         String contrasena, String telefono, String fotoPerfil,
                          String creadoEn, int rolId) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.telefono = telefono;
         this.fotoPerfil = fotoPerfil;
         this.creadoEn = creadoEn;
@@ -82,8 +82,8 @@ public class UsuarioEntity {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public String getContraseña() { return contraseña; }
-    public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    public String getContrasena() { return contrasena; }
+    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }

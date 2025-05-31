@@ -15,10 +15,14 @@ import com.example.sonrisasaludable.data.models.LoginResponse;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
+import retrofit2.http.Part;
 
 public interface ApiService {
 
@@ -55,5 +59,19 @@ public interface ApiService {
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
+    @Multipart
+    @POST("auth/register")
+    Call<Void> registrarUsuarioConImagen(
+            @Part("dni") RequestBody dni,
+            @Part("nombres") RequestBody nombres,
+            @Part("apellidos") RequestBody apellidos,
+            @Part("correo") RequestBody correo,
+            @Part("clave") RequestBody clave,
+            @Part("telefono") RequestBody telefono,
+            @Part("direccion") RequestBody direccion,
+            @Part("fechaNacimiento") RequestBody fechaNacimiento,
+            @Part("sexo") RequestBody sexo,
+            @Part MultipartBody.Part imagen
+    );
 
 }

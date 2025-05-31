@@ -73,7 +73,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.lifecycle.livedata)
     implementation(libs.gson)
-
+    implementation(libs.logging.interceptor.v493)
 
 
 

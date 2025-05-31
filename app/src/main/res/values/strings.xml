@@ -25,11 +25,17 @@
     <string name="crdlblDoctores">Limpieza dental - Dra. Karime Ortiz</string>
     <string name="crdlblSalones">Salón 1</string>
 
-    <string-array name="options_array">
+    <string-array name="options_idiomas">
         <item>Español</item>
         <item>Ingles</item>
         <item>Ruso</item>
         <item>Chino</item>
+    </string-array>
+
+    <string-array name="options_sexo">
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>Helicoptero Apache</item>
     </string-array>
 
     <string name="frgCfgBarSonido">Sonido</string>
@@ -103,6 +109,32 @@
     <!-- Botones -->
     <string name="guardar_ajustes">Guardar</string>
     <string name="restaurar_defecto">Restaurar</string>
+
+
+    <string name="terminos_condiciones_frase">Acepto los términos y condiciones</string>
+    <string name="terminos_condiciones_subfrase">términos y condiciones</string>
+    <string name="mensaje_terminos">
+        Al aceptar estos términos, usted autoriza el tratamiento y control de sus datos personales con un nivel de seguridad intermedio, correspondiente a un proyecto académico y de investigación.
+        Reconoce que esta aplicación es un prototipo en desarrollo y que cualquier reclamo, cargo o responsabilidad derivada del uso de esta información quedará inválido y no será procedente.
+        Su consentimiento es voluntario y exclusivamente para fines de prueba y aprendizaje.
+    </string>
+
+    <string name="titulo_terminos">Términos y Condiciones</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+
+    <string name="hint_dni">DNI</string>
+    <string name="hint_nombres">Nombres</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_fecha">Selecciona fecha</string>
+    <string name="hint_correo">Correo electrónico</string>
+    <string name="hint_contrasena">Contraseña</string>
+    <string name="hint_confirmar_contrasena">Confirme la contraseña</string>
+    <string name="hint_telefono">Teléfono</string>
+    <string name="hint_direccion">Direccion</string>
+    <string name="texto_acepto_terminos">Acepto los términos y condiciones</string>
+    <string name="texto_crear">Crear</string>
+    <string name="texto_salir">Salir</string>
 
 
 </resources>
