@@ -36,7 +36,7 @@ public class UsuarioEntity {
     @ColumnInfo(name = "correo")
     private String correo;
 
-    @ColumnInfo(name = "contrasena")  // mejor sin ñ para evitar problemas de codificación
+    @ColumnInfo(name = "contraseña")  // mejor sin ñ para evitar problemas de codificación
     private String contrasena;
 
     @ColumnInfo(name = "telefono")
@@ -51,13 +51,30 @@ public class UsuarioEntity {
     @ColumnInfo(name = "rol_id")
     private int rolId;
 
+    /// ////////////
+    @ColumnInfo(name = "dni")
+    private String dni;
+
+    @ColumnInfo(name = "direccion")
+    private String direccion;
+
+    @ColumnInfo(name = "sexo")
+    private String sexo;
+
+    @ColumnInfo(name = "fecha_nacimiento")
+    private String fechaNacimiento;  // Usa Date solo si tienes TypeConverter
+
+
+
+
     // Constructor vacío obligatorio para Room
     public UsuarioEntity() {}
 
     // Constructor completo
     public UsuarioEntity(int id, String nombre, String apellido, String correo,
                          String contrasena, String telefono, String fotoPerfil,
-                         String creadoEn, int rolId) {
+                         String creadoEn, int rolId,
+                         String dni, String direccion, String sexo, String fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -67,6 +84,10 @@ public class UsuarioEntity {
         this.fotoPerfil = fotoPerfil;
         this.creadoEn = creadoEn;
         this.rolId = rolId;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     // Getters y Setters
@@ -96,4 +117,16 @@ public class UsuarioEntity {
 
     public int getRolId() { return rolId; }
     public void setRolId(int rolId) { this.rolId = rolId; }
+
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
+
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
+
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
 }

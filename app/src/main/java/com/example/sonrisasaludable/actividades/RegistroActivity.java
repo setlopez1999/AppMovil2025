@@ -10,7 +10,11 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
+import com.example.sonrisasaludable.data.dao.UsuarioDao;
+import com.example.sonrisasaludable.data.database.AppDatabase;
+import com.example.sonrisasaludable.data.entidades.UsuarioEntity;
 import com.example.sonrisasaludable.data.models.RegisterRequest;
+import com.example.sonrisasaludable.data.models.UsuarioResponse;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.network.ApiService;
 import retrofit2.Call;
@@ -271,7 +275,7 @@ public class RegistroActivity extends AppCompatActivity {
             }
             Log.d("RegistroDebug", "Botón REGISTRAR presionado");
             registrarEnServidor(request);
-            Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
+
         });
     }
 
@@ -302,14 +306,37 @@ public class RegistroActivity extends AppCompatActivity {
             imagenPart = MultipartBody.Part.createFormData("imagen", "SinImagen.txt", defaultImage);
         }
 
-        Call<Void> call = api.registrarUsuarioConImagen(
+        Call<UsuarioResponse> call = api.registrarUsuarioConImagen(
                 dni, nombres, apellidos, correo, clave, telefono, direccion, fecha, sexo, imagenPart
         );
         Log.d("RegistroDebug", "Ejecutando llamada registrarUsuarioConImagen()");
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<UsuarioResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if (response.isSuccessful()) {
+                    UsuarioResponse usuarioRegistrado = response.body();
+
+                    // Agregamos el usuario
+
+                    UsuarioEntity entity = new UsuarioEntity(
+                            usuarioRegistrado.getId(),
+                            usuarioRegistrado.getNombres(),
+                            usuarioRegistrado.getApellidos(),
+                            usuarioRegistrado.getCorreo(),
+                            usuarioRegistrado.getClave(),
+                            usuarioRegistrado.getTelefono(),
+                            usuarioRegistrado.getFoto_perfil(),
+                            usuarioRegistrado.getCreado_en(),
+                            usuarioRegistrado.getRol_id(),
+                            usuarioRegistrado.getDni(),
+                            usuarioRegistrado.getDireccion(),
+                            usuarioRegistrado.getSexo(),
+                            usuarioRegistrado.getFechanacimiento()
+                    );
+                    UsuarioDao usuarioDao = AppDatabase.getInstance(getApplicationContext()).usuarioDao();
+                    new Thread(() -> usuarioDao.insert(entity)).start();
+
+
                     Toast.makeText(getApplicationContext(), "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -318,7 +345,7 @@ public class RegistroActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -47,6 +47,22 @@ public class UsuarioRepository {
         });
     }
 
+    public LiveData<UsuarioEntity> getUsuarioPorCorreo(String correo) {
+        MutableLiveData<UsuarioEntity> usuarioLiveData = new MutableLiveData<>();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            usuarioLiveData.postValue(usuarioDao.getByCorreo(correo));
+        });
+        return usuarioLiveData;
+    }
+
+    public LiveData<UsuarioEntity> getUsuarioPorDni(String dni) {
+        MutableLiveData<UsuarioEntity> usuarioLiveData = new MutableLiveData<>();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            usuarioLiveData.postValue(usuarioDao.getByDni(dni));
+        });
+        return usuarioLiveData;
+    }
+
     public void sincronizarUsuariosDesdeApi() {
         isSyncing.postValue(true);
         apiService.getUsuarios().enqueue(new Callback<List<UsuarioEntity>>() {

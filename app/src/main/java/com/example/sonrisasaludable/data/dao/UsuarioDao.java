@@ -27,6 +27,9 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuarios WHERE correo = :correo AND contraseña = :password")
     UsuarioEntity login(String correo, String password);
 
+    @Query("SELECT * FROM usuarios WHERE dni = :dni")
+    UsuarioEntity getByDni(String dni);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(UsuarioEntity usuario);
 

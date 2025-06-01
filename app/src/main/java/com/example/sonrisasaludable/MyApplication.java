@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 public class MyApplication extends Application {
 
     private static MyApplication instance;
-
     private AppDatabase database;
 
     // Repositorios globales (opcional, según tu patrón)

@@ -12,6 +12,7 @@ import com.example.sonrisasaludable.data.entidades.HistorialClinicoEntity;
 import com.example.sonrisasaludable.data.entidades.RolEntity;
 import com.example.sonrisasaludable.data.models.LoginRequest;
 import com.example.sonrisasaludable.data.models.LoginResponse;
+import com.example.sonrisasaludable.data.models.UsuarioResponse;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public interface ApiService {
 
     @Multipart
     @POST("auth/register")
-    Call<Void> registrarUsuarioConImagen(
+    Call<UsuarioResponse> registrarUsuarioConImagen(
             @Part("dni") RequestBody dni,
             @Part("nombres") RequestBody nombres,
             @Part("apellidos") RequestBody apellidos,
