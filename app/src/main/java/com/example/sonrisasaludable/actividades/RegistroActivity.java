@@ -247,6 +247,7 @@ public class RegistroActivity extends AppCompatActivity {
             String fecha = etFecha.getText().toString();
             String sexo = spinnerSexo.getSelectedItem().toString();
 
+
             if (!checkBox.isChecked()) {
                 Toast.makeText(this, "Debes aceptar los términos y condiciones.", Toast.LENGTH_SHORT).show();
                 return;
@@ -291,8 +292,9 @@ public class RegistroActivity extends AppCompatActivity {
         RequestBody clave = toPart(request.getClave());
         RequestBody telefono = toPart(request.getTelefono());
         RequestBody direccion = toPart(request.getDireccion());
-        RequestBody fecha = toPart(request.getFechaNacimiento());
+        RequestBody fechaNacimiento = toPart(request.getFechaNacimiento());
         RequestBody sexo = toPart(request.getSexo());
+
 
         MultipartBody.Part imagenPart = null;
 
@@ -307,7 +309,7 @@ public class RegistroActivity extends AppCompatActivity {
         }
 
         Call<UsuarioResponse> call = api.registrarUsuarioConImagen(
-                dni, nombres, apellidos, correo, clave, telefono, direccion, fecha, sexo, imagenPart
+                dni, nombres, apellidos, correo, clave, telefono, direccion, fechaNacimiento, sexo, imagenPart
         );
         Log.d("RegistroDebug", "Ejecutando llamada registrarUsuarioConImagen()");
         call.enqueue(new Callback<UsuarioResponse>() {
@@ -335,11 +337,11 @@ public class RegistroActivity extends AppCompatActivity {
                     );
                     UsuarioDao usuarioDao = AppDatabase.getInstance(getApplicationContext()).usuarioDao();
                     new Thread(() -> usuarioDao.insert(entity)).start();
-
-
+                    Intent iSesion = new Intent(getApplicationContext(), SesionActivity.class);
+                    startActivity(iSesion);
+                    finish();
                     Toast.makeText(getApplicationContext(), "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
                 } else {
-
                     Toast.makeText(getApplicationContext(), "Error al registrar", Toast.LENGTH_SHORT).show();
                 }
             }

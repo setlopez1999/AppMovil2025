@@ -10,12 +10,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.data.models.LoginRequest;
 import com.example.sonrisasaludable.data.models.LoginResponse;
 import com.example.sonrisasaludable.data.network.ApiService;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
+import com.example.sonrisasaludable.data.worker.UsuarioSyncWorker;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +38,12 @@ public class SesionActivity extends AppCompatActivity {
         Button btnIngresar = findViewById(R.id.sesBtnIngresar);
         chkRecordar = findViewById(R.id.sesChkRecordar);
         TextView lblRegistro = findViewById(R.id.sesLblRegistro);
+
+
+
+
+
+
 
         btnIngresar.setOnClickListener(v -> {
             String correo = edtCorreo.getText().toString().trim();
@@ -56,6 +65,8 @@ public class SesionActivity extends AppCompatActivity {
 
         Button btnSalir = findViewById(R.id.sesBtnSalir);
         btnSalir.setOnClickListener(v -> finish());
+
+
     }
 
     private void loginUser(String correo, String clave) {

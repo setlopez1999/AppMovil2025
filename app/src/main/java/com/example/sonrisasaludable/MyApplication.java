@@ -1,6 +1,8 @@
 package com.example.sonrisasaludable;
 
 import android.app.Application;
+import android.util.Log;
+
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
@@ -34,6 +36,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d("MyApplication", "Aplicación iniciada");
         instance = this;
 
         // Inicializar la base de datos Room
@@ -51,6 +54,7 @@ public class MyApplication extends Application {
         especialidadRepository = new EspecialidadRepository(database.especialidadDao(), RetrofitClient.getApiService());
         historialClinicoRepository = new HistorialClinicoRepository(database.historialClinicoDao(), RetrofitClient.getApiService());
         horarioDisponibleRepository = new HorarioDisponibleRepository(database.horarioDisponibleDao(), RetrofitClient.getApiService());
+        // Forzar creación accediendo a un DAO
 
 
         // Programar sincronización periódica con WorkManager para cada worker
