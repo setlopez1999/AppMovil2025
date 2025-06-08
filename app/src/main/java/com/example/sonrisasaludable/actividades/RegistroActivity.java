@@ -283,7 +283,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void registrarEnServidor(RegisterRequest request) {
         ApiService api = RetrofitClient.getApiService();
-
+        final boolean[] flag = {false};
         // Crear partes de texto
         RequestBody dni = toPart(request.getDni());
         RequestBody nombres = toPart(request.getNombres());
@@ -337,10 +337,16 @@ public class RegistroActivity extends AppCompatActivity {
                     );
                     UsuarioDao usuarioDao = AppDatabase.getInstance(getApplicationContext()).usuarioDao();
                     new Thread(() -> usuarioDao.insert(entity)).start();
-                    Intent iSesion = new Intent(getApplicationContext(), SesionActivity.class);
-                    startActivity(iSesion);
-                    finish();
-                    Toast.makeText(getApplicationContext(), "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
+
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
+                        Intent iSesion = new Intent(RegistroActivity.this, SesionActivity.class);
+                        startActivity(iSesion);
+                        finish();
+                    });
+
+
+                    //Toast.makeText(getApplicationContext(), "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Error al registrar", Toast.LENGTH_SHORT).show();
                 }
@@ -351,6 +357,13 @@ public class RegistroActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        if(flag[0]){
+            Intent iSesion = new Intent(getApplicationContext(), SesionActivity.class);
+            startActivity(iSesion);
+            finish();
+        }
+
+
     }
 
     // Método auxiliar para texto

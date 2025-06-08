@@ -24,7 +24,7 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuarios WHERE rol_id = :rolId")
     List<UsuarioEntity> getByRol(int rolId);
 
-    @Query("SELECT * FROM usuarios WHERE correo = :correo AND contraseña = :password")
+    @Query("SELECT * FROM usuarios WHERE correo = :correo AND contrasena = :password")
     UsuarioEntity login(String correo, String password);
 
     @Query("SELECT * FROM usuarios WHERE dni = :dni")

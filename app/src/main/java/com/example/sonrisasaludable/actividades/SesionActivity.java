@@ -68,7 +68,6 @@ public class SesionActivity extends AppCompatActivity {
 
 
     }
-
     private void loginUser(String correo, String clave) {
         ApiService apiService = RetrofitClient.getApiService();
         LoginRequest loginRequest = new LoginRequest(correo, clave);
@@ -93,7 +92,6 @@ public class SesionActivity extends AppCompatActivity {
             }
         });
     }
-
     private void saveToken(String token, String rol) {
         SharedPreferences sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -101,7 +99,6 @@ public class SesionActivity extends AppCompatActivity {
         editor.putString("rol", rol);
         editor.apply();
     }
-
     private void redirectUser(String rol) {
         Intent intent;
         if (chkRecordar.isChecked()) {

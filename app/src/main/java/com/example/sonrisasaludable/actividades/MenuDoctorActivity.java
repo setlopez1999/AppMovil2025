@@ -1,9 +1,11 @@
 package com.example.sonrisasaludable.actividades;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.sonrisasaludable.R;
@@ -18,6 +20,11 @@ public class MenuDoctorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_doctor);
+
+        // Cambiamos el colorsito bonito
+        Window window = getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.subsecundario));
+
 
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);

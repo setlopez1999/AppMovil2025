@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3b4a8c"
+            android:background="@color/subsecundario"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:paddingTop="32dp"
@@ -77,7 +77,8 @@
             android:layout_height="51dp"
             android:layout_marginTop="-20dp"
             android:scaleType="fitXY"
-            android:src="@drawable/wavee" />
+            android:src="@drawable/wavee"
+            app:tint="@color/subsecundario"/>
 
         <!-- Información personal -->
         <LinearLayout
@@ -191,7 +192,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Editar Perfil"
-                        android:background="#3b4a8c"
+                        android:background="@color/subsecundario"
                         android:textColor="#FFFFFF"
                         android:layout_marginTop="16dp"
                         android:textStyle="bold"/>
@@ -204,7 +205,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            >
 
             <!-- Header de reseñas con calificación promedio -->
             <LinearLayout
@@ -436,6 +438,7 @@
                 android:background="#28a745"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="30dp"
                 android:textStyle="bold"/>
         </LinearLayout>
 

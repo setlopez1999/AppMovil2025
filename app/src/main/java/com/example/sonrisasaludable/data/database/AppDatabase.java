@@ -40,7 +40,7 @@ import com.example.sonrisasaludable.data.entidades.HistorialClinicoEntity;
                 ServicioEntity.class,
                 HistorialClinicoEntity.class
         },
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {

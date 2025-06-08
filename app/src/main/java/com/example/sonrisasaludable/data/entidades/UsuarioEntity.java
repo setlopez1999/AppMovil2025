@@ -36,7 +36,7 @@ public class UsuarioEntity {
     @ColumnInfo(name = "correo")
     private String correo;
 
-    @ColumnInfo(name = "contraseña")  // mejor sin ñ para evitar problemas de codificación
+    @ColumnInfo(name = "contrasena")  // mejor sin ñ para evitar problemas de codificación
     private String contrasena;
 
     @ColumnInfo(name = "telefono")

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static final String BASE_URL =
-            "https://backend-appmovil-uw5o.onrender.com/api/"; // ⚠️ Nuestra URL real aquí
+            "https://backend-appmovil-uw5o.onrender.com/api/"; // ⚠️ CAMBIAR POR NUESTRA IP
     private static final String BASE_URL2 =
             "https://lopso.free.beeceptor.com";
     private static Retrofit retrofit = null;
