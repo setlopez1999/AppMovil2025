@@ -47,8 +47,8 @@ public interface HistorialClinicoDao {
             "h.tratamiento, " +
             "h.recomendaciones, " +
             "h.fecha, " +
-            "u.nombre AS pacienteNombre, " +
-            "u.apellido AS pacienteApellido, " +
+            "u.nombres AS pacienteNombre, " +
+            "u.apellidos AS pacienteApellido, " +
             "d.id AS doctorInfo, " +
             "c.fecha AS citaFecha " +
             "FROM historial_clinico h " +

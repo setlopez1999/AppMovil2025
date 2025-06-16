@@ -39,12 +39,6 @@ public class SesionActivity extends AppCompatActivity {
         chkRecordar = findViewById(R.id.sesChkRecordar);
         TextView lblRegistro = findViewById(R.id.sesLblRegistro);
 
-
-
-
-
-
-
         btnIngresar.setOnClickListener(v -> {
             String correo = edtCorreo.getText().toString().trim();
             String clave = edtClave.getText().toString().trim();

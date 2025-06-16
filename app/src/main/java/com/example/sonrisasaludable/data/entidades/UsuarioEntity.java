@@ -27,29 +27,29 @@ public class UsuarioEntity {
     @ColumnInfo(name = "id")
     private int id;
 
-    @ColumnInfo(name = "nombre")
-    private String nombre;
+    @ColumnInfo(name = "nombres")
+    private String nombres;
 
-    @ColumnInfo(name = "apellido")
-    private String apellido;
+    @ColumnInfo(name = "apellidos")
+    private String apellidos;
 
     @ColumnInfo(name = "correo")
     private String correo;
 
-    @ColumnInfo(name = "contrasena")  // mejor sin ñ para evitar problemas de codificación
-    private String contrasena;
+    @ColumnInfo(name = "clave")  // mejor sin ñ para evitar problemas de codificación
+    private String clave;
 
     @ColumnInfo(name = "telefono")
     private String telefono;
 
     @ColumnInfo(name = "foto_perfil")
-    private String fotoPerfil;
+    private String foto_perfil;
 
     @ColumnInfo(name = "creado_en")
-    private String creadoEn;  // Puedes usar String, Date o LocalDateTime, pero con TypeConverters si no es String
+    private String creado_en;  // Puedes usar String, Date o LocalDateTime, pero con TypeConverters si no es String
 
     @ColumnInfo(name = "rol_id")
-    private int rolId;
+    private int rol_id;
 
     /// ////////////
     @ColumnInfo(name = "dni")
@@ -61,8 +61,8 @@ public class UsuarioEntity {
     @ColumnInfo(name = "sexo")
     private String sexo;
 
-    @ColumnInfo(name = "fecha_nacimiento")
-    private String fechaNacimiento;  // Usa Date solo si tienes TypeConverter
+    @ColumnInfo(name = "fechanacimiento")
+    private String fechanacimiento;  // Usa Date solo si tienes TypeConverter
 
 
 
@@ -72,51 +72,51 @@ public class UsuarioEntity {
 
     // Constructor completo
     public UsuarioEntity(int id, String nombre, String apellido, String correo,
-                         String contrasena, String telefono, String fotoPerfil,
-                         String creadoEn, int rolId,
-                         String dni, String direccion, String sexo, String fechaNacimiento) {
+                         String contrasena, String telefono, String foto_perfil,
+                         String creado_en, int rol_id,
+                         String dni, String direccion, String sexo, String fechanacimiento) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombres = nombre;
+        this.apellidos = apellido;
         this.correo = correo;
-        this.contrasena = contrasena;
+        this.clave = contrasena;
         this.telefono = telefono;
-        this.fotoPerfil = fotoPerfil;
-        this.creadoEn = creadoEn;
-        this.rolId = rolId;
+        this.foto_perfil = foto_perfil;
+        this.creado_en = creado_en;
+        this.rol_id = rol_id;
         this.dni = dni;
         this.direccion = direccion;
         this.sexo = sexo;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechanacimiento = fechanacimiento;
     }
 
     // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombres() { return nombres; }
+    public void setNombres(String nombre) { this.nombres = nombre; }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public String getApellidos() { return apellidos; }
+    public void setApellidos(String apellido) { this.apellidos = apellido; }
 
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public String getContrasena() { return contrasena; }
-    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
+    public String getClave() { return clave; }
+    public void setClave(String clave) { this.clave = clave; }
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
 
-    public String getFotoPerfil() { return fotoPerfil; }
-    public void setFotoPerfil(String fotoPerfil) { this.fotoPerfil = fotoPerfil; }
+    public String getFoto_perfil() { return foto_perfil; }
+    public void setFoto_perfil(String foto_perfil) { this.foto_perfil = foto_perfil; }
 
-    public String getCreadoEn() { return creadoEn; }
-    public void setCreadoEn(String creadoEn) { this.creadoEn = creadoEn; }
+    public String getCreado_en() { return creado_en; }
+    public void setCreado_en(String creado_en) { this.creado_en = creado_en; }
 
-    public int getRolId() { return rolId; }
-    public void setRolId(int rolId) { this.rolId = rolId; }
+    public int getRol_id() { return rol_id; }
+    public void setRol_id(int rol_id) { this.rol_id = rol_id; }
 
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }
@@ -127,6 +127,6 @@ public class UsuarioEntity {
     public String getSexo() { return sexo; }
     public void setSexo(String sexo) { this.sexo = sexo; }
 
-    public String getFechaNacimiento() { return fechaNacimiento; }
-    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    public String getFechanacimiento() { return fechanacimiento; }
+    public void setFechanacimiento(String fechanacimiento) { this.fechanacimiento = fechanacimiento; }
 }

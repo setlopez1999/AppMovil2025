@@ -6,14 +6,17 @@ import android.util.Log;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import com.example.sonrisasaludable.data.database.AppDatabase;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.repository.*;
 import com.example.sonrisasaludable.data.worker.*;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class MyApplication extends Application {
@@ -36,7 +39,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("MyApplication", "Aplicación iniciada");
         instance = this;
 
         // Inicializar la base de datos Room
@@ -54,18 +56,53 @@ public class MyApplication extends Application {
         especialidadRepository = new EspecialidadRepository(database.especialidadDao(), RetrofitClient.getApiService());
         historialClinicoRepository = new HistorialClinicoRepository(database.historialClinicoDao(), RetrofitClient.getApiService());
         horarioDisponibleRepository = new HorarioDisponibleRepository(database.horarioDisponibleDao(), RetrofitClient.getApiService());
-        // Forzar creación accediendo a un DAO
-
 
         // Programar sincronización periódica con WorkManager para cada worker
         scheduleSyncWorkers();
+        llamarInmediatamente();
     }
+
+    public void llamarInmediatamente() {
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .build();
+
+        OneTimeWorkRequest rolSync = new OneTimeWorkRequest.Builder(RolSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest especialidadSync = new OneTimeWorkRequest.Builder(EspecialidadSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest servicioSync = new OneTimeWorkRequest.Builder(ServicioSyncWorker.class).setConstraints(constraints).build();
+
+        OneTimeWorkRequest usuarioSync = new OneTimeWorkRequest.Builder(UsuarioSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest doctorSync = new OneTimeWorkRequest.Builder(DoctorSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest citaSync = new OneTimeWorkRequest.Builder(CitaSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest resenaSync = new OneTimeWorkRequest.Builder(ResenaSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest reciboSync = new OneTimeWorkRequest.Builder(ReciboSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest historialSync = new OneTimeWorkRequest.Builder(HistorialClinicoSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest horarioSync = new OneTimeWorkRequest.Builder(HorarioDisponibleSyncWorker.class).setConstraints(constraints).build();
+
+        WorkManager workManager = WorkManager.getInstance(this);
+
+        workManager
+                .beginWith(rolSync)
+                .then(usuarioSync)
+                .then(especialidadSync)
+                .then(servicioSync)
+
+                .then(doctorSync)
+                .then(citaSync)
+                .then(resenaSync)
+                .then(reciboSync)
+                .then(historialSync)
+                .then(horarioSync)
+                .enqueue();
+    }
+
+
 
     private void scheduleSyncWorkers() {
         Constraints constraints = new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED) // sincroniza sólo con internet
                 .build();
-        int intervalo = 6;
+        int intervalo = 1;
 
         // Ejemplo para UsuarioSyncWorker - repite para todos tus workers
         PeriodicWorkRequest usuarioWorkRequest = new PeriodicWorkRequest.Builder(
@@ -142,6 +179,11 @@ public class MyApplication extends Application {
         workManager.enqueueUniquePeriodicWork("HistorialSync", ExistingPeriodicWorkPolicy.KEEP, historialWorkRequest);
         workManager.enqueueUniquePeriodicWork("HorarioSync", ExistingPeriodicWorkPolicy.KEEP, horarioWorkRequest);
 
+
+
+
+        
+
     }
 
     public static MyApplication getInstance() {
@@ -179,4 +221,8 @@ public class MyApplication extends Application {
     public HorarioDisponibleRepository getHorarioDisponibleRepository() {
         return horarioDisponibleRepository;
     }
+
+
+
+
 }

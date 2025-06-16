@@ -49,7 +49,7 @@ public interface CitaDao {
 
     // Query con JOIN para obtener citas con datos completos
     @Query("SELECT c.id, c.usuario_id, c.doctor_id, c.servicio_id, c.fecha, c.hora, c.estado, " +
-            "u.nombre as paciente_nombre, u.apellido as paciente_apellido, " +
+            "u.nombres as paciente_nombre, u.apellidos as paciente_apellido, " +
             "d.id as doctor_info, s.nombre as servicio_nombre " +
             "FROM citas c " +
             "INNER JOIN usuarios u ON c.usuario_id = u.id " +

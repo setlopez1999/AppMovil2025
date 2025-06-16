@@ -33,7 +33,7 @@ public interface DoctorDao {
     // Query con JOIN para obtener doctores con datos del usuario
 
     @Query("SELECT d.id, d.usuario_id AS usuarioId, d.especialidad_id AS especialidadId, d.descripcion, d.reputacion, " +
-            "u.nombre, u.apellido, u.foto_perfil AS fotoPerfil " +
+            "u.nombres, u.apellidos, u.foto_perfil AS fotoPerfil " +
             "FROM doctores d " +
             "INNER JOIN usuarios u ON d.usuario_id = u.id")
     List<DoctorConUsuario> getDoctoresConUsuario();
