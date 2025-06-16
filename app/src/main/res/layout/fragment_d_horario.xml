@@ -524,6 +524,8 @@
                 android:text="Nueva Cita"
                 android:background="#28a745"
                 android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+
                 android:textStyle="bold"
                 android:layout_marginEnd="8dp"/>
 
@@ -531,6 +533,8 @@
                 android:id="@+id/btnVistaListaCitas"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textAllCaps="false"
+
                 android:layout_weight="1"
                 android:text="Vista Lista"
                 android:background="#3b4a8c"

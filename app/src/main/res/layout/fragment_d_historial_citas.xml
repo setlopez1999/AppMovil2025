@@ -117,7 +117,7 @@
                 android:text="Todas"
                 android:textSize="12sp"
                 android:background="@drawable/status_confirmed_bg"
-
+                android:textAllCaps="false"
                 android:layout_marginRight="4dp"/>
 
             <Button
@@ -127,6 +127,7 @@
                 android:layout_weight="1"
                 android:text="Hoy"
                 android:textSize="12sp"
+                android:textAllCaps="false"
 
 
                 android:layout_marginHorizontal="2dp"/>
@@ -138,6 +139,7 @@
                 android:layout_weight="1"
                 android:text="Semana"
                 android:textSize="12sp"
+                android:textAllCaps="false"
 
                 android:layout_marginHorizontal="2dp"/>
 
@@ -147,6 +149,8 @@
                 android:layout_height="36dp"
                 android:layout_weight="1"
                 android:text="Mes"
+                android:textAllCaps="false"
+
                 android:textSize="12sp"
                 android:layout_marginLeft="4dp"/>
         </LinearLayout>
