@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sonrisasaludable.R;
 
-public class Cita extends Fragment {
+public class CitaProgreso extends Fragment {
 
     private int pasoActual = 0; // 0: Calendario, 1: Horario, 2: Tratamiento, 3: Confirmar, 4: Exitosa
     private ProgressBar progressBar;

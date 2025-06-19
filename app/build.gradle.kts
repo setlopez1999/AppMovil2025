@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.glideCompiler)
 
+    implementation(libs.security.crypto)
 
 
 }

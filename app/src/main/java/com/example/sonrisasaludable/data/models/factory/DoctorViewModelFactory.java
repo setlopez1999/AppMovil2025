@@ -1,4 +1,4 @@
-package com.example.sonrisasaludable.data.models.viewmodels;
+package com.example.sonrisasaludable.data.models.factory;
 
 import android.content.Context;
 
@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.sonrisasaludable.data.models.viewmodels.DoctorViewModel;
 import com.example.sonrisasaludable.data.network.ApiService;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.database.AppDatabase;

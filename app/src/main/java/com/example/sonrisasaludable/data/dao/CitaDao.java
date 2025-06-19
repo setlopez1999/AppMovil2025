@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -55,7 +56,7 @@ public interface CitaDao {
             "INNER JOIN usuarios u ON c.usuario_id = u.id " +
             "INNER JOIN doctores d ON c.doctor_id = d.id " +
             "LEFT JOIN servicios s ON c.servicio_id = s.id")
-    List<CitaConDetalles> getCitasConDetalles();
+    LiveData<List<CitaConDetalles>> getCitasConDetalles();
 
     @Query("UPDATE citas SET estado = :nuevoEstado WHERE id = :citaId")
     void updateEstado(int citaId, String nuevoEstado);

@@ -12,11 +12,17 @@ import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
 import com.example.sonrisasaludable.data.database.AppDatabase;
+import com.example.sonrisasaludable.data.entidades.CitaEntity;
+import com.example.sonrisasaludable.data.entidades.ServicioEntity;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.repository.*;
 import com.example.sonrisasaludable.data.worker.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class MyApplication extends Application {
@@ -36,6 +42,10 @@ public class MyApplication extends Application {
     private RolRepository rolRepository;
     private ServicioRepository servicioRepository;
 
+
+    //temp
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -53,6 +63,8 @@ public class MyApplication extends Application {
         rolRepository = new RolRepository(database.rolDao(),RetrofitClient.getApiService());
         servicioRepository = new ServicioRepository(database.servicioDao(),RetrofitClient.getApiService());
 
+
+
         especialidadRepository = new EspecialidadRepository(database.especialidadDao(), RetrofitClient.getApiService());
         historialClinicoRepository = new HistorialClinicoRepository(database.historialClinicoDao(), RetrofitClient.getApiService());
         horarioDisponibleRepository = new HorarioDisponibleRepository(database.horarioDisponibleDao(), RetrofitClient.getApiService());
@@ -62,6 +74,21 @@ public class MyApplication extends Application {
         llamarInmediatamente();
     }
 
+
+
+    //temp
+    public void citasdeprueba() {
+
+        executor.execute(() -> {
+            // Insertar servicios dummy
+            List<ServicioEntity> servicios = new ArrayList<>();
+            servicios.add(new ServicioEntity(1, "Limpieza dental", "Limpieza básica y remoción de sarro", 80.0));
+            servicios.add(new ServicioEntity(2, "Blanqueamiento", "Blanqueamiento dental profesional", 150.0));
+            servicios.add(new ServicioEntity(3, "Ortodoncia", "Colocación de brackets metálicos", 1200.0));
+            servicioRepository.insertAllServicios(servicios); // <-- Asegúrate de tener este método en tu ServicioDao
+
+        });
+    }
     public void llamarInmediatamente() {
         Constraints constraints = new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -86,10 +113,7 @@ public class MyApplication extends Application {
                 .then(usuarioSync)
                 .then(especialidadSync)
                 .then(doctorSync)
-
                 .then(servicioSync)
-
-
                 .then(citaSync)
                 .then(resenaSync)
                 .then(reciboSync)
@@ -120,7 +144,7 @@ public class MyApplication extends Application {
                 .setConstraints(constraints)
                 .build();
 
-        // Cita
+        // CitaProgreso
         PeriodicWorkRequest citaWorkRequest = new PeriodicWorkRequest.Builder(
                 CitaSyncWorker.class, intervalo, TimeUnit.HOURS)
                 .setConstraints(constraints)

@@ -25,7 +25,7 @@ public class CitaSyncWorker extends Worker {
         try {
             Response<List<CitaEntity>> response = RetrofitClient
                     .getApiService()
-                    .getCitas()
+                    .getCitas(2)
                     .execute();
 
             if (response.isSuccessful() && response.body() != null) {
