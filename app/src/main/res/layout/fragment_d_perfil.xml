@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/doctor1"
+                    android:src="@drawable/doctor1_default"
                     android:contentDescription="Foto del doctor" />
             </androidx.cardview.widget.CardView>
 

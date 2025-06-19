@@ -39,7 +39,7 @@ public class CargaActivity extends AppCompatActivity {
                 for (int i = 0; i <= barCarga.getMax() ; i++) {
                     barCarga.setProgress(i);
                     try {
-                        Thread.sleep(25);
+                        Thread.sleep(50);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }

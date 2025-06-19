@@ -1,11 +1,16 @@
 package com.example.sonrisasaludable.data.repository;
 
+import android.content.Context;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.sonrisasaludable.data.dao.DoctorDao;
+import com.example.sonrisasaludable.data.database.AppDatabase;
 import com.example.sonrisasaludable.data.entidades.DoctorEntity;
+import com.example.sonrisasaludable.data.models.DoctorConUsuario;
 import com.example.sonrisasaludable.data.network.ApiService;
+import com.example.sonrisasaludable.data.network.RetrofitClient;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,6 +29,12 @@ public class DoctorRepository {
         this.doctorDao = doctorDao;
         this.apiService = apiService;
         this.executor = Executors.newSingleThreadExecutor();
+    }
+
+    public static DoctorRepository getInstance(Context context) {
+        AppDatabase db = AppDatabase.getInstance(context);
+        DoctorDao dao = db.doctorDao();
+        return new DoctorRepository(dao,RetrofitClient.getApiService());
     }
 
     // Estado de sincronización para la UI
@@ -76,6 +87,15 @@ public class DoctorRepository {
     public void deleteAllDoctores() {
         executor.execute(() -> doctorDao.deleteAll());
     }
+
+
+    public LiveData<List<DoctorConUsuario>> getDoctoresConUsuario() {
+        return doctorDao.getDoctoresConUsuario();
+    }
+
+
+
+
 
     // Sincronización con API remota
     public void sincronizarDoctoresDesdeApi() {

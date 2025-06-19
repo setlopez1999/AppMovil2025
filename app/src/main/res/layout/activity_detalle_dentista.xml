@@ -16,7 +16,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/doctor1"
+            android:src="@drawable/doctor1_default"
             android:scaleType="centerCrop"
             android:layout_marginBottom="24dp"
             android:background="@drawable/circle_background"

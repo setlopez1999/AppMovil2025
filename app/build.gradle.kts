@@ -75,7 +75,9 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.logging.interceptor.v493)
 
-
+    //Agrego el glide
+    implementation(libs.glide)
+    annotationProcessor(libs.glideCompiler)
 
 
 

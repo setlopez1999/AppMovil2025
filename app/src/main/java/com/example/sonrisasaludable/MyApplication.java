@@ -85,9 +85,11 @@ public class MyApplication extends Application {
                 .beginWith(rolSync)
                 .then(usuarioSync)
                 .then(especialidadSync)
+                .then(doctorSync)
+
                 .then(servicioSync)
 
-                .then(doctorSync)
+
                 .then(citaSync)
                 .then(resenaSync)
                 .then(reciboSync)

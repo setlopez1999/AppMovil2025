@@ -34,11 +34,10 @@ public class DoctorEntity {
     private int id;
 
     @ColumnInfo(name = "usuario_id")
-    private int usuarioId;
+    private int usuario_id;
 
     @ColumnInfo(name = "especialidad_id")
-    private int especialidadId;
-
+    private int especialidad_id;
     @ColumnInfo(name = "descripcion")
     private String descripcion;
 
@@ -49,11 +48,11 @@ public class DoctorEntity {
     public DoctorEntity() {}
 
     // Constructor completo
-    public DoctorEntity(int id, int usuarioId, int especialidadId,
+    public DoctorEntity(int id, int usuario_id, int especialidad_id,
                         String descripcion, double reputacion) {
         this.id = id;
-        this.usuarioId = usuarioId;
-        this.especialidadId = especialidadId;
+        this.usuario_id = usuario_id;
+        this.especialidad_id = especialidad_id;
         this.descripcion = descripcion;
         this.reputacion = reputacion;
     }
@@ -62,15 +61,16 @@ public class DoctorEntity {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public int getUsuarioId() { return usuarioId; }
-    public void setUsuarioId(int usuarioId) { this.usuarioId = usuarioId; }
+    public int getUsuario_id() { return usuario_id; }
+    public void setUsuario_id(int usuario_id) { this.usuario_id = usuario_id; }
 
-    public int getEspecialidadId() { return especialidadId; }
-    public void setEspecialidadId(int especialidadId) { this.especialidadId = especialidadId; }
+    public int getEspecialidad_id() { return especialidad_id; }
+    public void setEspecialidad_id(int especialidad_id) { this.especialidad_id = especialidad_id; }
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
     public double getReputacion() { return reputacion; }
     public void setReputacion(double reputacion) { this.reputacion = reputacion; }
+
 }

@@ -1,17 +1,38 @@
 package com.example.sonrisasaludable.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
+
 import com.example.sonrisasaludable.data.entidades.DoctorEntity;
-import java.util.List;
 import com.example.sonrisasaludable.data.models.DoctorConUsuario;
+
+import java.util.List;
+
 @Dao
 public interface DoctorDao {
 
+    // CRUD Básico
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(DoctorEntity doctor);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<DoctorEntity> doctores);
+
+    @Update
+    void update(DoctorEntity doctor);
+
+    @Delete
+    void delete(DoctorEntity doctor);
+
+    @Query("DELETE FROM doctores")
+    void deleteAll();
+
+    // Consultas simples
     @Query("SELECT * FROM doctores")
     List<DoctorEntity> getAll();
 
@@ -30,27 +51,19 @@ public interface DoctorDao {
     @Query("SELECT * FROM doctores WHERE reputacion >= :minReputacion")
     List<DoctorEntity> getByMinReputacion(double minReputacion);
 
-    // Query con JOIN para obtener doctores con datos del usuario
-
-    @Query("SELECT d.id, d.usuario_id AS usuarioId, d.especialidad_id AS especialidadId, d.descripcion, d.reputacion, " +
-            "u.nombres, u.apellidos, u.foto_perfil AS fotoPerfil " +
+    // Consulta JOIN para obtener datos del usuario asociados al doctor
+    @Query("SELECT " +
+            "d.id, " +
+            "d.usuario_id AS usuarioId, " +
+            "d.especialidad_id AS especialidadId, " +
+            "d.descripcion, " +
+            "d.reputacion, " +
+            "u.nombres, " +
+            "u.apellidos, " +
+            "u.foto_perfil AS fotoPerfil," +
+            "e.nombre AS nombreEspecialidad " +
             "FROM doctores d " +
-            "INNER JOIN usuarios u ON d.usuario_id = u.id")
-    List<DoctorConUsuario> getDoctoresConUsuario();
-
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(DoctorEntity doctor);
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<DoctorEntity> doctores);
-
-    @Update
-    void update(DoctorEntity doctor);
-
-    @Delete
-    void delete(DoctorEntity doctor);
-
-    @Query("DELETE FROM doctores")
-    void deleteAll();
+            "INNER JOIN usuarios u ON d.usuario_id = u.id " +
+            "INNER JOIN especialidades e ON d.especialidad_id = e.id")
+    LiveData<List<DoctorConUsuario>> getDoctoresConUsuario();
 }

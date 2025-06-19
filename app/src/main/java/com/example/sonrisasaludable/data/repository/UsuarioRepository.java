@@ -35,6 +35,13 @@ public class UsuarioRepository {
         return usuariosLiveData;
     }
 
+    public LiveData<UsuarioEntity> getUsuariobyId(int id){
+        MutableLiveData<UsuarioEntity> usuarioEncontrado = new MutableLiveData<>();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            usuarioEncontrado.postValue(usuarioDao.getById(id));
+        });
+        return usuarioEncontrado;
+    }
     public void insertUsuario(UsuarioEntity usuario) {
         Executors.newSingleThreadExecutor().execute(() -> {
             usuarioDao.insert(usuario);

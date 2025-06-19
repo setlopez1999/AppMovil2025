@@ -2,79 +2,58 @@ package com.example.sonrisasaludable.fragmentos;
 
 import android.content.Intent;
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.actividades.DetalleDentistaActivity;
+import com.example.sonrisasaludable.data.models.adapters.DoctorConUsuarioAdapter;
+import com.example.sonrisasaludable.data.models.viewmodels.DoctorViewModel;
+import com.example.sonrisasaludable.data.models.viewmodels.DoctorViewModelFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DentistasFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class DentistasFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DentistasFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DentistasFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DentistasFragment newInstance(String param1, String param2) {
-        DentistasFragment fragment = new DentistasFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView recyclerView;
+    private DoctorConUsuarioAdapter adapter;
+    private DoctorViewModel doctorViewModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_dentistas, container, false);
 
-        View vista = inflater.inflate(R.layout.fragment_dentistas, container, false);
+        recyclerView = root.findViewById(R.id.recyclerDoctores);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setHasFixedSize(true);
 
-        ImageButton btnVerDetalleDoctor = vista.findViewById(R.id.btndetalleDent);
 
-        btnVerDetalleDoctor.setOnClickListener(v -> {
-            // Ir a DetalleDoctorActivity
-            Intent intent = new Intent(getActivity(), DetalleDentistaActivity.class);
-            startActivity(intent);
+        doctorViewModel = new ViewModelProvider(
+                this,
+                new DoctorViewModelFactory(requireContext())
+        ).get(DoctorViewModel.class);
+
+        // Observar la lista combinada de Doctor + Usuario
+        doctorViewModel.getDoctoresConUsuario().observe(getViewLifecycleOwner(), doctores -> {
+            if (doctores != null && !doctores.isEmpty()) {
+                adapter = new DoctorConUsuarioAdapter(requireContext(), doctores, doctor -> {
+
+                    // ESTO abre a la nueva actividad detalle dentista
+                    Intent intent = new Intent(requireContext(), DetalleDentistaActivity.class);
+                    intent.putExtra("doctor", doctor); // Asegúrate que DoctorConUsuario implementa Serializable
+                    startActivity(intent);
+                });
+
+                recyclerView.setAdapter(adapter);
+            }
         });
 
-        return vista;
+        return root;
     }
-
 }
