@@ -110,13 +110,13 @@
 
 
     <string name="fragment_d_home_bienvenido_doctor">Welcome Doctor</string>
-    <string name="fragment_d_home_citas_hoy">Today's Appointments</string>
+    <string name="fragment_d_home_citas_hoy">Today\\'s Appointments</string>
     <string name="fragment_d_home_pendientes">Pending</string>
     <string name="fragment_d_home_completadas">Completed</string>
     <string name="fragment_d_home_ver_todas_citas">View All Appointments</string>
     <string name="fragment_d_home_nueva_cita">New Appointment</string>
 
-    <string name="fragment_p_profile_foto_doctor">Doctor's photo</string>
+    <string name="fragment_p_profile_foto_doctor">Doctor\\'s photo</string>
     <string name="fragment_p_profile_mi_perfil">My Profile</string>
     <string name="fragment_p_profile_nombre_demo">Dr. Juan Carlos Mendoza</string>
     <string name="fragment_p_profile_especialidad_demo">General Dentist</string>
