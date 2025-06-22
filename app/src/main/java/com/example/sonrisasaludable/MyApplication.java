@@ -18,6 +18,7 @@ import com.example.sonrisasaludable.data.entidades.ServicioEntity;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.repository.*;
 import com.example.sonrisasaludable.data.worker.*;
+import com.example.sonrisasaludable.utilidades.UserPreferences;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +31,7 @@ public class MyApplication extends Application {
 
     private static MyApplication instance;
     private AppDatabase database;
+    private UserPreferences pref;
 
     // Repositorios globales (opcional, según tu patrón)
     private UsuarioRepository usuarioRepository;
@@ -54,6 +56,8 @@ public class MyApplication extends Application {
 
         // Inicializar la base de datos Room
         database = AppDatabase.getInstance(this);
+        pref = new UserPreferences(getApplicationContext());
+
 
         usuarioRepository = new UsuarioRepository(database.usuarioDao(), RetrofitClient.getApiService());
         doctorRepository = new DoctorRepository(database.doctorDao(), RetrofitClient.getApiService());

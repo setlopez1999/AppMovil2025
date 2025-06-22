@@ -2,7 +2,11 @@ package com.example.sonrisasaludable.fragmentos;
 
 
 import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.actividades.SesionActivity;
+import com.example.sonrisasaludable.utilidades.UserPreferences;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,10 +21,11 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 
-public class DAjustesFragment extends Fragment {
+public class DAjustesFragment extends Fragment  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
     private static final String PREFS_NAME = "AjustesApp";
     private static final String KEY_TEMA = "tema";
@@ -29,7 +34,7 @@ public class DAjustesFragment extends Fragment {
     private static final String KEY_VOLUMEN = "volumen";
     private static final String KEY_HUELLA = "huella_dactilar";
 
-    private SharedPreferences sharedPreferences;
+    private UserPreferences prefs;
 
     // Views
     private Spinner spnTemaApp;
@@ -46,7 +51,7 @@ public class DAjustesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_d_ajustes, container, false);
 
         // Inicializar SharedPreferences
-        sharedPreferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        prefs = new UserPreferences(getContext());
 
         // Inicializar vistas
         initViews(view);
@@ -55,23 +60,40 @@ public class DAjustesFragment extends Fragment {
         setupSpinners();
 
         // Cargar configuraciones guardadas
-        loadSettings();
+        //loadSettings();
 
         // Configurar listeners
         setupListeners();
 
+        Button btnCerrarSesion = view.findViewById(R.id.btnCerrarSesionDoctor);;
+        btnCerrarSesion.setOnClickListener(v -> {
+            // Crear Intent para ir a SesionActivity
+            Intent intent = new Intent(getActivity(), SesionActivity.class);
+            startActivity(intent);
+
+            // Finalizar la actividad actual (opcional)
+            getActivity().finish();
+        });
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btnGuardarAjustes)
+            loadSettings();
+        else if (v.getId() == R.id.btnRestaurarDefecto)
+            restaurarDefecto();
+    }
     private void initViews(View view) {
         spnTemaApp = view.findViewById(R.id.spnTemaApp);
         spnIdioma = view.findViewById(R.id.spnIdioma);
-        swNotificaciones = view.findViewById(R.id.swNotificaciones);
-        swHuellaDactilar = view.findViewById(R.id.swHuellaDactilar);
-        seekVolumenNotif = view.findViewById(R.id.seekVolumenNotif);
+        swNotificaciones = view.findViewById(R.id.spinwNotificaciones);
+        swHuellaDactilar = view.findViewById(R.id.spswHuellaDactilar);
+        seekVolumenNotif = view.findViewById(R.id.spseekVolumenNotif);
         llVolumenNotif = view.findViewById(R.id.llVolumenNotif);
         btnGuardarAjustes = view.findViewById(R.id.btnGuardarAjustes);
         btnRestaurarDefecto = view.findViewById(R.id.btnRestaurarDefecto);
+
     }
 
     private void setupSpinners() {
@@ -95,32 +117,31 @@ public class DAjustesFragment extends Fragment {
         adapterIdiomas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnIdioma.setAdapter(adapterIdiomas);
     }
-
     private void loadSettings() {
-        // Cargar tema
-        int temaGuardado = sharedPreferences.getInt(KEY_TEMA, 0);
-        spnTemaApp.setSelection(temaGuardado);
+        boolean temaOscuro = prefs.isTemaOscuro();
+        AppCompatDelegate.setDefaultNightMode(
+                temaOscuro ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
+        );
+        spnTemaApp.setSelection(temaOscuro ? 1 : 0);
 
-        // Cargar idioma
-        int idiomaGuardado = sharedPreferences.getInt(KEY_IDIOMA, 0);
-        spnIdioma.setSelection(idiomaGuardado);
+        String idioma = prefs.getIdioma();
+        spnIdioma.setSelection(getIdiomaIndex(idioma));
 
-        // Cargar notificaciones
-        boolean notificacionesActivas = sharedPreferences.getBoolean(KEY_NOTIFICACIONES, true);
+        com.example.sonrisasaludable.utilidades.LocaleHelper.cambiarIdioma(getActivity(), idioma);
+
+        // Recargamos_Todo XD
+        getActivity().recreate();
+
+        boolean notificacionesActivas = prefs.isNotificacionesActivas();
         swNotificaciones.setChecked(notificacionesActivas);
-
-        // Mostrar/ocultar volumen según notificaciones
         llVolumenNotif.setVisibility(notificacionesActivas ? View.VISIBLE : View.GONE);
 
-        // Cargar volumen
-        int volumen = sharedPreferences.getInt(KEY_VOLUMEN, 50);
+        int volumen = prefs.getVolumenNotificaciones();
         seekVolumenNotif.setProgress(volumen);
 
-        // Cargar huella dactilar
-        boolean huellaActiva = sharedPreferences.getBoolean(KEY_HUELLA, false);
-        swHuellaDactilar.setChecked(huellaActiva);
+        boolean huella = prefs.isHuellaActiva();
+        swHuellaDactilar.setChecked(huella);
     }
-
     private void setupListeners() {
         // Listener para notificaciones
         swNotificaciones.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -186,26 +207,33 @@ public class DAjustesFragment extends Fragment {
         // Botón restaurar
         btnRestaurarDefecto.setOnClickListener(v -> restaurarDefecto());
     }
-
-    private void guardarAjustes() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        // Guardar todas las configuraciones
-        editor.putInt(KEY_TEMA, spnTemaApp.getSelectedItemPosition());
-        editor.putInt(KEY_IDIOMA, spnIdioma.getSelectedItemPosition());
-        editor.putBoolean(KEY_NOTIFICACIONES, swNotificaciones.isChecked());
-        editor.putInt(KEY_VOLUMEN, seekVolumenNotif.getProgress());
-        editor.putBoolean(KEY_HUELLA, swHuellaDactilar.isChecked());
-
-        // Aplicar cambios
-        editor.apply();
-
-        Toast.makeText(getContext(), "Ajustes guardados correctamente", Toast.LENGTH_SHORT).show();
-
-        // Opcional: aplicar cambios inmediatamente
-        aplicarCambios();
+    private int getIdiomaIndex(String idioma) {
+        switch (idioma) {
+            case "es": return 0;
+            case "en": return 1;
+            case "pt": return 2;
+            default: return 0;
+        }
     }
-
+    private void guardarAjustes() {
+        boolean esOscuro = (spnTemaApp.getSelectedItemPosition() == 1);
+        prefs.setTemaOscuro(esOscuro);
+        switch (spnIdioma.getSelectedItemPosition()) {
+            case 0:
+                prefs.setIdioma("es");
+                break;
+            case 1:
+                prefs.setIdioma("en");
+                break;
+            case 2:
+                prefs.setIdioma("pt");
+                break;
+        }
+        prefs.setNotificacionesActivas(swNotificaciones.isChecked());
+        prefs.setVolumenNotificaciones(seekVolumenNotif.getProgress());
+        prefs.setHuellaActiva(swHuellaDactilar.isChecked());
+        Toast.makeText(getContext(), "Ajustes guardados correctamente", Toast.LENGTH_SHORT).show();
+    }
     private void restaurarDefecto() {
         // Restaurar valores por defecto
         spnTemaApp.setSelection(0); // Tema claro
@@ -214,56 +242,22 @@ public class DAjustesFragment extends Fragment {
         llVolumenNotif.setVisibility(View.VISIBLE);
         seekVolumenNotif.setProgress(50);
         swHuellaDactilar.setChecked(false);
-
+        prefs.clearAll();
         Toast.makeText(getContext(), "Ajustes restaurados por defecto", Toast.LENGTH_SHORT).show();
     }
 
-    private void aplicarCambios() {
-        // Aquí puedes aplicar los cambios inmediatamente
-        // Por ejemplo, cambiar tema, idioma, etc.
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-        // Ejemplo para tema:
-        int tema = spnTemaApp.getSelectedItemPosition();
-        switch (tema) {
-            case 0: // Claro
-                // Aplicar tema claro
-                break;
-            case 1: // Oscuro
-                // Aplicar tema oscuro
-                break;
-            case 2: // Automático
-                // Aplicar tema automático
-                break;
-        }
-
-        // Ejemplo para idioma:
-        int idioma = spnIdioma.getSelectedItemPosition();
-        switch (idioma) {
-            case 0: // Español
-                // Cambiar a español
-                break;
-            case 1: // English
-                // Cambiar a inglés
-                break;
-            case 2: // Português
-                // Cambiar a portugués
-                break;
-        }
     }
 
-    // Método público para obtener configuraciones desde otras partes de la app
-    public static boolean isNotificacionesActivadas(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getBoolean(KEY_NOTIFICACIONES, true);
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
     }
 
-    public static int getVolumenNotificaciones(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getInt(KEY_VOLUMEN, 50);
-    }
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
-    public static boolean isHuellaDactilarActivada(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getBoolean(KEY_HUELLA, false);
     }
 }
