@@ -9,12 +9,12 @@ import androidx.room.PrimaryKey;
 @Entity(
         tableName = "usuarios",
         foreignKeys = {
-                @ForeignKey(
-                        entity = RolEntity.class,
-                        parentColumns = "id",
-                        childColumns = "rol_id",
-                        onDelete = ForeignKey.CASCADE
-                )
+        @ForeignKey(
+                entity = RolEntity.class,
+                parentColumns = "id",
+                childColumns = "rol_id",
+                onDelete = ForeignKey.CASCADE
+        )
         },
         indices = {
                 @Index(value = "correo", unique = true),

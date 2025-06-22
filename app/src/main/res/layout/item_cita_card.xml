@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nombre_paciente"
+                android:id="@+id/item_nombre_paciente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Juan Pérez González"
@@ -31,7 +31,7 @@
                 android:textColor="#333"/>
 
             <TextView
-                android:id="@+id/servicio_de_la_cita"
+                android:id="@+id/item_servicio_de_la_cita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Limpieza dental"
@@ -40,7 +40,7 @@
                 android:layout_marginTop="4dp"/>
 
             <TextView
-                android:id="@+id/hora_de_la_cita"
+                android:id="@+id/item_hora_de_la_cita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hoy 10:30 AM"
@@ -57,7 +57,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/estado_cita"
+                android:id="@+id/item_estado_cita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Confirmada"

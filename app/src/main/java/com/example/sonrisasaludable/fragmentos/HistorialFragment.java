@@ -77,7 +77,7 @@ public class HistorialFragment extends Fragment {
         // Listener para eliminar cita
         btnDeleteCita.setOnClickListener(v -> {
             // Lógica para eliminar cita
-            Toast.makeText(getContext(), "Cita borrada en BD, actualizar fragmento", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "CitaProgreso borrada en BD, actualizar fragmento", Toast.LENGTH_SHORT).show();
         });
 
         // Listener para ver detalle de cita (llevar a ReciboActivity)

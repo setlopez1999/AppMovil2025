@@ -1,38 +1,38 @@
 package com.example.sonrisasaludable.actividades;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.util.Log;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
-
 import com.example.sonrisasaludable.R;
-import com.example.sonrisasaludable.data.models.LoginRequest;
-import com.example.sonrisasaludable.data.models.LoginResponse;
-import com.example.sonrisasaludable.data.network.ApiService;
-import com.example.sonrisasaludable.data.network.RetrofitClient;
-import com.example.sonrisasaludable.data.worker.UsuarioSyncWorker;
+import com.example.sonrisasaludable.data.database.AppDatabase;
+import com.example.sonrisasaludable.data.entidades.DoctorEntity;
+import com.example.sonrisasaludable.data.models.*;
+import com.example.sonrisasaludable.data.network.*;
+import com.example.sonrisasaludable.utilidades.SessionManager;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit2.*;
+
 
 public class SesionActivity extends AppCompatActivity {
 
     private CheckBox chkRecordar;
+    // mi solteron
+    SessionManager sesion = SessionManager.getInstance(this);
+    private AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesion);
 
+        database = AppDatabase.getInstance(getApplicationContext());
         EditText edtCorreo = findViewById(R.id.sesTxtCorreo);
         EditText edtClave = findViewById(R.id.sesTxtClave);
         Button btnIngresar = findViewById(R.id.sesBtnIngresar);
@@ -64,17 +64,24 @@ public class SesionActivity extends AppCompatActivity {
     }
     private void loginUser(String correo, String clave) {
         ApiService apiService = RetrofitClient.getApiService();
-        LoginRequest loginRequest = new LoginRequest(correo, clave);
 
+        LoginRequest loginRequest = new LoginRequest(correo, clave);
         Call<LoginResponse> call = apiService.login(loginRequest);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    String token = response.body().getToken();
-                    String rol = response.body().getRol();
-                    saveToken(token, rol);
-                    redirectUser(rol);
+                    //Al parecer usar el objeto SessionMannager hace que afuerzas
+                    // le tenga que meter try catch a todo xd
+                    // Nota despues investigar porque
+                    try {
+                        guardardatos(response);
+                    } catch (GeneralSecurityException e) {
+                        throw new RuntimeException(e);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    redirectUser(sesion.getRole());
                 } else {
                     Toast.makeText(SesionActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
@@ -86,6 +93,32 @@ public class SesionActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void guardardatos(Response<LoginResponse> response) throws GeneralSecurityException, IOException {
+
+        String token = response.body().getAuthToken();
+        int id = response.body().getUserId();
+        String rol = response.body().getUserRole();
+        String name = response.body().getUserName();
+        String email = response.body().getUserEmail();
+        String photo = response.body().getUserPhoto();
+        boolean status = response.body().isLoggedIn(); //Este ta por la puras xdddd
+        sesion.saveSession(token,id,rol,name,email,photo);
+
+        int id_doctor = -1;
+        if (rol.equals("doctor")) {
+            ExecutorService serv = Executors.newSingleThreadExecutor();
+            serv.execute(() -> {
+                DoctorEntity doctor = database.doctorDao().getByUsuarioId(id);
+                int idDoctor = (doctor != null) ? doctor.getId() : -1;
+                sesion.saveDoctorId(idDoctor);
+                Log.d("SesionActivity", "Doctor ID guardado: " + idDoctor);
+            });
+        }
+    }
+
+
+    //DEPRECADO
     private void saveToken(String token, String rol) {
         SharedPreferences sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -101,7 +134,6 @@ public class SesionActivity extends AppCompatActivity {
 
         switch (rol) {
             case "admin":
-                //intent = new Intent(SesionActivity.this, AdminActivity.class);
                 intent = new Intent(SesionActivity.this, MenuAdminActivity.class); // o deja comentado si no tienes
                 break;
             case "doctor":
@@ -123,4 +155,5 @@ public class SesionActivity extends AppCompatActivity {
     public void mostrar(String mensaje){
         Toast.makeText(SesionActivity.this, mensaje, Toast.LENGTH_SHORT).show();
     }
+
 }

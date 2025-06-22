@@ -15,7 +15,7 @@ composeBom = "2024.09.00"
 navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
 okhttp = "4.12.0"
-
+security = "1.1.0-alpha06"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -65,11 +65,9 @@ lifecycle-livedata = "androidx.lifecycle:lifecycle-livedata:2.9.0"
 # GSON
 gson = "com.google.code.gson:gson:2.10.1"
 
-
-
+# ENCRIPTED SHARED PREFERENCE
+security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+android-application = { id = "com.android.application", version = "8.9.1" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }

@@ -8,6 +8,16 @@ import java.util.Locale;
 
 public class LocaleHelper {
 
+    public static Context cambiarIdiomaReturnContext(Context context, String codigoIdioma) {
+        Locale locale = new Locale(codigoIdioma);
+        Locale.setDefault(locale);
+
+        Resources resources = context.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+
+        return context.createConfigurationContext(config);
+    }
     public static void cambiarIdioma(Context context, String codigoIdioma) {
         Locale locale = new Locale(codigoIdioma);
         Locale.setDefault(locale);

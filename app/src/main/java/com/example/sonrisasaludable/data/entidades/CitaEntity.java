@@ -41,13 +41,13 @@ public class CitaEntity {
     private int id;
 
     @ColumnInfo(name = "usuario_id")
-    private int usuarioId;  // paciente
+    private int usuario_id;  // paciente
 
     @ColumnInfo(name = "doctor_id")
-    private int doctorId;
+    private int doctor_id;
 
     @ColumnInfo(name = "servicio_id")
-    private Integer servicioId;  // Puede ser null
+    private Integer servicio_id;  // Puede ser null
 
     @ColumnInfo(name = "fecha")
     private String fecha;  // Formato: "YYYY-MM-DD"
@@ -62,37 +62,37 @@ public class CitaEntity {
     private String nota;
 
     @ColumnInfo(name = "creado_en")
-    private String creadoEn;
+    private String creado_en;
 
     // Constructor vacío
     public CitaEntity() {}
 
     // Constructor completo
-    public CitaEntity(int id, int usuarioId, int doctorId, Integer servicioId,
-                      String fecha, String hora, String estado, String nota, String creadoEn) {
+    public CitaEntity(int id, int usuario_id, int doctor_id, Integer servicio_id,
+                      String fecha, String hora, String estado, String nota, String creado_en) {
         this.id = id;
-        this.usuarioId = usuarioId;
-        this.doctorId = doctorId;
-        this.servicioId = servicioId;
+        this.usuario_id = usuario_id;
+        this.doctor_id = doctor_id;
+        this.servicio_id = servicio_id;
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
         this.nota = nota;
-        this.creadoEn = creadoEn;
+        this.creado_en = creado_en;
     }
 
     // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public int getUsuarioId() { return usuarioId; }
-    public void setUsuarioId(int usuarioId) { this.usuarioId = usuarioId; }
+    public int getUsuario_id() { return usuario_id; }
+    public void setUsuario_id(int usuario_id) { this.usuario_id = usuario_id; }
 
-    public int getDoctorId() { return doctorId; }
-    public void setDoctorId(int doctorId) { this.doctorId = doctorId; }
+    public int getDoctor_id() { return doctor_id; }
+    public void setDoctor_id(int doctor_id) { this.doctor_id = doctor_id; }
 
-    public Integer getServicioId() { return servicioId; }
-    public void setServicioId(Integer servicioId) { this.servicioId = servicioId; }
+    public Integer getServicio_id() { return servicio_id; }
+    public void setServicio_id(Integer servicio_id) { this.servicio_id = servicio_id; }
 
     public String getFecha() { return fecha; }
     public void setFecha(String fecha) { this.fecha = fecha; }
@@ -106,6 +106,6 @@ public class CitaEntity {
     public String getNota() { return nota; }
     public void setNota(String nota) { this.nota = nota; }
 
-    public String getCreadoEn() { return creadoEn; }
-    public void setCreadoEn(String creadoEn) { this.creadoEn = creadoEn; }
+    public String getCreado_en() { return creado_en; }
+    public void setCreado_en(String creado_en) { this.creado_en = creado_en; }
 }

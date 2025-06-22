@@ -24,6 +24,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -35,9 +36,12 @@ public interface ApiService {
 
     @GET("doctores")
     Call<List<DoctorEntity>> getDoctores();
-
+/*
     @GET("citas")
-    Call<List<CitaEntity>> getCitas();
+    Call<List<CitaEntity>> getCitas();*/
+
+    @GET("citas/doctor/{idDoctor}")
+    Call<List<CitaEntity>> getCitas(@Path("idDoctor") int idDoctor);
 
     @GET("recibos")
     Call<List<ReciboEntity>> getRecibos();

@@ -8,12 +8,14 @@ import androidx.work.WorkerParameters;
 import com.example.sonrisasaludable.data.database.AppDatabase;
 import com.example.sonrisasaludable.data.entidades.CitaEntity;
 import com.example.sonrisasaludable.data.network.RetrofitClient;
+import com.example.sonrisasaludable.utilidades.SessionManager;
 
 import java.util.List;
 
 import retrofit2.Response;
 
 public class CitaSyncWorker extends Worker {
+
 
     public CitaSyncWorker(@NonNull Context context, @NonNull WorkerParameters params) {
         super(context, params);
@@ -23,9 +25,11 @@ public class CitaSyncWorker extends Worker {
     @Override
     public Result doWork() {
         try {
+            SessionManager sesion = SessionManager.getInstance(getApplicationContext());
+
             Response<List<CitaEntity>> response = RetrofitClient
                     .getApiService()
-                    .getCitas()
+                    .getCitas(sesion.getUserId())
                     .execute();
 
             if (response.isSuccessful() && response.body() != null) {

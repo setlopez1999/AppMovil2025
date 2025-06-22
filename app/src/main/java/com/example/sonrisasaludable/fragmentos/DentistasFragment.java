@@ -14,7 +14,7 @@ import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.actividades.DetalleDentistaActivity;
 import com.example.sonrisasaludable.data.models.adapters.DoctorConUsuarioAdapter;
 import com.example.sonrisasaludable.data.models.viewmodels.DoctorViewModel;
-import com.example.sonrisasaludable.data.models.viewmodels.DoctorViewModelFactory;
+import com.example.sonrisasaludable.data.models.factory.DoctorViewModelFactory;
 
 
 public class DentistasFragment extends Fragment {
@@ -39,14 +39,14 @@ public class DentistasFragment extends Fragment {
                 new DoctorViewModelFactory(requireContext())
         ).get(DoctorViewModel.class);
 
-        // Observar la lista combinada de Doctor + Usuario
+        // Observador de los datos con el livedata
         doctorViewModel.getDoctoresConUsuario().observe(getViewLifecycleOwner(), doctores -> {
             if (doctores != null && !doctores.isEmpty()) {
                 adapter = new DoctorConUsuarioAdapter(requireContext(), doctores, doctor -> {
 
                     // ESTO abre a la nueva actividad detalle dentista
                     Intent intent = new Intent(requireContext(), DetalleDentistaActivity.class);
-                    intent.putExtra("doctor", doctor); // Asegúrate que DoctorConUsuario implementa Serializable
+                    intent.putExtra("doctor", doctor);
                     startActivity(intent);
                 });
 
