@@ -31,6 +31,10 @@
         <item>Ruso</item>
         <item>Chino</item>
     </string-array>
+    <string-array name="options_temas">
+        <item>Claro</item>
+        <item>Oscuro</item>
+    </string-array>
 
     <string-array name="options_sexo">
         <item>Masculino</item>
@@ -109,6 +113,38 @@
     <!-- Botones -->
     <string name="guardar_ajustes">Guardar</string>
     <string name="restaurar_defecto">Restaurar</string>
+
+
+    <string name="fragment_d_home_bienvenido_doctor">Bienvenido Doctor</string>
+    <string name="fragment_d_home_citas_hoy">Citas Hoy</string>
+    <string name="fragment_d_home_pendientes">Pendientes</string>
+    <string name="fragment_d_home_completadas">Completadas</string>
+    <string name="fragment_d_home_ver_todas_citas">Ver Todas las Citas</string>
+    <string name="fragment_d_home_nueva_cita">Nueva Cita</string>
+
+    <string name="fragment_p_profile_foto_doctor">Foto del doctor</string>
+    <string name="fragment_p_profile_mi_perfil">Mi Perfil</string>
+    <string name="fragment_p_profile_nombre_demo">Dr. Juan Carlos Mendoza</string>
+    <string name="fragment_p_profile_especialidad_demo">Odontólogo General</string>
+
+    <string name="fragment_p_profile_info_personal">Información Personal</string>
+    <string name="fragment_p_profile_cedula_label">Cédula Profesional:</string>
+    <string name="fragment_p_profile_cedula_demo">12345678</string>
+    <string name="fragment_p_profile_email_label">Email:</string>
+    <string name="fragment_p_profile_email_demo">dr.mendoza@clinica.com</string>
+    <string name="fragment_p_profile_telefono_label">Teléfono:</string>
+    <string name="fragment_p_profile_telefono_demo">+51 987 654 321</string>
+    <string name="fragment_p_profile_editar_perfil">Editar Perfil</string>
+
+    <string name="fragment_p_profile_resenas_pacientes">Reseñas de Pacientes</string>
+    <string name="fragment_p_profile_calificacion_demo">4.8</string>
+    <string name="fragment_p_profile_estrellas">★★★★★</string>
+    <string name="fragment_p_profile_num_resenas">(24)</string>
+    <string name="fragment_p_profile_ver_todas_resenas">Ver Todas las Reseñas</string>
+
+
+
+
 
 
     <string name="terminos_condiciones_frase">Acepto los términos y condiciones</string>

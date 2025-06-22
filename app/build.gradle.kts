@@ -82,5 +82,8 @@ dependencies {
     //Encrypted y MasterKey
     implementation(libs.security.crypto)
 
+    //lector de huella
+    implementation(libs.biometric)
+
 
 }
