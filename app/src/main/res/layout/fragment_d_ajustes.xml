@@ -193,7 +193,7 @@
                     </LinearLayout>
 
                     <Switch
-                        android:id="@+id/swNotificaciones"
+                        android:id="@+id/spinwNotificaciones"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -230,7 +230,7 @@
                             android:textStyle="bold"/>
 
                         <SeekBar
-                            android:id="@+id/seekVolumenNotif"
+                            android:id="@+id/spseekVolumenNotif"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -306,7 +306,7 @@
                     </LinearLayout>
 
                     <Switch
-                        android:id="@+id/swHuellaDactilar"
+                        android:id="@+id/spswHuellaDactilar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
