@@ -68,10 +68,6 @@ gson = "com.google.code.gson:gson:2.10.1"
 # ENCRIPTED SHARED PREFERENCE
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 
-
-
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+android-application = { id = "com.android.application", version = "8.9.1" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }

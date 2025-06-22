@@ -1,6 +1,7 @@
 package com.example.sonrisasaludable;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.work.Constraints;
@@ -214,6 +215,9 @@ public class MyApplication extends Application {
 
     public static MyApplication getInstance() {
         return instance;
+    }
+    public static Context getAppContext() {
+        return instance.getApplicationContext();
     }
 
     // Getters para repositorios si quieres acceder desde otras partes

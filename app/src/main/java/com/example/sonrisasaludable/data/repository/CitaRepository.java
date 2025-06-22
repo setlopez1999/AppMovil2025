@@ -3,10 +3,13 @@ package com.example.sonrisasaludable.data.repository;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.sonrisasaludable.MyApplication;
 import com.example.sonrisasaludable.data.dao.CitaDao;
 import com.example.sonrisasaludable.data.entidades.CitaEntity;
 import com.example.sonrisasaludable.data.models.CitaConDetalles;
 import com.example.sonrisasaludable.data.network.ApiService;
+import com.example.sonrisasaludable.utilidades.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +21,12 @@ import retrofit2.Response;
 
 public class CitaRepository {
 
+    SessionManager sesion = SessionManager.getInstance(MyApplication.getAppContext());
     private final CitaDao citaDao;
     private final ApiService apiService;
     private final ExecutorService executor;
     private final MutableLiveData<Boolean> isSyncing = new MutableLiveData<>(false);
+
 
     public CitaRepository(CitaDao citaDao, ApiService apiService) {
         this.citaDao = citaDao;
@@ -71,7 +76,7 @@ public class CitaRepository {
     }
     public void sincronizarCitasDesdeApi() {
         isSyncing.postValue(true);
-        apiService.getCitas(2).enqueue(new Callback<List<CitaEntity>>() {
+        apiService.getCitas(sesion.getDoctorId()).enqueue(new Callback<List<CitaEntity>>() {
             @Override
             public void onResponse(Call<List<CitaEntity>> call, Response<List<CitaEntity>> response) {
                 if (response.isSuccessful() && response.body() != null) {
