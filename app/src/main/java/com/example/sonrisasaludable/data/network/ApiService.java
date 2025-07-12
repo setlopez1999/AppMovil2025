@@ -36,12 +36,16 @@ public interface ApiService {
 
     @GET("doctores")
     Call<List<DoctorEntity>> getDoctores();
-/*
-    @GET("citas")
-    Call<List<CitaEntity>> getCitas();*/
 
+
+
+    //probando
+    @GET("citas")
+    Call<List<CitaEntity>> getCitas();
     @GET("citas/doctor/{idDoctor}")
     Call<List<CitaEntity>> getCitas(@Path("idDoctor") int idDoctor);
+
+
 
     @GET("recibos")
     Call<List<ReciboEntity>> getRecibos();

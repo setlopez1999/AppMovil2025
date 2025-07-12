@@ -24,14 +24,14 @@ public class SesionActivity extends AppCompatActivity {
 
     private CheckBox chkRecordar;
     // mi solteron
-    SessionManager sesion = SessionManager.getInstance(this);
+    SessionManager sesion ;
     private AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesion);
-
+        sesion = SessionManager.getInstance(this);
         database = AppDatabase.getInstance(getApplicationContext());
         EditText edtCorreo = findViewById(R.id.sesTxtCorreo);
         EditText edtClave = findViewById(R.id.sesTxtClave);
@@ -112,7 +112,7 @@ public class SesionActivity extends AppCompatActivity {
                 DoctorEntity doctor = database.doctorDao().getByUsuarioId(id);
                 int idDoctor = (doctor != null) ? doctor.getId() : -1;
                 sesion.saveDoctorId(idDoctor);
-                Log.d("SesionActivity", "Doctor ID guardado: " + idDoctor);
+                Log.d("SesionActivity", "Doctor ID guardado: " + idDoctor + "Con id user de :" + id);
             });
         }
     }
@@ -129,7 +129,7 @@ public class SesionActivity extends AppCompatActivity {
     private void redirectUser(String rol) {
         Intent intent;
         if (chkRecordar.isChecked()) {
-            // Aquí puedes implementar guardar cuenta localmente si quieres
+            // Futuro
         }
 
         switch (rol) {
@@ -143,6 +143,7 @@ public class SesionActivity extends AppCompatActivity {
                 intent = new Intent(SesionActivity.this, MenuUserActivity.class);
                 break;
             default:
+                mostrar("PASA POR DEFAULT");
                 intent = new Intent(this, SesionActivity.class);
                 break;
         }

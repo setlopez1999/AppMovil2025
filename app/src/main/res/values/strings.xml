@@ -1,4 +1,8 @@
 <resources>
+    <string name="google_maps_key">AIzaSyDPEzq6U9-c-f27g7TdgnZrobNnrvePIKQ</string>
+
+
+
     <string name="app_name">SonrisaSaludable</string>
     <string name="carLblMensaje">Cargando...</string>
     <string name="sesHintCorreo">Correo</string>
@@ -116,7 +120,7 @@
 
 
     <string name="fragment_d_home_bienvenido_doctor">Bienvenido Doctor</string>
-    <string name="fragment_d_home_citas_hoy">Citas Hoy</string>
+    <string name="fragment_d_home_confirmadas">Confirmadas</string>
     <string name="fragment_d_home_pendientes">Pendientes</string>
     <string name="fragment_d_home_completadas">Completadas</string>
     <string name="fragment_d_home_ver_todas_citas">Ver Todas las Citas</string>
@@ -141,10 +145,6 @@
     <string name="fragment_p_profile_estrellas">★★★★★</string>
     <string name="fragment_p_profile_num_resenas">(24)</string>
     <string name="fragment_p_profile_ver_todas_resenas">Ver Todas las Reseñas</string>
-
-
-
-
 
 
     <string name="terminos_condiciones_frase">Acepto los términos y condiciones</string>
