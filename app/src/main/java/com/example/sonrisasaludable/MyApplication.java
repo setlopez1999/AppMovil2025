@@ -124,7 +124,7 @@ public class MyApplication extends Application {
                 .then(doctorSync)
                 .then(servicioSync)
                 .then(citaSync)
-                //.then(resenaSync)
+                .then(resenaSync)
                 .then(reciboSync)
                 .then(historialSync)
                 .then(horarioSync)

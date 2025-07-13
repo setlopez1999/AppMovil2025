@@ -57,7 +57,7 @@
     <string name="titulo_implantologia">Implantologia</string>
     <string name="titulo_endodoncia">Endodoncia</string>
     <string name="titulo_periodoncia">Periodoncia</string>
-    <string name="titulo_doctores_main">Nuestros doctores</string>
+    <string name="titulo_doctores_main">Nuestras Sedes</string>
     <string name="click_aqui">Haz Click Aqui</string>
 
     <!-- Fragmento Doctores -->
@@ -86,7 +86,7 @@
 
     <string name="historial_citas">Historial de citas</string>
     <string name="proximas_citas">Próximas citas</string>
-    <string name="citas_pasadas">Citas pasadas</string>
+    <string name="citas_pasadas">Citas agendadas</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_recibo">ReciboActivity</string>

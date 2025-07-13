@@ -79,6 +79,11 @@ public class CitaRepository {
         return citaDao.getCitasConDetalles();
     }
 
+    public LiveData<List<CitaConDetalles>> getCitasConDetallesDeUsuario(int usuarioId) {
+        return citaDao.getCitasConDetallesDeUsuario(usuarioId);
+    }
+
+
     public void sincronizarCitasDesdeApi() {
         isSyncing.postValue(true);
         apiService.getCitas(sesion.getDoctorId()).enqueue(new Callback<List<CitaEntity>>() {
