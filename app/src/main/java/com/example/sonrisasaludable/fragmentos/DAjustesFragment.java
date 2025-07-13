@@ -4,6 +4,8 @@ package com.example.sonrisasaludable.fragmentos;
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.actividades.SesionActivity;
 import com.example.sonrisasaludable.utilidades.UserPreferences;
+import com.example.sonrisasaludable.utilidades.SessionManager;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -60,7 +62,7 @@ public class DAjustesFragment extends Fragment  implements View.OnClickListener,
         setupSpinners();
 
         // Cargar configuraciones guardadas
-        //loadSettings();
+        cargarEstadoModoOscuro();
 
         // Configurar listeners
         setupListeners();
@@ -202,7 +204,7 @@ public class DAjustesFragment extends Fragment  implements View.OnClickListener,
         });
 
         // Botón guardar
-        btnGuardarAjustes.setOnClickListener(v -> guardarAjustes());
+        btnGuardarAjustes.setOnClickListener(v -> aplicarCambios());
 
         // Botón restaurar
         btnRestaurarDefecto.setOnClickListener(v -> restaurarDefecto());
@@ -234,15 +236,31 @@ public class DAjustesFragment extends Fragment  implements View.OnClickListener,
         prefs.setHuellaActiva(swHuellaDactilar.isChecked());
         Toast.makeText(getContext(), "Ajustes guardados correctamente", Toast.LENGTH_SHORT).show();
     }
+    private void cargarEstadoModoOscuro() {
+        SessionManager sessionManager = SessionManager.getInstance(getContext());
+        boolean modoOscuro = sessionManager.isDarkMode();
+        spnTemaApp.setSelection(modoOscuro ? 1 : 0);
+    }
+    
+    private void aplicarCambios() {
+        SessionManager sessionManager = SessionManager.getInstance(getContext());
+        boolean nuevoModoOscuro = (spnTemaApp.getSelectedItemPosition() == 1);
+        
+        if (sessionManager.isDarkMode() != nuevoModoOscuro) {
+            sessionManager.setDarkMode(nuevoModoOscuro);
+            ThemeManager.applyTheme(getContext());
+            getActivity().recreate();
+        }
+        
+        Toast.makeText(getContext(), "Ajustes aplicados", Toast.LENGTH_SHORT).show();
+    }
+    
     private void restaurarDefecto() {
-        // Restaurar valores por defecto
         spnTemaApp.setSelection(0); // Tema claro
-        spnIdioma.setSelection(0); // Español
-        swNotificaciones.setChecked(true);
-        llVolumenNotif.setVisibility(View.VISIBLE);
-        seekVolumenNotif.setProgress(50);
-        swHuellaDactilar.setChecked(false);
-        prefs.clearAll();
+        SessionManager sessionManager = SessionManager.getInstance(getContext());
+        sessionManager.setDarkMode(false);
+        ThemeManager.applyTheme(getContext());
+        getActivity().recreate();
         Toast.makeText(getContext(), "Ajustes restaurados por defecto", Toast.LENGTH_SHORT).show();
     }
 
