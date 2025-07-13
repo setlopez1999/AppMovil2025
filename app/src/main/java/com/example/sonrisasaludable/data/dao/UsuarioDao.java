@@ -51,4 +51,8 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM usuarios")
     LiveData<List<UsuarioEntity>> getAllUsuarios();
+
+
+    @Query("SELECT EXISTS(SELECT 1 FROM usuarios WHERE id = :id)")
+    boolean existeUsuario(int id);
 }

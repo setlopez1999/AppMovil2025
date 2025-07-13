@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class ResenaSyncWorker extends Worker {
 
-    private AppDatabase db;
+    private final AppDatabase db;
 
     public ResenaSyncWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -29,17 +29,51 @@ public class ResenaSyncWorker extends Worker {
     public Result doWork() {
         try {
             Response<List<ResenaEntity>> response = RetrofitClient.getApiService().getResenas().execute();
+
             if (response.isSuccessful() && response.body() != null) {
                 List<ResenaEntity> resenas = response.body();
+
+                if (resenas.isEmpty()) {
+                    // nada que sincronizar
+                    return Result.success();
+                }
+
+                // validamos claves foráneas antes de borrar e insertar
+                boolean clavesExisten = verificarClavesForaneas(resenas);
+
+                if (!clavesExisten) {
+                    // las claves necesarias aún no están, reintentamos después
+                    return Result.retry();
+                }
+
                 db.resenaDao().deleteAll();
                 db.resenaDao().insertAll(resenas);
+
                 return Result.success();
             } else {
+                // error del servidor o datos inválidos
                 return Result.retry();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
             return Result.retry();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure();
         }
+    }
+
+    /**
+     * Verifica que las claves foráneas necesarias existan antes de insertar las reseñas.
+     */
+    private boolean verificarClavesForaneas(List<ResenaEntity> resenas) {
+        for (ResenaEntity resena : resenas) {
+            boolean citaExiste = db.citaDao().existeCita(resena.getCitaId());
+            if (!citaExiste) {
+                return false;
+            }
+        }
+        return true;
     }
 }

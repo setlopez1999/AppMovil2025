@@ -22,6 +22,7 @@ public class CitasViewModel extends ViewModel {
     private final LiveData<List<ServicioEntity>> servicios;
     private final LiveData<List<SedeEntity>> sedes;
 
+    
     public CitasViewModel(
             CitaRepository repository,
             LiveData<List<UsuarioEntity>> usuarios,
@@ -74,5 +75,9 @@ public class CitasViewModel extends ViewModel {
 
     public void insertarCitaConSincronizacion(CitaEntity cita, Context context) {
         citaRepository.insertarCitaConSincronizacion(cita,context);
+    }
+
+    public LiveData<List<CitaConDetalles>> getCitasDeUsuario(int usuarioId) {
+        return citaRepository.getCitasConDetallesDeUsuario(usuarioId);
     }
 }

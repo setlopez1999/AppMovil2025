@@ -82,4 +82,29 @@ public interface CitaDao {
     @Query("UPDATE citas SET estado = :estado WHERE id = :id")
     void actualizarEstado(int id, String estado);
 
+
+    @Query("SELECT c.id, c.usuario_id, c.doctor_id, c.servicio_id, c.fecha, c.hora, c.estado, " +
+            "u.nombres as paciente_nombre, u.apellidos as paciente_apellido, " +
+            "d.id as doctor_info, s.nombre as servicio_nombre " +
+            "FROM citas c " +
+            "INNER JOIN usuarios u ON c.usuario_id = u.id " +
+            "INNER JOIN doctores d ON c.doctor_id = d.id " +
+            "LEFT JOIN servicios s ON c.servicio_id = s.id " +
+            "WHERE c.usuario_id = :usuarioId " +
+            "ORDER BY c.fecha DESC, c.hora DESC")
+    LiveData<List<CitaConDetalles>> getCitasConDetallesDeUsuario(int usuarioId);
+
+    @Query("SELECT c.id, c.usuario_id, c.doctor_id, c.servicio_id, c.fecha, c.hora, c.estado, " +
+            "u.nombres AS paciente_nombre, u.apellidos AS paciente_apellido, " +
+            "d.id AS doctor_info, s.nombre AS servicio_nombre " +
+            "FROM citas c " +
+            "INNER JOIN usuarios u ON c.usuario_id = u.id " +
+            "INNER JOIN doctores d ON c.doctor_id = d.id " +
+            "LEFT JOIN servicios s ON c.servicio_id = s.id " +
+            "WHERE c.id = :id LIMIT 1")
+    CitaConDetalles getCitaConDetallesById(int id);
+
+    @Query("SELECT EXISTS(SELECT 1 FROM citas WHERE id = :id)")
+    boolean existeCita(int id);
+
 }
