@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="40dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragmentos.ConfiguracionFragment">
 
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingTop="15dp"
         android:background="@color/white">
 
         <!-- Card view perfil-->
@@ -32,63 +34,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp">
-
-            <LinearLayout
+            <FrameLayout
+                android:id="@+id/contenedorPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <!-- Imagen circular -->
-                <ImageView
-                    android:id="@+id/imgPerfil"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginEnd="16dp"
-                    android:clipToOutline="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/user" />
-
-                <!-- Info del usuario -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <!-- cambiar TEXT POR ID STRING -->
-                    <TextView
-                        android:id="@+id/tvNombreUsuario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Omar Cárdenas"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <!-- cambiar TEXT POR ID STRING -->
-                    <TextView
-                        android:id="@+id/tvCorreoUsuario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="omar@example.com"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <!-- cambiar TEXT POR ID STRING -->
-                    <TextView
-                        android:id="@+id/tvTelefonoUsuario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="+51 987 654 321"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"/>
         </androidx.cardview.widget.CardView>
 
 
@@ -201,6 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <Button

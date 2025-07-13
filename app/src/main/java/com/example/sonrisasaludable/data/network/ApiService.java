@@ -20,9 +20,11 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
@@ -30,6 +32,21 @@ public interface ApiService {
 
     @GET("usuarios")
     Call<List<UsuarioEntity>> getUsuarios();
+    @GET("usuarios/{id}")
+    Call<UsuarioResponse> getUsuarioPorId(@Path("id") int id);
+
+    @Multipart
+    @PUT("usuarios/{id}")
+    Call<UsuarioResponse> updateUsuarioPorId(
+            @Path("id") int id,
+            @Part MultipartBody.Part foto,
+            @Part("nombres") RequestBody nombres,
+            @Part("apellidos") RequestBody apellidos,
+            @Part("telefono") RequestBody telefono,
+            @Part("direccion") RequestBody direccion,
+            @Part("sexo") RequestBody sexo,
+            @Part("dni") RequestBody dni
+    );
 
     @GET("resenas")
     Call<List<ResenaEntity>> getResenas();

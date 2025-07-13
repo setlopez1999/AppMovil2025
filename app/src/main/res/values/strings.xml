@@ -2,7 +2,6 @@
     <string name="google_maps_key">AIzaSyDPEzq6U9-c-f27g7TdgnZrobNnrvePIKQ</string>
 
 
-
     <string name="app_name">SonrisaSaludable</string>
     <string name="carLblMensaje">Cargando...</string>
     <string name="sesHintCorreo">Correo</string>
@@ -12,8 +11,8 @@
     <string name="sesBtnIngresar">Ingresar</string>
     <string name="sesBtnSalir">Salir</string>
     <string name="sesLblCopy">Copyright ® 2025</string>
-
-
+    <string name="editarperfil">Editar Perfil</string>
+    <string name="textoGuardar">Guardar Cambios</string>
     <string name="placeholderBuscar">Buscar...</string>
 
 

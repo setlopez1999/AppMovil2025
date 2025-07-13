@@ -180,7 +180,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void configurarFechaNacimiento() {
-        etFecha.setOnClickListener(v -> {
+        etFecha .setOnClickListener(v -> {
             final Calendar calendario = Calendar.getInstance();
             int anio = calendario.get(Calendar.YEAR);
             int mes = calendario.get(Calendar.MONTH);

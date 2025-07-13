@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,18 +20,19 @@ import android.widget.Toast;
 
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.actividades.SesionActivity;
+import com.example.sonrisasaludable.data.models.UsuarioResponse;
+import com.example.sonrisasaludable.interfaces.OnPerfilActionsListener;
+import com.example.sonrisasaludable.utilidades.SessionManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConfiguracionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ConfiguracionFragment extends Fragment implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
+public class ConfiguracionFragment extends Fragment implements View.OnClickListener,
+        SeekBar.OnSeekBarChangeListener,
+        OnPerfilActionsListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private UsuarioResponse usuarioActual;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -39,11 +41,11 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     // Declaración de las variables de los componentes de la vista
     Spinner cboIdiomas; // Para el ComboBox
     CheckBox chkNotificaciones; // Para el CheckBox
-    TextView lblSonido; // Para la etiqueta de Sonido
+    TextView lblSonido,tvCorreoUsuario,tvTelefonoUsuario,tvNombreUsuario; // Para la etiqueta de Sonido
     SeekBar barSonido; // Para la barra de sonido
-    Button btnAplicar, btnRestaurar, btnCerrarSesion; // Para el botón aplicar y Restaurar
-
-
+    Button btnAplicar, btnRestaurar, btnEditarPerfil, btnCerrarSesion; // Para el botón aplicar y Restaurar
+    private ImageView ivFotoPaciente;
+    private SessionManager sessionManager;
 
     public ConfiguracionFragment() {
         // Required empty public constructor
@@ -66,7 +68,39 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         fragment.setArguments(args);
         return fragment;
     }
+    @Override
+    public void onEditarPerfil() {
+        if (usuarioActual != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("dni", usuarioActual.getDni());
+            bundle.putString("nombres", usuarioActual.getNombres());
+            bundle.putString("apellidos", usuarioActual.getApellidos());
+            bundle.putString("correo", usuarioActual.getCorreo());
+            bundle.putString("telefono", usuarioActual.getTelefono());
+            bundle.putString("direccion", usuarioActual.getDireccion());
+            bundle.putString("fechanacimiento", usuarioActual.getFechanacimiento());
+            bundle.putString("sexo", usuarioActual.getSexo());
+            bundle.putString("foto_perfil", usuarioActual.getFoto_perfil());
 
+            EditPerfilPaciente editFragment = new EditPerfilPaciente();
+            editFragment.setArguments(bundle);
+
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.contenedorPerfil, editFragment)
+                    .commit();
+        } else {
+            Toast.makeText(getContext(), "Los datos del perfil aún no están cargados", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void onPerfilActualizado() {
+        cargarDatosUsuario(); // vuelve a cargar los datos desde SessionManager
+    }
+    public void onCancelarEdicion() {
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.contenedorPerfil, new PerfilPaciente())
+                .commit();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +115,7 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflar el layout para este fragmento
         View vista = inflater.inflate(R.layout.fragment_configuracion, container, false);
-
+        sessionManager = SessionManager.getInstance(getContext());
         // Inicializar los componentes de la vista
         cboIdiomas = vista.findViewById(R.id.frgCfgcboIdioma); // Spinner (ComboBox)
         chkNotificaciones = vista.findViewById(R.id.froCfgchkNotificacines); // Checkbox
@@ -96,18 +130,18 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         btnRestaurar.setOnClickListener(this);
         barSonido.setOnSeekBarChangeListener(this);
 
+
         //Botón cerrar sesión
         Button btnCerrarSesion = vista.findViewById(R.id.btnCerrarSesion);
 
         btnCerrarSesion.setOnClickListener(v -> {
-            // Crear Intent para ir a SesionActivity
             Intent intent = new Intent(getActivity(), SesionActivity.class);
             startActivity(intent);
-
-            // Finalizar la actividad actual (opcional)
             getActivity().finish();
         });
+
         cargarPreferencias();
+        cargarDatosUsuario();
         return vista;
     }
 
@@ -123,8 +157,20 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         barSonido.setProgress(sonido);
 
     }
+    public UsuarioResponse getUsuarioActual() {
+        return usuarioActual;
+    }
+    private void cargarDatosUsuario() {
+        usuarioActual = sessionManager.getUsuario(); // ← ahora accedes desde SessionManager
 
-
+        if (usuarioActual != null) {
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.contenedorPerfil, new PerfilPaciente())
+                    .commit();
+        } else {
+            Toast.makeText(getContext(), "No se pudieron cargar los datos del perfil", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onClick(View v) {

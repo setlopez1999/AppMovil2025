@@ -9,8 +9,9 @@
     <string name="sesBtnSalir">Logout</string>
     <string name="sesLblCopy">Copyright ® 2025</string>
 
+    <string name="editarperfil">Edit Profile</string>
     <string name="placeholderBuscar">Search...</string>
-
+    <string name="textoGuardar">Save Changes</string>
     <string name="frgCfgBtnAplicar">Apply</string>
     <string name="frgCfgBtnRestaurar">Restore</string>
     <string name="sesRBtnSalir">Logout</string>
