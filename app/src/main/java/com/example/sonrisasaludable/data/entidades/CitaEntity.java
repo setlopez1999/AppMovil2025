@@ -26,12 +26,19 @@ import androidx.room.PrimaryKey;
                         parentColumns = "id",
                         childColumns = "servicio_id",
                         onDelete = ForeignKey.SET_NULL
+                ),
+                @ForeignKey(
+                        entity = SedeEntity.class,
+                        parentColumns = "id",
+                        childColumns = "sede_id",
+                        onDelete = ForeignKey.SET_NULL
                 )
         },
         indices = {
                 @Index(value = "usuario_id"),
                 @Index(value = "doctor_id"),
-                @Index(value = "servicio_id")
+                @Index(value = "servicio_id"),
+                @Index(value = "sede_id")
         }
 )
 public class CitaEntity {
@@ -48,6 +55,9 @@ public class CitaEntity {
 
     @ColumnInfo(name = "servicio_id")
     private Integer servicio_id;  // Puede ser null
+
+    @ColumnInfo(name = "sede_id")
+    private Integer sede_id;
 
     @ColumnInfo(name = "fecha")
     private String fecha;  // Formato: "YYYY-MM-DD"
@@ -68,12 +78,13 @@ public class CitaEntity {
     public CitaEntity() {}
 
     // Constructor completo
-    public CitaEntity(int id, int usuario_id, int doctor_id, Integer servicio_id,
+    public CitaEntity(int id, int usuario_id, int doctor_id, Integer servicio_id, Integer sede_id,
                       String fecha, String hora, String estado, String nota, String creado_en) {
         this.id = id;
         this.usuario_id = usuario_id;
         this.doctor_id = doctor_id;
         this.servicio_id = servicio_id;
+        this.sede_id = sede_id;
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
@@ -93,6 +104,9 @@ public class CitaEntity {
 
     public Integer getServicio_id() { return servicio_id; }
     public void setServicio_id(Integer servicio_id) { this.servicio_id = servicio_id; }
+
+    public Integer getSede_id() { return sede_id; }
+    public void setSede_id(Integer sede_id) { this.sede_id = sede_id; }
 
     public String getFecha() { return fecha; }
     public void setFecha(String fecha) { this.fecha = fecha; }

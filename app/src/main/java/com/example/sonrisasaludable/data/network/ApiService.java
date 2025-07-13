@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.data.network;
 
+import com.example.sonrisasaludable.data.entidades.SedeEntity;
 import com.example.sonrisasaludable.data.entidades.UsuarioEntity;
 import com.example.sonrisasaludable.data.entidades.ResenaEntity;
 import com.example.sonrisasaludable.data.entidades.DoctorEntity;
@@ -10,9 +11,10 @@ import com.example.sonrisasaludable.data.entidades.EspecialidadEntity;
 import com.example.sonrisasaludable.data.entidades.HorarioDisponibleEntity;
 import com.example.sonrisasaludable.data.entidades.HistorialClinicoEntity;
 import com.example.sonrisasaludable.data.entidades.RolEntity;
-import com.example.sonrisasaludable.data.models.LoginRequest;
-import com.example.sonrisasaludable.data.models.LoginResponse;
-import com.example.sonrisasaludable.data.models.UsuarioResponse;
+
+import com.example.sonrisasaludable.data.models.CitaResponse;
+
+import com.example.sonrisasaludable.data.models.*;
 
 import java.util.List;
 
@@ -20,9 +22,11 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
@@ -30,18 +34,37 @@ public interface ApiService {
 
     @GET("usuarios")
     Call<List<UsuarioEntity>> getUsuarios();
+    @GET("usuarios/{id}")
+    Call<UsuarioResponse> getUsuarioPorId(@Path("id") int id);
+
+    @Multipart
+    @PUT("usuarios/{id}")
+    Call<UsuarioResponse> updateUsuarioPorId(
+            @Path("id") int id,
+            @Part MultipartBody.Part foto,
+            @Part("nombres") RequestBody nombres,
+            @Part("apellidos") RequestBody apellidos,
+            @Part("telefono") RequestBody telefono,
+            @Part("direccion") RequestBody direccion,
+            @Part("sexo") RequestBody sexo,
+            @Part("dni") RequestBody dni
+    );
 
     @GET("resenas")
     Call<List<ResenaEntity>> getResenas();
 
     @GET("doctores")
     Call<List<DoctorEntity>> getDoctores();
-/*
-    @GET("citas")
-    Call<List<CitaEntity>> getCitas();*/
 
+
+
+    //probando
+    @GET("citas")
+    Call<List<CitaEntity>> getCitas();
     @GET("citas/doctor/{idDoctor}")
     Call<List<CitaEntity>> getCitas(@Path("idDoctor") int idDoctor);
+
+
 
     @GET("recibos")
     Call<List<ReciboEntity>> getRecibos();
@@ -61,6 +84,10 @@ public interface ApiService {
     @GET("roles")
     Call<List<RolEntity>> getRoles();
 
+    @GET("sedes")
+    Call<List<SedeEntity>> getSedes();
+
+
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
@@ -78,5 +105,11 @@ public interface ApiService {
             @Part("sexo") RequestBody sexo,
             @Part MultipartBody.Part imagen
     );
+
+    @POST("citas")
+    Call<CitaResponse> registrarCita(@Body CitaEntity citaEntity);
+
+    @PUT("citas/{id}")
+    Call<Void> actualizarCita(@Path("id") int id, @Body CitaConDetalles cita);
 
 }

@@ -9,8 +9,9 @@
     <string name="sesBtnSalir">Logout</string>
     <string name="sesLblCopy">Copyright ® 2025</string>
 
+    <string name="editarperfil">Edit Profile</string>
     <string name="placeholderBuscar">Search...</string>
-
+    <string name="textoGuardar">Save Changes</string>
     <string name="frgCfgBtnAplicar">Apply</string>
     <string name="frgCfgBtnRestaurar">Restore</string>
     <string name="sesRBtnSalir">Logout</string>
@@ -23,7 +24,7 @@
     <string name="crdlblDoctores">Dental cleaning - Dr. Karime Ortiz</string>
     <string name="crdlblSalones">Room 1</string>
 
-    <string-array name="options_array">
+    <string-array name="options_idiomas">
         <item>Spanish</item>
         <item>English</item>
         <item>Russian</item>
@@ -107,6 +108,59 @@
     <string name="guardar_ajustes">Save</string>
     <string name="restaurar_defecto">Reset</string>
 
+
+
+    <string name="fragment_d_home_bienvenido_doctor">Welcome Doctor</string>
+    <string name="fragment_d_home_confirmadas">Confirmed</string>
+    <string name="fragment_d_home_pendientes">Pending</string>
+    <string name="fragment_d_home_completadas">Completed</string>
+    <string name="fragment_d_home_ver_todas_citas">View All Appointments</string>
+    <string name="fragment_d_home_nueva_cita">New Appointment</string>
+
+    <string name="fragment_p_profile_foto_doctor">Doctors photo</string>
+    <string name="fragment_p_profile_mi_perfil">My Profile</string>
+    <string name="fragment_p_profile_nombre_demo">Dr. Juan Carlos Mendoza</string>
+    <string name="fragment_p_profile_especialidad_demo">General Dentist</string>
+
+    <string name="fragment_p_profile_info_personal">Personal Information</string>
+    <string name="fragment_p_profile_cedula_label">Professional ID:</string>
+    <string name="fragment_p_profile_cedula_demo">12345678</string>
+    <string name="fragment_p_profile_email_label">Email:</string>
+    <string name="fragment_p_profile_email_demo">dr.mendoza@clinic.com</string>
+    <string name="fragment_p_profile_telefono_label">Phone:</string>
+    <string name="fragment_p_profile_telefono_demo">+51 987 654 321</string>
+    <string name="fragment_p_profile_editar_perfil">Edit Profile</string>
+
+    <string name="fragment_p_profile_resenas_pacientes">Patient Reviews</string>
+    <string name="fragment_p_profile_calificacion_demo">4.8</string>
+    <string name="fragment_p_profile_estrellas">★★★★★</string>
+    <string name="fragment_p_profile_num_resenas">(24)</string>
+    <string name="fragment_p_profile_ver_todas_resenas">View All Reviews</string>
+
+    <string name="terminos_condiciones_frase">I accept the terms and conditions</string>
+    <string name="terminos_condiciones_subfrase">terms and conditions</string>
+    <string name="mensaje_terminos">
+    By accepting these terms, you authorize the processing and handling of your personal data with an intermediate level of security, corresponding to an academic and research project.
+    You acknowledge that this app is a prototype in development and that any claims, charges, or liability arising from the use of this information will be invalid and not enforceable.
+    Your consent is voluntary and exclusively for testing and learning purposes.
+</string>
+
+    <string name="titulo_terminos">Terms and Conditions</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
+
+    <string name="hint_dni">ID</string>
+    <string name="hint_nombres">First Name</string>
+    <string name="hint_apellidos">Last Name</string>
+    <string name="hint_fecha">Select date</string>
+    <string name="hint_correo">Email</string>
+    <string name="hint_contrasena">Password</string>
+    <string name="hint_confirmar_contrasena">Confirm Password</string>
+    <string name="hint_telefono">Phone</string>
+    <string name="hint_direccion">Address</string>
+    <string name="texto_acepto_terminos">I accept the terms and conditions</string>
+    <string name="texto_crear">Create</string>
+    <string name="texto_salir">Exit</string>
 
 
 

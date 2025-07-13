@@ -24,14 +24,14 @@ public class SesionActivity extends AppCompatActivity {
 
     private CheckBox chkRecordar;
     // mi solteron
-    SessionManager sesion = SessionManager.getInstance(this);
+    SessionManager sesion ;
     private AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesion);
-
+        sesion = SessionManager.getInstance(this);
         database = AppDatabase.getInstance(getApplicationContext());
         EditText edtCorreo = findViewById(R.id.sesTxtCorreo);
         EditText edtClave = findViewById(R.id.sesTxtClave);
@@ -76,6 +76,8 @@ public class SesionActivity extends AppCompatActivity {
                     // Nota despues investigar porque
                     try {
                         guardardatos(response);
+                        obtenerDatosUsuarioDesdeAPI(response.body().getUserId());
+
                     } catch (GeneralSecurityException e) {
                         throw new RuntimeException(e);
                     } catch (IOException e) {
@@ -93,7 +95,23 @@ public class SesionActivity extends AppCompatActivity {
             }
         });
     }
+    private void obtenerDatosUsuarioDesdeAPI(int userId) {
+        RetrofitClient.getApiService().getUsuarioPorId(userId)
+                .enqueue(new Callback<UsuarioResponse>() {
+                    @Override
+                    public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            UsuarioResponse usuario = response.body();
+                            sesion.guardarUsuario(usuario); // lo guardas localmente
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                        Toast.makeText(SesionActivity.this, "No se pudieron cargar los datos del perfil", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
     private void guardardatos(Response<LoginResponse> response) throws GeneralSecurityException, IOException {
 
         String token = response.body().getAuthToken();
@@ -112,7 +130,7 @@ public class SesionActivity extends AppCompatActivity {
                 DoctorEntity doctor = database.doctorDao().getByUsuarioId(id);
                 int idDoctor = (doctor != null) ? doctor.getId() : -1;
                 sesion.saveDoctorId(idDoctor);
-                Log.d("SesionActivity", "Doctor ID guardado: " + idDoctor);
+                Log.d("SesionActivity", "Doctor ID guardado: " + idDoctor + "Con id user de :" + id);
             });
         }
     }
@@ -129,7 +147,7 @@ public class SesionActivity extends AppCompatActivity {
     private void redirectUser(String rol) {
         Intent intent;
         if (chkRecordar.isChecked()) {
-            // Aquí puedes implementar guardar cuenta localmente si quieres
+            // Futuro
         }
 
         switch (rol) {
@@ -143,6 +161,7 @@ public class SesionActivity extends AppCompatActivity {
                 intent = new Intent(SesionActivity.this, MenuUserActivity.class);
                 break;
             default:
+                mostrar("PASA POR DEFAULT");
                 intent = new Intent(this, SesionActivity.class);
                 break;
         }

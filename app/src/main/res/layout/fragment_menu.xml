@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:paddingBottom="40dp"
     android:padding="0dp">
 
     <LinearLayout
@@ -93,19 +94,22 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sonic"
+                    android:text="Extraccion"
+                    android:textAllCaps="false"
                     android:layout_marginRight="8dp"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/titulo_endodoncia"
+                    android:textAllCaps="false"
                     android:layout_marginRight="8dp"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/titulo_periodoncia"/>
+                    android:text="@string/titulo_periodoncia"
+                    android:textAllCaps="false"/>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -119,26 +123,28 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"/>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Doctor 1 -->
+            <!-- Sede 1 -->
             <LinearLayout
+                android:id="@+id/sede1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="8dp"
                 android:background="#f2f2f2"
                 android:layout_marginBottom="12dp"
-                android:elevation="2dp">
+                android:elevation="5dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@android:drawable/ic_menu_camera"
+                    android:src="@android:drawable/ic_menu_mylocation"
                     android:layout_marginRight="12dp"/>
 
                 <LinearLayout
@@ -150,31 +156,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dr. José Luis Alonso"
+                        android:text="Sede Central"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/titulo_implantologia"/>
+                        android:text="Av. Principal 123 - Centro"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Doctor 2 -->
+            <!-- Sede 2 -->
             <LinearLayout
+                android:id="@+id/sede2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="8dp"
                 android:background="#f2f2f2"
                 android:layout_marginBottom="12dp"
-                android:elevation="2dp">
+                android:elevation="5dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@android:drawable/ic_menu_camera"
+                    android:src="@android:drawable/ic_menu_mylocation"
                     android:layout_marginRight="12dp"/>
 
                 <LinearLayout
@@ -186,18 +193,53 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dra. Karime Ortiz"
+                        android:text="Sede Norte"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/titulo_endodoncia"/>
+                        android:text="Calle Secundaria 456 - Norte"/>
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Sede 3 -->
+            <LinearLayout
+                android:id="@+id/sede3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="#f2f2f2"
+                android:layout_marginBottom="12dp"
+                android:elevation="5dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:layout_marginRight="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sede Sur"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Av. Del Sol 789 - Sur"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

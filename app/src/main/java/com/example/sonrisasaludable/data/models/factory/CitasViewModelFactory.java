@@ -29,7 +29,13 @@ public class CitasViewModelFactory implements ViewModelProvider.Factory {
             CitaDao citaDao = db.citaDao();
             ApiService apiService = RetrofitClient.getApiService();
             CitaRepository repository = new CitaRepository(citaDao, apiService);
-            return (T) new CitasViewModel(repository);
+            return (T) new CitasViewModel(
+                    repository,
+                    db.usuarioDao().getAllUsuarios(),
+                    db.doctorDao().getDoctoresConUsuario(),
+                    db.servicioDao().getAllServicios(),
+                    db.sedeDao().getAllSedes()
+            );
         }
         throw new IllegalArgumentException("Unknown ViewModel class");
     }

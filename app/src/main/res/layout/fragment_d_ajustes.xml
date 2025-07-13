@@ -84,7 +84,8 @@
                             android:id="@+id/spnTemaApp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="8dp"
+                            android:entries="@array/options_temas" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -122,7 +123,8 @@
                             android:id="@+id/spnIdioma"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="8dp"
+                            android:entries="@array/options_idiomas" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -82,5 +82,10 @@ dependencies {
     //Encrypted y MasterKey
     implementation(libs.security.crypto)
 
+    //lector de huella
+    implementation(libs.biometric)
+    // Implementacion del api del google maps
+    implementation(libs.playServicesMaps)
+    implementation(libs.playServicesLocation)
 
 }

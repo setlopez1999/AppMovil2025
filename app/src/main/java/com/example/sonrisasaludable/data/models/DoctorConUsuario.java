@@ -75,6 +75,6 @@ public class DoctorConUsuario implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return getNombreCompleto() + " (ID: " + id + ")";
+        return getNombreCompleto() + " | " + nombreEspecialidad;
     }
 }

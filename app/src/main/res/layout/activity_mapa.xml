@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Ubicación"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#3b4a8c"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <!-- Contenedor del mapa -->
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Botón Atrás -->
+    <Button
+        android:id="@+id/btnAtrasMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atrás"
+        android:background="#3b4a8c"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="12dp"/>
+</LinearLayout>

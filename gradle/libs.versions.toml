@@ -16,6 +16,9 @@ navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
 okhttp = "4.12.0"
 security = "1.1.0-alpha06"
+biometric = "1.1.0"
+playServicesMaps = "18.2.0"
+playServicesLocation = "21.0.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -67,6 +70,13 @@ gson = "com.google.code.gson:gson:2.10.1"
 
 # ENCRIPTED SHARED PREFERENCE
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
+
+## LECTOR DE HUELLA
+biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+
+## APi google maps
+playServicesMaps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
+playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 android-application = { id = "com.android.application", version = "8.9.1" }

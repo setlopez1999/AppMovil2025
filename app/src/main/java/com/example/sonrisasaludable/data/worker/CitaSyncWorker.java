@@ -27,9 +27,13 @@ public class CitaSyncWorker extends Worker {
         try {
             SessionManager sesion = SessionManager.getInstance(getApplicationContext());
 
+            //para pedir las citas de un doctor cambiar la linea por esta
+            //    .getCitas(sesion.getDoctorId())
+
+
             Response<List<CitaEntity>> response = RetrofitClient
                     .getApiService()
-                    .getCitas(sesion.getUserId())
+                    .getCitas()
                     .execute();
 
             if (response.isSuccessful() && response.body() != null) {

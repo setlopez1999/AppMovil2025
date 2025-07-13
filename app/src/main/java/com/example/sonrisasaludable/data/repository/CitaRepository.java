@@ -1,6 +1,11 @@
 package com.example.sonrisasaludable.data.repository;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -8,31 +13,30 @@ import com.example.sonrisasaludable.MyApplication;
 import com.example.sonrisasaludable.data.dao.CitaDao;
 import com.example.sonrisasaludable.data.entidades.CitaEntity;
 import com.example.sonrisasaludable.data.models.CitaConDetalles;
+import com.example.sonrisasaludable.data.models.CitaResponse;
 import com.example.sonrisasaludable.data.network.ApiService;
 import com.example.sonrisasaludable.utilidades.SessionManager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CitaRepository {
 
-    SessionManager sesion = SessionManager.getInstance(MyApplication.getAppContext());
+    private final SessionManager sesion = SessionManager.getInstance(MyApplication.getAppContext());
     private final CitaDao citaDao;
     private final ApiService apiService;
     private final ExecutorService executor;
     private final MutableLiveData<Boolean> isSyncing = new MutableLiveData<>(false);
 
-
     public CitaRepository(CitaDao citaDao, ApiService apiService) {
         this.citaDao = citaDao;
         this.apiService = apiService;
         this.executor = Executors.newSingleThreadExecutor();
-
     }
 
     public LiveData<Boolean> getSyncingStatus() {
@@ -71,9 +75,15 @@ public class CitaRepository {
         executor.execute(citaDao::deleteAll);
     }
 
-    public LiveData<List<CitaConDetalles>> getCitaConDetalles(){
+    public LiveData<List<CitaConDetalles>> getCitaConDetalles() {
         return citaDao.getCitasConDetalles();
     }
+
+    public LiveData<List<CitaConDetalles>> getCitasConDetallesDeUsuario(int usuarioId) {
+        return citaDao.getCitasConDetallesDeUsuario(usuarioId);
+    }
+
+
     public void sincronizarCitasDesdeApi() {
         isSyncing.postValue(true);
         apiService.getCitas(sesion.getDoctorId()).enqueue(new Callback<List<CitaEntity>>() {
@@ -98,4 +108,51 @@ public class CitaRepository {
             }
         });
     }
+
+    /**
+     * Inserta la cita localmente y luego la envía al servidor.
+     * Muestra un Toast según la respuesta.
+     */
+    public void insertarCitaConSincronizacion(CitaEntity cita, Context context) {
+        executor.execute(() -> {
+            // Insertar en Room primero
+            citaDao.insert(cita);
+
+            // Llamar API para POST
+            Call<CitaResponse> call = apiService.registrarCita(cita);
+
+            call.enqueue(new Callback<CitaResponse>() {
+                @Override
+                public void onResponse(Call<CitaResponse> call, Response<CitaResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        CitaResponse resp = response.body();
+
+                        Log.d("CitaSync", "Cita confirmada en servidor: "
+                                + resp.getCitaId() + " - " + resp.getMensaje());
+
+                        new Handler(Looper.getMainLooper()).post(() ->
+                                Toast.makeText(context, resp.getMensaje(), Toast.LENGTH_SHORT).show()
+                        );
+
+                    } else {
+                        Log.d("CitaSync", "Servidor rechazó la cita");
+
+                        new Handler(Looper.getMainLooper()).post(() ->
+                                Toast.makeText(context, "Servidor rechazó la cita", Toast.LENGTH_SHORT).show()
+                        );
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<CitaResponse> call, Throwable t) {
+                    Log.e("CitaSync", "Error al conectar al servidor", t);
+
+                    new Handler(Looper.getMainLooper()).post(() ->
+                            Toast.makeText(context, "Error al conectar al servidor", Toast.LENGTH_SHORT).show()
+                    );
+                }
+            });
+        });
+    }
+
 }

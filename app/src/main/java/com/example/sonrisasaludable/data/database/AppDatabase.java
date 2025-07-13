@@ -15,7 +15,10 @@ import com.example.sonrisasaludable.data.dao.HorarioDisponibleDao;
 import com.example.sonrisasaludable.data.dao.ReciboDao;
 import com.example.sonrisasaludable.data.dao.ServicioDao;
 import com.example.sonrisasaludable.data.dao.HistorialClinicoDao;
+import com.example.sonrisasaludable.data.dao.SedeDao;
 
+
+import com.example.sonrisasaludable.data.entidades.SedeEntity;
 import com.example.sonrisasaludable.data.entidades.UsuarioEntity;
 import com.example.sonrisasaludable.data.entidades.ResenaEntity;
 import com.example.sonrisasaludable.data.entidades.CitaEntity;
@@ -38,9 +41,10 @@ import com.example.sonrisasaludable.data.entidades.HistorialClinicoEntity;
                 HorarioDisponibleEntity.class,
                 ReciboEntity.class,
                 ServicioEntity.class,
-                HistorialClinicoEntity.class
+                HistorialClinicoEntity.class,
+                SedeEntity.class
         },
-        version = 2,
+        version = 4,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -57,6 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ReciboDao reciboDao();
     public abstract ServicioDao servicioDao();
     public abstract HistorialClinicoDao historialClinicoDao();
+    public abstract SedeDao sedeDao();
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {

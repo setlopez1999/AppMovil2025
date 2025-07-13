@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentos.PerfilDoctor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <!-- Email -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_p_profile_email_label"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvEmailDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_p_profile_email_demo"
+                android:textSize="14sp"
+                android:textColor="#333"
+                android:layout_marginLeft="8dp"/>
+        </LinearLayout>
+        <!-- Teléfono -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_p_profile_telefono_label"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvTelefonoDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_p_profile_telefono_demo"
+                android:textSize="14sp"
+                android:textColor="#333"
+                android:layout_marginLeft="8dp"/>
+        </LinearLayout>
+        <!-- Botón editar perfil -->
+        <Button
+            android:id="@+id/btnEditarPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_p_profile_editar_perfil"
+            android:textAllCaps="false"
+            android:background="@color/subsecundario"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</FrameLayout>

@@ -129,4 +129,11 @@ public class UsuarioEntity {
 
     public String getFechanacimiento() { return fechanacimiento; }
     public void setFechanacimiento(String fechanacimiento) { this.fechanacimiento = fechanacimiento; }
+
+    @Override
+    public String toString() {
+        return id + " | " + nombres +" " + apellidos;
+    }
+
+
 }
