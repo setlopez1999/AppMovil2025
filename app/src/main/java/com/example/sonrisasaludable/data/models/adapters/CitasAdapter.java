@@ -103,18 +103,15 @@ public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasViewHol
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
-
     @Override
     public int getItemCount() {
         return citas.size();
     }
-
     public void actualizarCitas(List<CitaConDetalles> nuevasCitas) {
         citas.clear();
         citas.addAll(nuevasCitas);
         notifyDataSetChanged();
     }
-
     public static class CitasViewHolder extends RecyclerView.ViewHolder {
         TextView nombre, servicio, hora, estado;
 

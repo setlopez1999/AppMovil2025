@@ -1,57 +1,78 @@
 package com.example.sonrisasaludable.data.models.viewmodels;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.sonrisasaludable.data.entidades.CitaEntity;
-import com.example.sonrisasaludable.data.models.CitaConDetalles;
-import com.example.sonrisasaludable.data.repository.CitaRepository;
-import com.example.sonrisasaludable.data.repository.ServicioRepository;
 
-import java.util.ArrayList;
+import com.example.sonrisasaludable.data.entidades.*;
+import com.example.sonrisasaludable.data.models.CitaConDetalles;
+import com.example.sonrisasaludable.data.models.DoctorConUsuario;
+import com.example.sonrisasaludable.data.repository.CitaRepository;
+
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class CitasViewModel extends ViewModel {
-    private CitaRepository citasRepository;
-    private LiveData<List<CitaConDetalles>> citas;
 
-    //temporal
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private ServicioRepository servicioRepository;
-    public CitasViewModel(CitaRepository citasRepository) {
-        this.citasRepository = citasRepository;
-        this.citas = citasRepository.getCitaConDetalles();
+    private final CitaRepository citaRepository;
+
+    private final LiveData<List<CitaConDetalles>> citas;
+    private final LiveData<List<UsuarioEntity>> usuarios;
+    private final LiveData<List<DoctorConUsuario>> doctoresConUsuario; // 👈 aquí
+    private final LiveData<List<ServicioEntity>> servicios;
+    private final LiveData<List<SedeEntity>> sedes;
+
+    public CitasViewModel(
+            CitaRepository repository,
+            LiveData<List<UsuarioEntity>> usuarios,
+            LiveData<List<DoctorConUsuario>> doctoresConUsuario, // 👈 aquí
+            LiveData<List<ServicioEntity>> servicios,
+            LiveData<List<SedeEntity>> sedes
+    ) {
+        this.citaRepository = repository;
+
+        this.citas = citaRepository.getCitaConDetalles();
+        this.usuarios = usuarios;
+        this.doctoresConUsuario = doctoresConUsuario;
+        this.servicios = servicios;
+        this.sedes = sedes;
     }
 
+    // --- PARA LISTAR ---
     public LiveData<List<CitaConDetalles>> getCitas() {
         return citas;
     }
 
-    public void citasdeprueba() {
-        executor.execute(() -> {
-            // Insertar citas
-            List<CitaEntity> prueba = new ArrayList<>();
-            prueba.add(new CitaEntity(
-                    1, 2, 3, 1,
-                    "2025-06-20", "10:00", "pendiente",
-                    "Juan", "XD"
-            ));
-
-            prueba.add(new CitaEntity(
-                    2, 3, 4, 2,
-                    "2025-06-22", "15:30", "confirmada",
-                    "Juan", "XD"
-            ));
-
-            prueba.add(new CitaEntity(
-                    3, 4, 2, 3,
-                    "2025-06-25", "09:00", "cancelada",
-                    "Juan", "XD"
-            ));
-
-            citasRepository.insertAllCitas(prueba);
-        });
+    public LiveData<List<UsuarioEntity>> getUsuarios() {
+        return usuarios;
     }
 
+    public LiveData<List<DoctorConUsuario>> getDoctoresConUsuario() {
+        return doctoresConUsuario;
+    }
+
+    public LiveData<List<ServicioEntity>> getServicios() {
+        return servicios;
+    }
+
+    public LiveData<List<SedeEntity>> getSedes() {
+        return sedes;
+    }
+
+    // --- PARA INSERTAR ---
+    public void insertarCita(CitaEntity cita) {
+        citaRepository.insertCita(cita);
+    }
+
+    public LiveData<Boolean> getSyncingStatus() {
+        return citaRepository.getSyncingStatus();
+    }
+
+    public void sincronizarCitasDesdeApi() {
+        citaRepository.sincronizarCitasDesdeApi();
+    }
+
+    public void insertarCitaConSincronizacion(CitaEntity cita, Context context) {
+        citaRepository.insertarCitaConSincronizacion(cita,context);
+    }
 }

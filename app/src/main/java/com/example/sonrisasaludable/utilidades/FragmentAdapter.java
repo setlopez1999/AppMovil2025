@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.sonrisasaludable.fragmentos.CitaProgreso;
 import com.example.sonrisasaludable.fragmentos.ConfiguracionFragment;
 import com.example.sonrisasaludable.fragmentos.DentistasFragment;
+import com.example.sonrisasaludable.fragmentos.FormularioCitaFragment;
 import com.example.sonrisasaludable.fragmentos.HistorialFragment;
 import com.example.sonrisasaludable.fragmentos.MenuFragment;
 
@@ -24,7 +25,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
         switch (position) {
             case 0: return new MenuFragment();
             case 1: return new DentistasFragment();
-            case 2: return new CitaProgreso();
+            case 2: return new FormularioCitaFragment();
             case 3: return new HistorialFragment();
             case 4: return new ConfiguracionFragment();
             default: return new MenuFragment();
