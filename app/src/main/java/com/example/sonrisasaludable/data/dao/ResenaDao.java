@@ -7,6 +7,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import com.example.sonrisasaludable.data.entidades.ResenaEntity;
+import com.example.sonrisasaludable.data.entidades.CitaEntity;
+import com.example.sonrisasaludable.data.models.ResenaConDetalles;
 import java.util.List;
 
 @Dao
@@ -59,4 +61,30 @@ public interface ResenaDao {
 
     @Query("DELETE FROM reseñas")
     void deleteAll();
+
+    // Nuevas consultas para funcionalidades core
+    @Query("SELECT r.id as resenaId, r.cita_id as citaId, r.calificacion, r.comentario, r.fecha, " +
+            "u.nombres || ' ' || u.apellidos as nombrePaciente, " +
+            "d.nombres || ' ' || d.apellidos as nombreDoctor, s.nombre as servicioNombre " +
+            "FROM reseñas r " +
+            "INNER JOIN citas c ON r.cita_id = c.id " +
+            "INNER JOIN usuarios u ON c.usuario_id = u.id " +
+            "INNER JOIN doctores d ON c.doctor_id = d.id " +
+            "LEFT JOIN servicios s ON c.servicio_id = s.id " +
+            "WHERE c.doctor_id = :doctorId ORDER BY r.fecha DESC")
+    List<ResenaConDetalles> getResenasByDoctorWithDetails(int doctorId);
+
+    @Query("SELECT COUNT(*) FROM reseñas r " +
+            "INNER JOIN citas c ON r.cita_id = c.id " +
+            "WHERE c.doctor_id = :doctorId")
+    int getCountResenasByDoctor(int doctorId);
+
+    @Query("SELECT * FROM citas WHERE usuario_id = :pacienteId AND estado = 'Completada' " +
+            "AND id NOT IN (SELECT cita_id FROM reseñas)")
+    List<CitaEntity> getCitasCompletadasSinResena(int pacienteId);
+
+    @Query("SELECT COUNT(*) > 0 FROM reseñas r " +
+            "INNER JOIN citas c ON r.cita_id = c.id " +
+            "WHERE c.id = :citaId AND c.usuario_id = :pacienteId")
+    boolean puedeEditarResena(int citaId, int pacienteId);
 }

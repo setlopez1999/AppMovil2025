@@ -1,66 +1,91 @@
 package com.example.sonrisasaludable.fragmentos;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.sonrisasaludable.R;
+import com.example.sonrisasaludable.data.database.AppDatabase;
+import com.example.sonrisasaludable.data.services.ResenaService;
+import com.example.sonrisasaludable.utilidades.SessionManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DPerfilFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class DPerfilFragment extends Fragment {
+    private TextView tvNombreDoctor, tvEspecialidad, tvPromedioCalificacion;
+    private LinearLayout resenasContainer;
+    private Button btnVerTodasResenas;
+    private ResenaService resenaService;
+    private ExecutorService executor;
+    private int doctorId;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DPerfilFragment() {
-        // Required empty public constructor
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_d_perfil, container, false);
+        
+        initViews(view);
+        initServices();
+        loadDoctorData();
+        loadResenas();
+        
+        return view;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DPerfilFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DPerfilFragment newInstance(String param1, String param2) {
-        DPerfilFragment fragment = new DPerfilFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private void initViews(View view) {
+        tvNombreDoctor = view.findViewById(R.id.tvNombreDoctor);
+        tvEspecialidad = view.findViewById(R.id.tvEspecialidad);
+        tvPromedioCalificacion = view.findViewById(R.id.tvPromedioCalificacion);
+        btnVerTodasResenas = view.findViewById(R.id.btnVerTodasResenas);
+    }
+
+    private void initServices() {
+        AppDatabase db = AppDatabase.getInstance(getContext());
+        resenaService = new ResenaService(db.resenaDao(), db.citaDao());
+        executor = Executors.newSingleThreadExecutor();
+        
+        SessionManager session = SessionManager.getInstance(getContext());
+        doctorId = session.getDoctorId();
+    }
+
+    private void loadDoctorData() {
+        executor.execute(() -> {
+            AppDatabase db = AppDatabase.getInstance(getContext());
+            var doctor = db.doctorDao().getById(doctorId);
+            
+            if (doctor != null && getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    tvNombreDoctor.setText(doctor.getNombres() + " " + doctor.getApellidos());
+                    tvEspecialidad.setText("Especialidad ID: " + doctor.getEspecialidadId());
+                });
+            }
+        });
+    }
+
+    private void loadResenas() {
+        executor.execute(() -> {
+            var stats = resenaService.getEstadisticasDoctor(doctorId);
+            
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    tvPromedioCalificacion.setText(String.format("%.1f", stats.promedio));
+                    btnVerTodasResenas.setText("Ver Todas las Reseñas (" + stats.totalResenas + ")");
+                });
+            }
+        });
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onDestroy() {
+        super.onDestroy();
+        if (executor != null) {
+            executor.shutdown();
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_d_perfil, container, false);
     }
 }
