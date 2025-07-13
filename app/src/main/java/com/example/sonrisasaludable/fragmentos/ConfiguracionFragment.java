@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.actividades.SesionActivity;
+import com.example.sonrisasaludable.utilidades.SessionManager;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +41,7 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
     // Declaración de las variables de los componentes de la vista
     Spinner cboIdiomas; // Para el ComboBox
     CheckBox chkNotificaciones; // Para el CheckBox
+    CheckBox chkModoOscuro; // Para el modo oscuro
     TextView lblSonido; // Para la etiqueta de Sonido
     SeekBar barSonido; // Para la barra de sonido
     Button btnAplicar, btnRestaurar, btnCerrarSesion; // Para el botón aplicar y Restaurar
@@ -85,6 +88,7 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         // Inicializar los componentes de la vista
         cboIdiomas = vista.findViewById(R.id.frgCfgcboIdioma); // Spinner (ComboBox)
         chkNotificaciones = vista.findViewById(R.id.froCfgchkNotificacines); // Checkbox
+        chkModoOscuro = vista.findViewById(R.id.chkModoOscuro); // Checkbox modo oscuro
         lblSonido = vista.findViewById(R.id.frgCfgCblSonido); // Etiqueta de Sonido
         barSonido = vista.findViewById(R.id.frgCfgBarSonido); // Barra de sonido (SeekBar)
 
@@ -117,11 +121,15 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         int idioma =preferences.getInt("idioma",0);
         boolean notificaciones = preferences.getBoolean("notificaciones",false);
         int sonido = preferences.getInt("sonido",100);
+        
+        // Cargar estado del modo oscuro
+        SessionManager sessionManager = SessionManager.getInstance(getContext());
+        boolean modoOscuro = sessionManager.isDarkMode();
 
         cboIdiomas.setSelection(idioma);
         chkNotificaciones.setChecked(notificaciones);
+        chkModoOscuro.setChecked(modoOscuro);
         barSonido.setProgress(sonido);
-
     }
 
 
@@ -160,17 +168,27 @@ public class ConfiguracionFragment extends Fragment implements View.OnClickListe
         editor.putInt("idioma", index_idioma);
         editor.putBoolean("notificaciones", chkNotificaciones.isChecked());
         editor.putInt("sonido", barSonido.getProgress());
+        
+        // Aplicar modo oscuro
+        SessionManager sessionManager = SessionManager.getInstance(getContext());
+        boolean nuevoModoOscuro = chkModoOscuro.isChecked();
+        if (sessionManager.isDarkMode() != nuevoModoOscuro) {
+            sessionManager.setDarkMode(nuevoModoOscuro);
+            ThemeManager.applyTheme(getContext());
+            getActivity().recreate(); // Recrear actividad para aplicar tema
+        }
 
         cambiaridioma(index_idioma);
 
         editor.apply();
-        Toast.makeText(getContext(), "Preferencias quardadas", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Preferencias guardadas", Toast.LENGTH_SHORT).show();
     }
 
 
     private void restaurar() {
         cboIdiomas.setSelection(0);
         chkNotificaciones.setChecked(true);
+        chkModoOscuro.setChecked(false); // Restaurar a modo claro
         barSonido.setProgress(100);
         Toast.makeText(getContext(), "Preferencias restablecidas", Toast.LENGTH_SHORT).show();
     }

@@ -1,21 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.LimaSegura" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <!-- Tema oscuro -->
+    <style name="Theme.SonrisaSaludable" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores primarios para modo oscuro -->
+        <item name="colorPrimary">@color/primario</item>
+        <item name="colorPrimaryVariant">@color/subsecundario</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Colores secundarios -->
+        <item name="colorSecondary">@color/secundario</item>
+        <item name="colorSecondaryVariant">@color/secundario</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Fondos y superficies -->
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/white</item>
+        
+        <!-- Textos -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/dark_text_secondary</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- EditText en modo oscuro -->
+        <item name="editTextStyle">@style/DarkEditTextStyle</item>
     </style>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SonrisaSaludable" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    
+    <!-- Estilo para EditText en modo oscuro -->
+    <style name="DarkEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/dark_text_secondary</item>
+        <item name="android:background">@color/white</item>
     </style>
+
 </resources>

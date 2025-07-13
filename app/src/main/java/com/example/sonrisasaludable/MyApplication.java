@@ -19,6 +19,7 @@ import com.example.sonrisasaludable.data.network.RetrofitClient;
 import com.example.sonrisasaludable.data.repository.*;
 import com.example.sonrisasaludable.data.worker.*;
 import com.example.sonrisasaludable.utilidades.UserPreferences;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,6 +75,9 @@ public class MyApplication extends Application {
         historialClinicoRepository = new HistorialClinicoRepository(database.historialClinicoDao(), RetrofitClient.getApiService());
         horarioDisponibleRepository = new HorarioDisponibleRepository(database.horarioDisponibleDao(), RetrofitClient.getApiService());
 
+        // Aplicar tema guardado
+        ThemeManager.applyTheme(this);
+        
         // Programar sincronización periódica con WorkManager para cada worker
         scheduleSyncWorkers();
         llamarInmediatamente();

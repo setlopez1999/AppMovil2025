@@ -176,6 +176,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/recordar_notificaciones" />
+                    
+                <CheckBox
+                    android:id="@+id/chkModoOscuro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Modo Oscuro"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Barra de Volumen (SeekBar) -->
                 <TextView

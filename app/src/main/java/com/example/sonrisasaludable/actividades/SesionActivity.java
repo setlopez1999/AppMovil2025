@@ -11,6 +11,7 @@ import com.example.sonrisasaludable.data.entidades.DoctorEntity;
 import com.example.sonrisasaludable.data.models.*;
 import com.example.sonrisasaludable.data.network.*;
 import com.example.sonrisasaludable.utilidades.SessionManager;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.concurrent.Executor;
@@ -30,6 +31,10 @@ public class SesionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Aplicar tema antes de setContentView
+        ThemeManager.applyTheme(this);
+        
         setContentView(R.layout.activity_sesion);
 
         database = AppDatabase.getInstance(getApplicationContext());

@@ -31,6 +31,8 @@
                 android:inputType="textEmailAddress"
                 android:maxLength="100"
                 android:background="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
                 android:hint="@string/sesHintCorreo"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -45,6 +47,8 @@
                 android:inputType="textPassword"
                 android:maxLength="100"
                 android:background="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
                 android:hint="@string/sesHintClave"/>
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout

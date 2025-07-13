@@ -33,6 +33,15 @@ public interface ApiService {
 
     @GET("resenas")
     Call<List<ResenaEntity>> getResenas();
+    
+    @POST("resenas")
+    Call<ResenaEntity> crearResena(@Body ResenaEntity resena);
+    
+    @GET("resenas/doctor/{doctorId}")
+    Call<List<ResenaEntity>> getResenasByDoctor(@Path("doctorId") int doctorId);
+    
+    @GET("resenas/promedio/{doctorId}")
+    Call<Double> getPromedioCalificacion(@Path("doctorId") int doctorId);
 
     @GET("doctores")
     Call<List<DoctorEntity>> getDoctores();

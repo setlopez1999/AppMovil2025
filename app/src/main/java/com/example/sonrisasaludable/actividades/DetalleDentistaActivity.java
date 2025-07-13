@@ -15,7 +15,10 @@ import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.data.models.DoctorConUsuario;
 import com.example.sonrisasaludable.data.database.AppDatabase;
 import com.example.sonrisasaludable.data.services.ResenaService;
+import com.example.sonrisasaludable.data.network.RetrofitClient;
+import com.example.sonrisasaludable.data.entidades.CitaEntity;
 import com.example.sonrisasaludable.utilidades.SessionManager;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -35,6 +38,10 @@ public class DetalleDentistaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Aplicar tema antes de setContentView
+        ThemeManager.applyTheme(this);
+        
         setContentView(R.layout.activity_detalle_dentista);
 
         // Enlazar vistas
@@ -50,6 +57,7 @@ public class DetalleDentistaActivity extends AppCompatActivity {
 
         // Inicializar servicios
         AppDatabase db = AppDatabase.getInstance(this);
+        // Usar Room local (datos persistentes):
         resenaService = new ResenaService(db.resenaDao(), db.citaDao());
         sessionManager = SessionManager.getInstance(this);
         executor = Executors.newSingleThreadExecutor();
@@ -77,6 +85,9 @@ public class DetalleDentistaActivity extends AppCompatActivity {
             }
         }
 
+        // Crear cita de prueba para API REST
+        crearCitaPruebaParaApi();
+        
         // Verificar si puede crear reseña
         verificarPermisoResena();
 
@@ -88,23 +99,42 @@ public class DetalleDentistaActivity extends AppCompatActivity {
     }
 
     private void verificarPermisoResena() {
-        if (citaId == -1 || !sessionManager.getRole().equals("paciente")) {
+        if (!sessionManager.getRole().equals("paciente")) {
             btnEnviarResena.setEnabled(false);
             btnEnviarResena.setText("No disponible");
             return;
         }
 
         executor.execute(() -> {
-            // Verificar si ya existe reseña para esta cita
             AppDatabase db = AppDatabase.getInstance(this);
-            boolean yaExisteResena = db.resenaDao().getByCitaId(citaId) != null;
             
-            runOnUiThread(() -> {
-                if (yaExisteResena) {
-                    btnEnviarResena.setText("Ya reseñado");
-                    btnEnviarResena.setEnabled(false);
-                }
-            });
+            if (citaId != -1) {
+                // Si viene de una cita específica
+                boolean yaExisteResena = db.resenaDao().getByCitaId(citaId) != null;
+                runOnUiThread(() -> {
+                    if (yaExisteResena) {
+                        btnEnviarResena.setText("Ya reseñado");
+                        btnEnviarResena.setEnabled(false);
+                    }
+                });
+            } else {
+                // Buscar citas completadas sin reseña con este doctor
+                var citasSinResena = resenaService.getCitasSinResena(sessionManager.getUserId());
+                var citaConDoctor = citasSinResena.stream()
+                    .filter(cita -> cita.getDoctor_id() == doctorId)
+                    .findFirst();
+                    
+                runOnUiThread(() -> {
+                    if (citaConDoctor.isPresent()) {
+                        citaId = citaConDoctor.get().getId();
+                        btnEnviarResena.setEnabled(true);
+                        btnEnviarResena.setText("Enviar reseña");
+                    } else {
+                        btnEnviarResena.setEnabled(false);
+                        btnEnviarResena.setText("Sin citas completadas");
+                    }
+                });
+            }
         });
     }
 
@@ -122,6 +152,7 @@ public class DetalleDentistaActivity extends AppCompatActivity {
             
             runOnUiThread(() -> {
                 if (success) {
+                    // Toast.makeText(this, "Reseña guardada localmente", Toast.LENGTH_LONG).show();
                     Toast.makeText(this, "Reseña enviada exitosamente", Toast.LENGTH_SHORT).show();
                     btnEnviarResena.setText("Ya reseñado");
                     btnEnviarResena.setEnabled(false);
@@ -129,6 +160,40 @@ public class DetalleDentistaActivity extends AppCompatActivity {
                     Toast.makeText(this, "Error al enviar la reseña", Toast.LENGTH_SHORT).show();
                 }
             });
+        });
+    }
+
+    private void crearCitaPruebaParaApi() {
+        executor.execute(() -> {
+            AppDatabase db = AppDatabase.getInstance(this);
+            
+            // Verificar si ya existe una cita completada
+            boolean tieneCompletada = false;
+            try {
+                var citasSinResena = resenaService.getCitasSinResena(sessionManager.getUserId());
+                tieneCompletada = citasSinResena.stream().anyMatch(c -> c.getDoctor_id() == doctorId);
+            } catch (Exception e) {
+                // Ignorar error
+            }
+            
+            if (!tieneCompletada) {
+                // Crear cita completada de prueba para API REST
+                CitaEntity cita = new CitaEntity();
+                cita.setId((int) System.currentTimeMillis() % 100000);
+                cita.setUsuario_id(sessionManager.getUserId());
+                cita.setDoctor_id(doctorId);
+                cita.setFecha("2024-01-15");
+                cita.setHora("10:00");
+                cita.setEstado("Completada");
+                cita.setNota("Cita de prueba para API REST");
+                cita.setCreado_en("2024-01-15 09:00:00");
+                
+                db.citaDao().insert(cita);
+                
+                runOnUiThread(() -> {
+                    // Toast.makeText(this, "[API REST] Cita de prueba creada", Toast.LENGTH_SHORT).show();
+                });
+            }
         });
     }
 

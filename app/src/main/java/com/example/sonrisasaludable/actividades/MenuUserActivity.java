@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.utilidades.FragmentAdapter;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 
 public class MenuUserActivity extends AppCompatActivity {
 
@@ -19,6 +20,10 @@ public class MenuUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Aplicar tema antes de setContentView
+        ThemeManager.applyTheme(this);
+        
         setContentView(R.layout.activity_menu_user);
         //Colores pacientitos
         Window window = getWindow();

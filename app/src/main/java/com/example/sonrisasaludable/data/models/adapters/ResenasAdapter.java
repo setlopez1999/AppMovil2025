@@ -47,10 +47,14 @@ public class ResenasAdapter extends RecyclerView.Adapter<ResenasAdapter.ResenaVi
             holder.tvServicio.setVisibility(View.GONE);
         }
 
-        // Solo mostrar botones si es el propietario de la reseña
-        // Esta lógica se puede mejorar pasando el userId actual
-        holder.btnEditar.setOnClickListener(v -> editListener.onClick(resena.getResenaId()));
-        holder.btnEliminar.setOnClickListener(v -> deleteListener.onClick(resena.getResenaId()));
+        // Ocultar botones si no hay listeners (perfil del doctor)
+        if (editListener == null || deleteListener == null) {
+            holder.btnEditar.setVisibility(View.GONE);
+            holder.btnEliminar.setVisibility(View.GONE);
+        } else {
+            holder.btnEditar.setOnClickListener(v -> editListener.onClick(resena.getResenaId()));
+            holder.btnEliminar.setOnClickListener(v -> deleteListener.onClick(resena.getResenaId()));
+        }
     }
 
     @Override

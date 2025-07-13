@@ -16,4 +16,12 @@
     <color name="primario_negativo">#c6e9f1</color>
     <color name="subprimario">#587ebb</color>
     <color name="subsecundario">#1a1f3d</color>
+    
+    <!-- Colores para modo oscuro -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_primary">#5A6BC7</color>
+    <color name="dark_secondary">#A3C4F3</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#B3B3B3</color>
 </resources>

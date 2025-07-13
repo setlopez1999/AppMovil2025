@@ -65,11 +65,12 @@ public interface ResenaDao {
     // Nuevas consultas para funcionalidades core
     @Query("SELECT r.id as resenaId, r.cita_id as citaId, r.calificacion, r.comentario, r.fecha, " +
             "u.nombres || ' ' || u.apellidos as nombrePaciente, " +
-            "d.nombres || ' ' || d.apellidos as nombreDoctor, s.nombre as servicioNombre " +
+            "ud.nombres || ' ' || ud.apellidos as nombreDoctor, s.nombre as servicioNombre " +
             "FROM reseñas r " +
             "INNER JOIN citas c ON r.cita_id = c.id " +
             "INNER JOIN usuarios u ON c.usuario_id = u.id " +
             "INNER JOIN doctores d ON c.doctor_id = d.id " +
+            "INNER JOIN usuarios ud ON d.usuario_id = ud.id " +
             "LEFT JOIN servicios s ON c.servicio_id = s.id " +
             "WHERE c.doctor_id = :doctorId ORDER BY r.fecha DESC")
     List<ResenaConDetalles> getResenasByDoctorWithDetails(int doctorId);

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.10.1"
+agp = "8.7.2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -69,5 +69,5 @@ gson = "com.google.code.gson:gson:2.10.1"
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 
 [plugins]
-android-application = { id = "com.android.application", version = "8.9.1" }
+android-application = { id = "com.android.application", version = "8.7.2" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }

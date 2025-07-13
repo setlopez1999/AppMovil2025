@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.sonrisasaludable.R;
 import com.example.sonrisasaludable.utilidades.DoctorFragmentAdapter;
+import com.example.sonrisasaludable.utilidades.ThemeManager;
 
 public class MenuDoctorActivity extends AppCompatActivity {
 
@@ -19,6 +20,10 @@ public class MenuDoctorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Aplicar tema antes de setContentView
+        ThemeManager.applyTheme(this);
+        
         setContentView(R.layout.activity_menu_doctor);
 
         // Cambiamos el colorsito bonito

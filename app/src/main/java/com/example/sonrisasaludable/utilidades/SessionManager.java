@@ -25,6 +25,7 @@ public class SessionManager {
     private static final String KEY_PHOTO = "user_photo";
     private static final String KEY_LOGGED_IN = "is_logged_in";
     private static final String KEY_DOCTOR_ID = "doctor_id";
+    private static final String KEY_DARK_MODE = "dark_mode";
 
     //Construcctor PRIVADOOOOOOOOOOOOO   porque me muestra rojo xddd
     private SessionManager(Context context) {
@@ -83,5 +84,14 @@ public class SessionManager {
         prefs.edit()
                 .putInt(KEY_DOCTOR_ID, id)
                 .apply();
+    }
+    
+    // Métodos para modo oscuro
+    public void setDarkMode(boolean isDarkMode) {
+        prefs.edit().putBoolean(KEY_DARK_MODE, isDarkMode).apply();
+    }
+    
+    public boolean isDarkMode() {
+        return prefs.getBoolean(KEY_DARK_MODE, false);
     }
 }
