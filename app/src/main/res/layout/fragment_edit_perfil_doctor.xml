@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentos.EditPerfilDoctor">
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/doctor1_default"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background" />
+
+        <EditText
+            android:id="@+id/etDNI"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:hint="@string/hint_dni"
+            android:inputType="number"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:textColor="#212121"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+        <EditText
+            android:id="@+id/etNombres"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="2dp"
+            android:background="@null"
+            android:hint="@string/hint_nombres"
+            android:inputType="textCapWords" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+        <EditText
+            android:id="@+id/etApellidos"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/hint_apellidos"
+            android:inputType="textCapWords"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="0dp"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/spinnerSexo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/options_sexo" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/hint_telefono"
+            android:inputType="phone"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/hint_direccion"
+            android:inputType="textCapWords"
+            android:background="@null"
+            android:layout_marginBottom="2dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BDBDBD" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnConfirmarEditarPerfilD"
+                android:layout_height="wrap_content"
+                android:text="@string/textoGuardar"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnCancelarEditarPerfilD"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/cancelar"
+                android:layout_width="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

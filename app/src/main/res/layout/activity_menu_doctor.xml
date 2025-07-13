@@ -10,7 +10,7 @@
 
     <!-- Contenedor de Fragmentos ocupa la parte superior -->
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/fragment_container"
+        android:id="@+id/viewPagerDoctor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btnBarra"
@@ -18,6 +18,14 @@
 
         />
 
+    <FrameLayout
+        android:id="@+id/fragmentOverlayContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:background="@android:color/white"
+        />
     <LinearLayout
         android:id="@+id/intermedio"
         android:layout_width="match_parent"
@@ -27,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnBarra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container">
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerDoctor">
 
     </LinearLayout>
 

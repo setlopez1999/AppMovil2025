@@ -116,6 +116,9 @@ public class SessionManager {
     public String getUserName() { return prefs.getString(KEY_NAME, ""); }
     public String getEmail() { return prefs.getString(KEY_EMAIL, ""); }
     public String getPhotoUrl() { return prefs.getString(KEY_PHOTO, ""); }
+    public  String getTelefono(){
+        return prefs.getString(KEY_USER_TELEFONO,"948271624");
+    }
 
     public boolean isLoggedIn() { return prefs.getBoolean(KEY_LOGGED_IN, false); }
 

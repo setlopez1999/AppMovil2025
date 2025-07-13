@@ -10,6 +10,7 @@ import com.example.sonrisasaludable.fragmentos.DPerfilFragment;
 import com.example.sonrisasaludable.fragmentos.DHorarioFragment;
 import com.example.sonrisasaludable.fragmentos.DHistorialCitasFragment;
 import com.example.sonrisasaludable.fragmentos.DAjustesFragment;
+import com.example.sonrisasaludable.fragmentos.EditPerfilDoctor;
 
 public class DoctorFragmentAdapter extends FragmentStateAdapter {
 
