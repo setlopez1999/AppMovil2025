@@ -38,11 +38,11 @@
 
     <!-- Fragment Menu -->
     <string name="titulo_general_especialidades">Specialties</string>
-    <string name="titulo_implantologia">IMPLANTOLOGY</string>
-    <string name="titulo_endodoncia">ENDODONTICS</string>
-    <string name="titulo_periodoncia">PERIODONTICS</string>
+    <string name="titulo_implantologia">Implantology</string>
+    <string name="titulo_endodoncia">Endodontics</string>
+    <string name="titulo_periodoncia">Periodontics</string>
     <string name="titulo_doctores_main">Our Doctors</string>
-    <string name="click_aqui">CLICK HERE</string>
+    <string name="click_aqui">Click Here</string>
 
     <!-- Fragment Doctors -->
     <string name="cargo_titulo">Available Doctors</string>
@@ -53,9 +53,9 @@
     <string name="btn_siguiente">NEXT</string>
 
     <!-- Fragmento estado -->
-    <string name="estado_pendiente">PENDING</string>
-    <string name="estado_confirmado">CONFIRMED</string>
-    <string name="estado_cancelado">CANCELLED</string>
+    <string name="estado_pendiente">Pending</string>
+    <string name="estado_confirmado">Confirmed</string>
+    <string name="estado_cancelado">Cancelled</string>
 
     <string name="cita_reg_exitosa">Appointment successfully scheduled!</string>
     <string name="subcita_reg_exitosa">You will wait for your doctor confirmation to accept the appointment.</string>

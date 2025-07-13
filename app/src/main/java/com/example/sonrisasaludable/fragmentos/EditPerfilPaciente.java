@@ -174,17 +174,17 @@ public class EditPerfilPaciente extends Fragment {
 
             MultipartBody.Part imagenPart = null;
 
-            // Si hay imagen nueva seleccionada
             if (imageUri != null) {
-                String filePath = RealPathUtil.getRealPathFromURI(requireContext(), imageUri); // Te doy el método abajo
-                File file = new File(filePath);
-                RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
-                imagenPart = MultipartBody.Part.createFormData("foto", file.getName(), requestFile);
-            } else {
-                // Si no se seleccionó imagen, se puede mandar una vacía
-                imagenPart = MultipartBody.Part.createFormData("foto", "", RequestBody.create(MediaType.parse("application/octet-stream"), new byte[0]));
+                String filePath = RealPathUtil.getRealPathFromURI(requireContext(), imageUri);
+                if (filePath != null) {
+                    File file = new File(filePath);
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+                    imagenPart = MultipartBody.Part.createFormData("foto", file.getName(), requestFile);
+                } else {
+                    Toast.makeText(getContext(), "No se pudo obtener la ruta de la imagen", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
-
             apiService.updateUsuarioPorId(userId, imagenPart, nombres, apellidos, telefono, direccion, sexo, dni)
                     .enqueue(new Callback<UsuarioResponse>() {
                         @Override
