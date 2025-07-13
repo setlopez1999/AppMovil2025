@@ -22,7 +22,6 @@ public class LoginResponse {
     public String getUserRole() {
         return user_role;
     }
-
     public String getUserName() {
         return user_name;
     }

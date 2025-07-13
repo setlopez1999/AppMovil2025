@@ -76,6 +76,8 @@ public class SesionActivity extends AppCompatActivity {
                     // Nota despues investigar porque
                     try {
                         guardardatos(response);
+                        obtenerDatosUsuarioDesdeAPI(response.body().getUserId());
+
                     } catch (GeneralSecurityException e) {
                         throw new RuntimeException(e);
                     } catch (IOException e) {
@@ -93,7 +95,23 @@ public class SesionActivity extends AppCompatActivity {
             }
         });
     }
+    private void obtenerDatosUsuarioDesdeAPI(int userId) {
+        RetrofitClient.getApiService().getUsuarioPorId(userId)
+                .enqueue(new Callback<UsuarioResponse>() {
+                    @Override
+                    public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            UsuarioResponse usuario = response.body();
+                            sesion.guardarUsuario(usuario); // lo guardas localmente
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                        Toast.makeText(SesionActivity.this, "No se pudieron cargar los datos del perfil", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
     private void guardardatos(Response<LoginResponse> response) throws GeneralSecurityException, IOException {
 
         String token = response.body().getAuthToken();
