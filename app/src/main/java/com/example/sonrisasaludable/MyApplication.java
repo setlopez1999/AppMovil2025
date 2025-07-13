@@ -102,6 +102,9 @@ public class MyApplication extends Application {
         OneTimeWorkRequest rolSync = new OneTimeWorkRequest.Builder(RolSyncWorker.class).setConstraints(constraints).build();
         OneTimeWorkRequest especialidadSync = new OneTimeWorkRequest.Builder(EspecialidadSyncWorker.class).setConstraints(constraints).build();
         OneTimeWorkRequest servicioSync = new OneTimeWorkRequest.Builder(ServicioSyncWorker.class).setConstraints(constraints).build();
+        OneTimeWorkRequest sedeSync = new OneTimeWorkRequest.Builder(SedeSyncWorker.class)
+                .setConstraints(constraints)
+                .build();
 
         OneTimeWorkRequest usuarioSync = new OneTimeWorkRequest.Builder(UsuarioSyncWorker.class).setConstraints(constraints).build();
         OneTimeWorkRequest doctorSync = new OneTimeWorkRequest.Builder(DoctorSyncWorker.class).setConstraints(constraints).build();
@@ -117,6 +120,7 @@ public class MyApplication extends Application {
                 .beginWith(rolSync)
                 .then(usuarioSync)
                 .then(especialidadSync)
+                .then(sedeSync)
                 .then(doctorSync)
                 .then(servicioSync)
                 .then(citaSync)
@@ -197,6 +201,13 @@ public class MyApplication extends Application {
                 .setConstraints(constraints)
                 .build();
 
+        PeriodicWorkRequest sedeWorkRequest = new PeriodicWorkRequest.Builder(
+                SedeSyncWorker.class, intervalo, TimeUnit.HOURS)
+                .setConstraints(constraints)
+                .build();
+
+
+
         // Encolar todos los workers
         WorkManager workManager = WorkManager.getInstance(this);
         workManager.enqueueUniquePeriodicWork("UsuarioSync", ExistingPeriodicWorkPolicy.KEEP, usuarioWorkRequest);
@@ -209,6 +220,7 @@ public class MyApplication extends Application {
         workManager.enqueueUniquePeriodicWork("EspecialidadSync", ExistingPeriodicWorkPolicy.KEEP, especialidadWorkRequest);
         workManager.enqueueUniquePeriodicWork("HistorialSync", ExistingPeriodicWorkPolicy.KEEP, historialWorkRequest);
         workManager.enqueueUniquePeriodicWork("HorarioSync", ExistingPeriodicWorkPolicy.KEEP, horarioWorkRequest);
+        workManager.enqueueUniquePeriodicWork("SedeSync", ExistingPeriodicWorkPolicy.KEEP, sedeWorkRequest);
 
 
 

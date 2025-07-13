@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <!-- Header azul -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,16 +31,17 @@
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
+
             <ImageButton
                 android:id="@+id/btnRegresarCita"
                 android:layout_width="45dp"
                 android:layout_height="35dp"
-                android:layout_alignParentStart="true"
                 android:background="@android:color/transparent"
                 android:src="@drawable/leftarrow"
                 android:contentDescription="Volver"
                 android:layout_marginRight="150dp"/>
         </LinearLayout>
+
         <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progressBar"
@@ -52,20 +54,20 @@
             android:progress="0"
             android:progressTint="#3b4a8c" />
 
+        <!-- AQUI SE VA A CARGAR EL FORMULARIO -->
         <FrameLayout
             android:id="@+id/contenedorInterno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_weight="1"/> <!--android:background="@android:color/darker_gray"-->
+            android:layout_weight="1"/>
+
         <Button
             android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Siguiente"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
-            />
+            android:layout_marginBottom="24dp" />
     </LinearLayout>
-
 </ScrollView>

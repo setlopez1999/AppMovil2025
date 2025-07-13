@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "servicios")
-public class ServicioEntity {
+@Entity(tableName = "sedes")
+public class SedeEntity {
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
@@ -14,21 +14,17 @@ public class ServicioEntity {
     @ColumnInfo(name = "nombre")
     private String nombre;
 
-    @ColumnInfo(name = "descripcion")
-    private String descripcion;
-
-    @ColumnInfo(name = "precio")
-    private double precio;
+    @ColumnInfo(name = "direccion")
+    private String direccion;
 
     // Constructor vacío
-    public ServicioEntity() {}
+    public SedeEntity() {}
 
     // Constructor completo
-    public ServicioEntity(int id, String nombre, String descripcion, double precio) {
+    public SedeEntity(int id, String nombre, String direccion) {
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
+        this.direccion = direccion;
     }
 
     // Getters y Setters
@@ -38,11 +34,8 @@ public class ServicioEntity {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-
-    public double getPrecio() { return precio; }
-    public void setPrecio(double precio) { this.precio = precio; }
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
     @Override
     public String toString() {
         return nombre + " ";

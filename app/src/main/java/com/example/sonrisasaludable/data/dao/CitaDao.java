@@ -78,4 +78,8 @@ public interface CitaDao {
 
     @Query("SELECT COUNT(*) FROM citas WHERE doctor_id = :doctorId AND fecha = :fecha AND hora = :hora")
     int countCitasConflicto(int doctorId, String fecha, String hora);
+
+    @Query("UPDATE citas SET estado = :estado WHERE id = :id")
+    void actualizarEstado(int id, String estado);
+
 }

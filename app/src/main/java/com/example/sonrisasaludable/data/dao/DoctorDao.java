@@ -66,4 +66,7 @@ public interface DoctorDao {
             "INNER JOIN usuarios u ON d.usuario_id = u.id " +
             "INNER JOIN especialidades e ON d.especialidad_id = e.id")
     LiveData<List<DoctorConUsuario>> getDoctoresConUsuario();
+
+    @Query("SELECT * FROM doctores")
+    LiveData<List<DoctorEntity>> getAllDoctores();
 }

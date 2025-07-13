@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -47,4 +48,7 @@ public interface UsuarioDao {
 
     @Query("SELECT COUNT(*) FROM usuarios WHERE correo = :correo")
     int countByCorreo(String correo);
+
+    @Query("SELECT * FROM usuarios")
+    LiveData<List<UsuarioEntity>> getAllUsuarios();
 }

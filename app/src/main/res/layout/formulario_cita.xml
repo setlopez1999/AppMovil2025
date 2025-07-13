@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agendar Cita:"
+            android:background="@color/primario"
+            android:textColor="@color/white"
+            android:padding="20dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Usuario -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/spUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+        <!-- Doctor -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <Spinner
+            android:id="@+id/spDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Servicio -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Servicio"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <Spinner
+            android:id="@+id/spServicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Sede -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sede"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <Spinner
+            android:id="@+id/spSede"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Fecha -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecciona una fecha"
+            android:background="@drawable/bg_edittext_like"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="false" />
+
+        <!-- Hora -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/etHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selecciona una hora"
+            android:background="@drawable/bg_edittext_like"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="false" />
+
+        <!-- Nota -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escriba una nota"
+            android:inputType="textMultiLine" />
+
+        <!-- Botón -->
+        <Button
+            android:id="@+id/btnGuardarCita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Cita"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

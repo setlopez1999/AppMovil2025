@@ -1,5 +1,6 @@
 package com.example.sonrisasaludable.data.network;
 
+import com.example.sonrisasaludable.data.entidades.SedeEntity;
 import com.example.sonrisasaludable.data.entidades.UsuarioEntity;
 import com.example.sonrisasaludable.data.entidades.ResenaEntity;
 import com.example.sonrisasaludable.data.entidades.DoctorEntity;
@@ -10,9 +11,10 @@ import com.example.sonrisasaludable.data.entidades.EspecialidadEntity;
 import com.example.sonrisasaludable.data.entidades.HorarioDisponibleEntity;
 import com.example.sonrisasaludable.data.entidades.HistorialClinicoEntity;
 import com.example.sonrisasaludable.data.entidades.RolEntity;
-import com.example.sonrisasaludable.data.models.LoginRequest;
-import com.example.sonrisasaludable.data.models.LoginResponse;
-import com.example.sonrisasaludable.data.models.UsuarioResponse;
+
+import com.example.sonrisasaludable.data.models.CitaResponse;
+
+import com.example.sonrisasaludable.data.models.*;
 
 import java.util.List;
 
@@ -82,6 +84,10 @@ public interface ApiService {
     @GET("roles")
     Call<List<RolEntity>> getRoles();
 
+    @GET("sedes")
+    Call<List<SedeEntity>> getSedes();
+
+
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
@@ -99,5 +105,11 @@ public interface ApiService {
             @Part("sexo") RequestBody sexo,
             @Part MultipartBody.Part imagen
     );
+
+    @POST("citas")
+    Call<CitaResponse> registrarCita(@Body CitaEntity citaEntity);
+
+    @PUT("citas/{id}")
+    Call<Void> actualizarCita(@Path("id") int id, @Body CitaConDetalles cita);
 
 }
